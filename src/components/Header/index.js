@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const Header = () => (
+function Header () {
+  return(
   <div
     style={{
       background: 'rebeccapurple',
@@ -28,6 +29,6 @@ const Header = () => (
       </h1>
     </div>
   </div>
-)
+)};
 
 export default Header
