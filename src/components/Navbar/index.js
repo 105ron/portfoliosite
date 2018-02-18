@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import window from "global/window";
 
 const NavWrapper = styled.nav`
   background: pink;
