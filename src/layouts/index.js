@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import Navbar from '../components/Navbar';
+
 //import './index.css'
 
 const TemplateWrapper = ({ children }) => (
@@ -21,6 +22,7 @@ const TemplateWrapper = ({ children }) => (
         maxWidth: 960,
         padding: '0px 1.0875rem 1.45rem',
         paddingTop: 0,
+        color: 'yellow',
       }}
     >
       {children()}

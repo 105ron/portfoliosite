@@ -8,7 +8,7 @@ function Header () {
       background: 'rebeccapurple',
       marginBottom: '1.45rem',
     }}
-  >
+  >Here we go
     <div
       style={{
         margin: '0 auto',
