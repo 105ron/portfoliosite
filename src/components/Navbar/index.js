@@ -1,8 +1,17 @@
 import React from 'react';
 import styled from "styled-components";
-import window from "global/window";
-const MobileNav = require('./MobileNav');
-const DesktopNav = require('./DesktopNav');
+import Link from 'gatsby-link';
+
+const Navbar = styled.nav`
+  height: 150px;
+  display: flex;
+  justify-content: space-between;`;
+
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  text-transform: uppercase;`;
 
 const BottomBorder = styled.ul`
   display: flex;
@@ -17,54 +26,28 @@ const Line = styled.li.attrs({
   background-color: ${props => props.color};
   list-style: none;
   flex-grow: 1;
-  height: 3px;
-  `;
+  height: 3px;`;
 
 
-
-class Navbar extends React.Component {
-  constructor () {
-    super();
-    this.state = {
-      width: this.updateDimensions
-    }
-    this.updateDimensions = this.updateDimensions.bind(this);
-  }
-  updateDimensions () {
-    var width = window.innerWidth;
-    this.setState(function () {
-      return {
-        width: width
-      }
-    });
-  }
-  componentWillMount () {
-    this.updateDimensions();
-  }
-  
-  componentDidMount () {
-    window.addEventListener("resize", this.updateDimensions);
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
-
+class DesktopNav extends React.Component {
   render () {
     return (
       <div>
-        {this.state.width > 400
-          ? <DesktopNav />
-          : <MobileNav /> }
-          {this.state.width}
-          <BottomBorder>
-            <Line color='#e74c4f'/>
-            <Line color='#f0c93d'/>
-            <Line color='#8ccfd9'/>
-          </BottomBorder>
+        <Navbar>
+          <List>Home</List>
+          <List>About Me</List>
+          <List>Blogs</List>
+          <List>Projects</List>
+          <List>Contact</List>
+        </Navbar>
+        <BottomBorder>
+          <Line color='#e74c4f'/>
+          <Line color='#f0c93d'/>
+          <Line color='#8ccfd9'/>
+        </BottomBorder>
       </div>
     );
   }
 };
 
-module.exports = Navbar;
+module.exports = DesktopNav;
