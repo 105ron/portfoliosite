@@ -8,13 +8,21 @@
       "path----557518bd178906f8d58a.js",
       "path----557518bd178906f8d58a.js.map"
     ],
-    "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-5ecafddf6474399aaa6d.js",
-      "component---src-layouts-index-js-5ecafddf6474399aaa6d.js.map"
+    "component---src-pages-contact-js": [
+      "component---src-pages-contact-js-733cc10951391c699ff7.js",
+      "component---src-pages-contact-js-733cc10951391c699ff7.js.map"
     ],
-    "path---page-2": [
-      "path---page-2-a0e39f21c11f6a62c5ab.js",
-      "path---page-2-a0e39f21c11f6a62c5ab.js.map"
+    "path---projects": [
+      "path---projects-a0e39f21c11f6a62c5ab.js",
+      "path---projects-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-layouts-index-js": [
+      "component---src-layouts-index-js-37836d73b17c37ab85cd.js",
+      "component---src-layouts-index-js-37836d73b17c37ab85cd.js.map"
+    ],
+    "path---blogs": [
+      "path---blogs-a0e39f21c11f6a62c5ab.js",
+      "path---blogs-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---index": [
       "path---index-a0e39f21c11f6a62c5ab.js",
@@ -32,17 +40,33 @@
       "path---404-html-a0e39f21c11f6a62c5ab.js",
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
     ],
-    "component---src-pages-page-2-js": [
-      "component---src-pages-page-2-js-075954cd9c4544c7dcd8.js",
-      "component---src-pages-page-2-js-075954cd9c4544c7dcd8.js.map"
+    "path---contact": [
+      "path---contact-a0e39f21c11f6a62c5ab.js",
+      "path---contact-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-projects-js": [
+      "component---src-pages-projects-js-a5a4cbb83f3e69e55b07.js",
+      "component---src-pages-projects-js-a5a4cbb83f3e69e55b07.js.map"
     ],
     "app": [
-      "app-a90bc270544389f0a05a.js",
-      "app-a90bc270544389f0a05a.js.map"
+      "app-cf04362306ee4303ac09.js",
+      "app-cf04362306ee4303ac09.js.map"
+    ],
+    "component---src-pages-blogs-js": [
+      "component---src-pages-blogs-js-bc4890e6a7b7217b364f.js",
+      "component---src-pages-blogs-js-bc4890e6a7b7217b364f.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---src-pages-about-js": [
+      "component---src-pages-about-js-d07c99aab27cd450a397.js",
+      "component---src-pages-about-js-d07c99aab27cd450a397.js.map"
+    ],
+    "path---about": [
+      "path---about-a0e39f21c11f6a62c5ab.js",
+      "path---about-a0e39f21c11f6a62c5ab.js.map"
     ]
   }
 }
