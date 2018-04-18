@@ -24,7 +24,7 @@ function Header () {
             textDecoration: 'none',
           }}
         >
-          Gatsby
+          GatsbyThisisGatsby
         </Link>
       </h1>
     </div>

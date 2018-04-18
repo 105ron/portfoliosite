@@ -1,17 +1,28 @@
 import React from 'react';
 import styled from "styled-components";
 import Link from 'gatsby-link';
+import Device from '../../layouts/mediaqueries';
+
+const Header = styled.h1`
+  text-align: center;`;
 
 const Navbar = styled.nav`
-  height: 150px;
   display: flex;
-  justify-content: space-between;`;
+  justify-content: space-between;
+  max-width: 730px;
+  margin: auto;
+  @media ${Device.tablet} {
+    flex-direction: column;
+    text-align: center;
+  }`;
 
-const List = styled.ul`
+const List = styled(Link)`
   margin: 0;
   padding: 0;
   font-family: arial;
-  text-transform: uppercase;`;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #9d9d9d`;
 
 const BottomBorder = styled.ul`
   display: flex;
@@ -33,12 +44,13 @@ class DesktopNav extends React.Component {
   render () {
     return (
       <div>
+        <Header>MadeByRhys</Header>
         <Navbar>
-          <List>Home</List>
-          <List>About Me</List>
-          <List>Blogs</List>
-          <List>Projects</List>
-          <List>Contact</List>
+          <List to="/">Home</List>
+          <List to="/about/">About Me</List>
+          <List to="/blogs/">Blogs</List>
+          <List to="/projects/">Projects</List>
+          <List to="/contact/">Contact</List>
         </Navbar>
         <BottomBorder>
           <Line color='#e74c4f'/>
