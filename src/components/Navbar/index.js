@@ -2,9 +2,20 @@ import React from 'react';
 import styled from "styled-components";
 import Link from 'gatsby-link';
 import Device from '../../layouts/mediaqueries';
+import logo from '../../images/logo.png'
 
-const Header = styled.h1`
-  text-align: center;`;
+const Title = styled.h1`
+  text-indent:-9999px;
+  overflow:hidden;
+  margin: 0;
+  font-size: 0;`
+
+const TitleImage = styled.div`
+  height: 5em;
+  background: url(${logo});
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;`
 
 const Navbar = styled.nav`
   display: flex;
@@ -44,7 +55,10 @@ class DesktopNav extends React.Component {
   render () {
     return (
       <div>
-        <Header>MadeByRhys</Header>
+        <header>
+          <Title>MadeByRhysss</Title>
+          <TitleImage />
+        </header>
         <Navbar>
           <List to="/">Home</List>
           <List to="/about/">About Me</List>

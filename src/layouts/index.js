@@ -3,7 +3,23 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Navbar from '../components/Navbar';
 import styled from "styled-components";
+import { injectGlobal } from 'styled-components';
+import Device from '../layouts/mediaqueries';
 
+injectGlobal`
+  body {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+    margin: 0;
+  }
+      
+  @media ${Device.tablet} {
+    body {
+      font-size: 20px;
+    }
+  }`
 
 const Wrapper = styled.div`
   max-width: 1220px;
