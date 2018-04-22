@@ -1,8 +1,33 @@
 import React from 'react';
 import styled from "styled-components";
 import Link from 'gatsby-link';
-import Device from '../../layouts/mediaqueries';
-import logo from '../../images/logo.png'
+import Device from '../../assets/mediaqueries';
+import logo from '../../assets/logo.png'
+import pages from '../../assets/pagelinks.js'
+
+class DesktopNav extends React.Component {
+  render () {
+    return (
+      <div>
+        <header>
+          <Title>MadeByRhysss</Title>
+          <TitleImage />
+        </header>
+        <Navbar>
+          {/* Nav bar links*/}
+          {pages.map(function(page) {
+            return <List to={page.route}>{page.name}</List>
+          })}
+        </Navbar>
+        <BottomBorder>
+          <Line color='#e74c4f'/>
+          <Line color='#f0c93d'/>
+          <Line color='#8ccfd9'/>
+        </BottomBorder>
+      </div>
+    );
+  }
+};
 
 const Title = styled.h1`
   text-indent:-9999px;
@@ -43,37 +68,12 @@ const BottomBorder = styled.ul`
   `;
 
 const Line = styled.li.attrs({
-  color: props => props.color || 'pink'
+  color: props => props.color || 'black'
 })`
   background-color: ${props => props.color};
   list-style: none;
   flex-grow: 1;
   height: 3px;`;
 
-
-class DesktopNav extends React.Component {
-  render () {
-    return (
-      <div>
-        <header>
-          <Title>MadeByRhysss</Title>
-          <TitleImage />
-        </header>
-        <Navbar>
-          <List to="/">Home</List>
-          <List to="/about/">About Me</List>
-          <List to="/blogs/">Blogs</List>
-          <List to="/projects/">Projects</List>
-          <List to="/contact/">Contact</List>
-        </Navbar>
-        <BottomBorder>
-          <Line color='#e74c4f'/>
-          <Line color='#f0c93d'/>
-          <Line color='#8ccfd9'/>
-        </BottomBorder>
-      </div>
-    );
-  }
-};
 
 module.exports = DesktopNav;
