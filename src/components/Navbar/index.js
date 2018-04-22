@@ -15,8 +15,8 @@ class DesktopNav extends React.Component {
         </header>
         <Navbar>
           {/* Nav bar links*/}
-          {pages.map(function(page) {
-            return <List to={page.route}>{page.name}</List>
+          {pages.map(function(page, index) {
+            return <List key={index} to={page.route}>{page.name}</List>
           })}
         </Navbar>
         <BottomBorder>
