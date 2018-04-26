@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 import Link from 'gatsby-link';
-import Device from '../../assets/mediaqueries';
-import logo from '../../assets/logo.png'
-import pages from '../../assets/pagelinks.js'
+import Device from '../assets/mediaqueries';
+import logo from '../assets/logo.png'
+import pages from '../assets/pagelinks.js'
 
 class DesktopNav extends React.Component {
   render () {

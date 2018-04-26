@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar.js';
 import styled from "styled-components";
 import { injectGlobal } from 'styled-components';
 import Device from '../layouts/mediaqueries';
