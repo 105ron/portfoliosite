@@ -34,13 +34,13 @@ const Tagline = styled.h3`
   font-weight: 100`;
 
 
-function BannerImage (props) {
-  return(
-    <Wrapper image={props.image}>
-      <Heading>{props.heading}</Heading>
-      <Tagline>{props.tagline}</Tagline>
-    </Wrapper>
-  )
-}
-
-export default BannerImage;
+  function BannerImage (props) {
+    return(
+      <Wrapper image={props.image}>
+        <Heading>{props.heading}</Heading>
+        <Tagline>{props.tagline}</Tagline>
+      </Wrapper>
+    )
+  }
+  
+  export default BannerImage;
