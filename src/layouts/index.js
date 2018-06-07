@@ -13,6 +13,8 @@ injectGlobal`
     -webkit-text-size-adjust: 100%;
     font-size: 16px;
     margin: 0;
+    background-color: #dedede;
+    min-width: 360px;
   }
       
   @media ${Device.tablet} {
@@ -21,9 +23,11 @@ injectGlobal`
     }
   }`
 
+//76.25rem wide for desktop
 const Wrapper = styled.div`
   max-width: 1220px;
-  margin: auto`;
+  margin: 0.3rem auto 0 auto;
+  background-color: #fff`;
 
 const TemplateWrapper = ({ children }) => (
   <Wrapper>

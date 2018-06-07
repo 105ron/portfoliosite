@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import BannerImage from '../components/BannerImage'
 import HelloCard from '../components/HelloCard'
 import harbourImage from '../assets/harbour.jpg'

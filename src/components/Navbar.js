@@ -5,28 +5,6 @@ import Device from '../assets/mediaqueries';
 import logo from '../assets/logo.png'
 import pages from '../assets/pagelinks.js'
 
-function DesktopNav () {
-  return (
-    <div>
-      <header>
-        <Title>MadeByRhysss</Title>
-        <TitleImage />
-      </header>
-      <Navbar>
-        {/* Nav bar links*/}
-        {pages.map(function(page, index) {
-          return <List key={index} to={page.route}>{page.name}</List>
-        })}
-      </Navbar>
-      <BottomBorder>
-        <Line color='#e74c4f'/>
-        <Line color='#f0c93d'/>
-        <Line color='#8ccfd9'/>
-      </BottomBorder>
-    </div>
-  );
-};
-
 const Title = styled.h1`
   text-indent:-9999px;
   overflow:hidden;
@@ -74,4 +52,26 @@ const Line = styled.li.attrs({
   height: 3px;`;
 
 
-module.exports = DesktopNav;
+function DesktopNav () {
+  return (
+    <div>
+      <header>
+        <Title>MadeByRhysss</Title>
+        <TitleImage />
+      </header>
+      <Navbar>
+        {/* Nav bar links*/}
+        {pages.map(function(page, index) {
+          return <List key={index} to={page.route}>{page.name}</List>
+        })}
+      </Navbar>
+      <BottomBorder>
+        <Line color='#e74c4f'/>
+        <Line color='#f0c93d'/>
+        <Line color='#8ccfd9'/>
+      </BottomBorder>
+    </div>
+  );
+};
+
+export default DesktopNav;
