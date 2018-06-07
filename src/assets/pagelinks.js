@@ -6,4 +6,12 @@ const pages = [
   {name: 'Contact', route: '/contact/'}
 ];
 
-module.exports = pages;
+const pageObject = {
+  home: pages[0],
+  about: pages[1],
+  blogs: pages[2],
+  projects: pages[3],
+  contact: pages[4]
+}
+
+module.exports = {pages, pageObject};

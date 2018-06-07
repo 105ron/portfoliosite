@@ -5,6 +5,9 @@ import Navbar from '../components/Navbar.js';
 import styled from "styled-components";
 import { injectGlobal } from 'styled-components';
 import Device from '../layouts/mediaqueries';
+import Pages from '../assets/pagelinks'
+
+const pages = Pages.pages;
 
 injectGlobal`
   body {

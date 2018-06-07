@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Link from 'gatsby-link';
 import Device from '../assets/mediaqueries';
 import logo from '../assets/logo.png'
-import pages from '../assets/pagelinks.js'
+import Pages from '../assets/pagelinks'
+
+const pages = Pages.pages;
 
 const Title = styled.h1`
   text-indent:-9999px;
@@ -43,6 +45,8 @@ const BottomBorder = styled.ul`
   margin: 0;
   `;
 
+const lineColors = ['#e74c4f', '#f0c93d', '#8ccfd9']
+
 const Line = styled.li.attrs({
   color: props => props.color || 'black'
 })`
@@ -61,14 +65,14 @@ function DesktopNav () {
       </header>
       <Navbar>
         {/* Nav bar links*/}
-        {pages.map(function(page, index) {
-          return <List key={index} to={page.route}>{page.name}</List>
-        })}
+        {pages.map((page, index) => (
+          <List key={index} to={page.route}>{page.name}</List>
+        ) )}
       </Navbar>
       <BottomBorder>
-        <Line color='#e74c4f'/>
-        <Line color='#f0c93d'/>
-        <Line color='#8ccfd9'/>
+        {lineColors.map( (color) => (
+          <Line color={color} />
+        ))}
       </BottomBorder>
     </div>
   );

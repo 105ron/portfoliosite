@@ -2,6 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
 import rhysImage from '../assets/rhys.jpg';
+import Link from 'gatsby-link';
+import Pages from '../assets/pagelinks'
+
+const pages = Pages.pageObject;
 
 const Container = styled.div`
   margin-top: 1.8rem;
@@ -16,14 +20,15 @@ const Card = styled.div`
   align-items: center;
   margin: 0 auto;
   width: 64%;
-  min-width: 46.8rem;
-  background-color: yellow;
+  min-width: 40.8rem;
   @media ${Device.tablet} {
     flex-flow: row wrap;
-    flex-grow:1;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
-    min-width: 100%;
+    min-width: auto;
+    max-width: 30rem;
+    height: auto;
+    padding 0.8rem;
   }
 `
 
@@ -51,22 +56,35 @@ const ProfilePhoto = styled.img`
 `;
 
 const IntroText = styled.div`
-  background-color:pink;
+  background-color: pink;
   height: 150px;
-  width:50%;
+  width: 50%;
   @media ${Device.tablet} {
     width: auto;
     min-width: 20%;
+    max-width: 14rem;
     flex-grow: 1;
   };`;
 
-const MoreInformation = styled.div`
-  background-color:blue;
-  height:50px;
+const HelloHeading = styled.h3`
+
+`;
+
+const HelloSubHeading = styled.h4`
+
+`;
+
+const MoreInformation = styled.p`
+  background-color: white;
+  height: 50px;
   width: 50%;
   @media ${Device.tablet} {
-    min-width:100%;
+    min-width: auto;
+    flex-grow: 1;
   }`
+
+const AboutLink = styled(Link)`
+  color: blue;`
 
 function HelloCard () {
   return (
@@ -75,8 +93,11 @@ function HelloCard () {
       <PhotoCircle>
         <ProfilePhoto src={rhysImage} alt="Profile Photo" />
       </PhotoCircle>
-      <IntroText />
-      <MoreInformation />
+      <IntroText>
+        <HelloHeading>G'Day</HelloHeading>
+        <HelloSubHeading>I'm Rhys</HelloSubHeading>
+      </IntroText>
+      <MoreInformation>I like to code and make the web a prettier place for everybody.<AboutLink to={pages.about.route}>Here is a link.</AboutLink></MoreInformation>
     </Card>
   </Container>
   )
