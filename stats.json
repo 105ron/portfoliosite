@@ -1,8 +1,8 @@
 {
   "assetsByChunkName": {
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-3159a1730314c9d965c1.js",
-      "component---src-pages-index-js-3159a1730314c9d965c1.js.map"
+      "component---src-pages-index-js-6640016d49efe72381a4.js",
+      "component---src-pages-index-js-6640016d49efe72381a4.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -17,8 +17,8 @@
       "path---projects-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-25ad41fa1cd4f0710677.js",
-      "component---src-layouts-index-js-25ad41fa1cd4f0710677.js.map"
+      "component---src-layouts-index-js-ccf1292834f9f967e97e.js",
+      "component---src-layouts-index-js-ccf1292834f9f967e97e.js.map"
     ],
     "path---blogs": [
       "path---blogs-a0e39f21c11f6a62c5ab.js",
@@ -33,8 +33,8 @@
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js.map"
     ],
     "commons": [
-      "commons-a38cb46a683fdce972ed.js",
-      "commons-a38cb46a683fdce972ed.js.map"
+      "commons-961887d3f3b2d16d5e81.js",
+      "commons-961887d3f3b2d16d5e81.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -49,8 +49,8 @@
       "component---src-pages-projects-js-a5a4cbb83f3e69e55b07.js.map"
     ],
     "app": [
-      "app-cf04362306ee4303ac09.js",
-      "app-cf04362306ee4303ac09.js.map"
+      "app-7fbbb2652b5a8700fcdb.js",
+      "app-7fbbb2652b5a8700fcdb.js.map"
     ],
     "component---src-pages-blogs-js": [
       "component---src-pages-blogs-js-bc4890e6a7b7217b364f.js",
