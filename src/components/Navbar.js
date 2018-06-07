@@ -5,28 +5,26 @@ import Device from '../assets/mediaqueries';
 import logo from '../assets/logo.png'
 import pages from '../assets/pagelinks.js'
 
-class DesktopNav extends React.Component {
-  render () {
-    return (
-      <div>
-        <header>
-          <Title>MadeByRhysss</Title>
-          <TitleImage />
-        </header>
-        <Navbar>
-          {/* Nav bar links*/}
-          {pages.map(function(page, index) {
-            return <List key={index} to={page.route}>{page.name}</List>
-          })}
-        </Navbar>
-        <BottomBorder>
-          <Line color='#e74c4f'/>
-          <Line color='#f0c93d'/>
-          <Line color='#8ccfd9'/>
-        </BottomBorder>
-      </div>
-    );
-  }
+function DesktopNav () {
+  return (
+    <div>
+      <header>
+        <Title>MadeByRhysss</Title>
+        <TitleImage />
+      </header>
+      <Navbar>
+        {/* Nav bar links*/}
+        {pages.map(function(page, index) {
+          return <List key={index} to={page.route}>{page.name}</List>
+        })}
+      </Navbar>
+      <BottomBorder>
+        <Line color='#e74c4f'/>
+        <Line color='#f0c93d'/>
+        <Line color='#8ccfd9'/>
+      </BottomBorder>
+    </div>
+  );
 };
 
 const Title = styled.h1`

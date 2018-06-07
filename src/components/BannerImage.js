@@ -34,15 +34,13 @@ const Tagline = styled.h3`
   font-weight: 100`;
 
 
-class BannerImage extends React.Component {
-  render () {
-    return(
-      <Wrapper image={this.props.image}>
-        <Heading>{this.props.heading}</Heading>
-        <Tagline>{this.props.tagline}</Tagline>
-      </Wrapper>
-    )
-  }
+function BannerImage (props) {
+  return(
+    <Wrapper image={props.image}>
+      <Heading>{props.heading}</Heading>
+      <Tagline>{props.tagline}</Tagline>
+    </Wrapper>
+  )
 }
 
-module.exports = BannerImage;
+export default BannerImage;

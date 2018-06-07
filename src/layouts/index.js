@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 const TemplateWrapper = ({ children }) => (
   <Wrapper>
     <Helmet
-      title='Rhys hard coded title'
+      title='MadeByRhys'
       meta={[
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
