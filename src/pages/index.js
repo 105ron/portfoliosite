@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import BannerImage from '../components/BannerImage'
-import HelloCard from '../components/HelloCard'
-import harbourImage from '../assets/harbour.jpg'
-
+import BannerImage from '../components/BannerImage';
+import HelloCard from '../components/HelloCard';
+import ArticlesPreviewContainer from '../components/ArticlesPreviewContainer';
+import harbourImage from '../assets/harbour.jpg';
 
 function IndexPage () {
   return (
@@ -14,6 +14,7 @@ function IndexPage () {
         image={harbourImage}
       />
       <HelloCard />
+      <ArticlesPreviewContainer />
     </div>
   )
 }

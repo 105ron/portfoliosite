@@ -108,6 +108,9 @@ const AboutLink = styled(Link)`
   display: block;
   text-align: right;
   font-style: italic;
+  @media ${Device.tablet} {
+    text-align: center;
+  }
 `;
 
 function HelloCard () {
