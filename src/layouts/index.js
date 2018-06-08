@@ -10,6 +10,7 @@ import Pages from '../assets/pagelinks'
 const pages = Pages.pages;
 
 injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
   body {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;

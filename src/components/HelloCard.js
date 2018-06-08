@@ -10,7 +10,7 @@ const pages = Pages.pageObject;
 const Container = styled.div`
   margin-top: 1.8rem;
   background-color: #e6e6e6;
-  `;
+`;
 
 const Card = styled.div`
   display: flex;
@@ -24,13 +24,13 @@ const Card = styled.div`
   @media ${Device.tablet} {
     flex-flow: row wrap;
     justify-content: space-between;
-    width: 100%;
+    width: auto;
     min-width: auto;
-    max-width: 30rem;
+    max-width: 28.2rem;
     height: auto;
     padding 0.8rem;
   }
-`
+`;
 
 const PhotoCircle = styled.div`
   width: 13.8rem;
@@ -39,13 +39,14 @@ const PhotoCircle = styled.div`
   border: 0.75rem solid #fff;
   overflow: hidden;
   @media ${Device.tablet} {
+    margin: 0 0 0.4rem 0;
     width: 9rem;
     height: 9rem;
   };
-  `
+`;
 
 const ProfilePhoto = styled.img`
-  width: 15.8rem; /* you can use % */
+  width: 15.8rem;
   height: auto;
   position: relative;
   top: -1.5rem;
@@ -56,35 +57,55 @@ const ProfilePhoto = styled.img`
 `;
 
 const IntroText = styled.div`
-  background-color: pink;
-  height: 150px;
   width: 50%;
   @media ${Device.tablet} {
     width: auto;
     min-width: 20%;
     max-width: 14rem;
     flex-grow: 1;
-  };`;
+  };
+`;
 
-const HelloHeading = styled.h3`
-
+const HelloHeading = styled.h4`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.8rem;
+  font-weight: bold;
+  margin: 0;
+  @media ${Device.tablet} {
+    font-size: 2.8rem;
+  }
 `;
 
 const HelloSubHeading = styled.h4`
-
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.8rem;
+  margin: 0;
+  @media ${Device.tablet} {
+    font-size: 1.8rem;
+  }
 `;
 
-const MoreInformation = styled.p`
-  background-color: white;
-  height: 50px;
+const MoreInformation = styled.div`
   width: 50%;
   @media ${Device.tablet} {
     min-width: auto;
     flex-grow: 1;
-  }`
+  }
+`;
+
+const AboutText = styled.p`
+  font-family: arial, sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem 0;
+`;
 
 const AboutLink = styled(Link)`
-  color: blue;`
+  color: #368bc1;
+  font-family: arial, sans-serif;
+  font-size: 1.2rem;
+  display: block;
+  text-align: right;
+`;
 
 function HelloCard () {
   return (
@@ -94,10 +115,13 @@ function HelloCard () {
         <ProfilePhoto src={rhysImage} alt="Profile Photo" />
       </PhotoCircle>
       <IntroText>
-        <HelloHeading>G'Day</HelloHeading>
-        <HelloSubHeading>I'm Rhys</HelloSubHeading>
+        <HelloHeading>G'Day!</HelloHeading>
+        <HelloSubHeading>I'm Rhys...</HelloSubHeading>
       </IntroText>
-      <MoreInformation>I like to code and make the web a prettier place for everybody.<AboutLink to={pages.about.route}>Here is a link.</AboutLink></MoreInformation>
+      <MoreInformation>
+        <AboutText>I like to code and make the web a prettier place for everybody.</AboutText>
+        <AboutLink to={pages.about.route}>Read more about me.</AboutLink>
+      </MoreInformation>
     </Card>
   </Container>
   )

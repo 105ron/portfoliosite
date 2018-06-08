@@ -70,8 +70,8 @@ function DesktopNav () {
         ) )}
       </Navbar>
       <BottomBorder>
-        {lineColors.map( (color) => (
-          <Line color={color} />
+        {lineColors.map( (color, index) => (
+          <Line color={color} key={index} />
         ))}
       </BottomBorder>
     </div>
