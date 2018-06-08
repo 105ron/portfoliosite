@@ -58,11 +58,13 @@ const ProfilePhoto = styled.img`
 
 const IntroText = styled.div`
   width: 50%;
+  margin: 0 0 0.4rem 0;
   @media ${Device.tablet} {
     width: auto;
     min-width: 20%;
     max-width: 14rem;
     flex-grow: 1;
+    margin: 0 0 0.4rem 0.8rem;
   };
 `;
 
@@ -95,16 +97,17 @@ const MoreInformation = styled.div`
 
 const AboutText = styled.p`
   font-family: arial, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0 0 0.4rem 0;
 `;
 
 const AboutLink = styled(Link)`
   color: #368bc1;
   font-family: arial, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: block;
   text-align: right;
+  font-style: italic;
 `;
 
 function HelloCard () {

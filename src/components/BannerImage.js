@@ -16,7 +16,7 @@ const Heading = styled.h2`
   margin: auto;
   top: 4rem;
   color: #fff;
-  font-family: arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 2rem;
   letter-spacing: 0.0675em;
   font-weight: 100`;
@@ -28,7 +28,7 @@ const Tagline = styled.h3`
   margin: auto;
   top: 7.5rem;
   color: #fff;
-  font-family: arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.6rem;
   letter-spacing: 0.0725em;
   font-weight: 100`;
