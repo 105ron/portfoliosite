@@ -102,7 +102,7 @@ const AboutText = styled.p`
 `;
 
 const AboutLink = styled(Link)`
-  color: #368bc1;
+  color: var(--linkblue);
   font-family: arial, sans-serif;
   font-size: 1rem;
   display: block;

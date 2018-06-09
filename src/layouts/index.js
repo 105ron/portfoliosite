@@ -11,6 +11,9 @@ const pages = Pages.pages;
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+  :root {
+    --linkblue: #368bc1;
+  }
   body {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
