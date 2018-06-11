@@ -13,26 +13,23 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  height: 17rem;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template: 2 / 2;
+  grid-template-areas: "photo intro" "photo moreinformation";
+  grid-column-gap: 2rem;
+  place-items: center center;
   margin: 0 auto;
+  padding 1.5rem 0;
   width: 64%;
   min-width: 40.8rem;
   @media ${Device.tablet} {
-    flex-flow: row wrap;
-    justify-content: space-between;
-    width: auto;
-    min-width: auto;
-    max-width: 28.2rem;
-    height: auto;
-    padding 0.8rem;
+    grid-template-areas: "photo intro" "moreinformation moreinformation";
   }
 `;
 
 const PhotoCircle = styled.div`
+  grid-area: photo;
+  justify-self: end;
   width: 13.8rem;
   height: 13.8rem;
   border-radius: 50%;
@@ -57,15 +54,8 @@ const ProfilePhoto = styled.img`
 `;
 
 const IntroText = styled.div`
-  width: 50%;
-  margin: 0 0 0.4rem 0;
-  @media ${Device.tablet} {
-    width: auto;
-    min-width: 20%;
-    max-width: 14rem;
-    flex-grow: 1;
-    margin: 0 0 0.4rem 0.8rem;
-  };
+  grid-area: intro;
+  justify-self: start;
 `;
 
 const HelloHeading = styled.h4`
@@ -88,12 +78,18 @@ const HelloSubHeading = styled.h4`
 `;
 
 const MoreInformation = styled.div`
-  width: 50%;
-  @media ${Device.tablet} {
-    min-width: auto;
-    flex-grow: 1;
-  }
+  grid-area: moreinformation;
 `;
+
+const SeparatorLine = styled.div`
+  display: none;
+  height: 1px;
+  width: 66%;
+  margin: 0.45rem auto;
+  background-color: #cbcbcb;
+  @media ${Device.tablet} {
+    display: block;
+  }`
 
 const AboutText = styled.p`
   font-family: arial, sans-serif;
@@ -125,12 +121,13 @@ function HelloCard () {
         <HelloSubHeading>I'm Rhys...</HelloSubHeading>
       </IntroText>
       <MoreInformation>
+        <SeparatorLine />
         <AboutText>I like to code and make the web a prettier place for everybody.</AboutText>
         <AboutLink to={pages.about.route}>Read more about me.</AboutLink>
       </MoreInformation>
     </Card>
   </Container>
-  )
+  );
 }
 
 export default HelloCard;
