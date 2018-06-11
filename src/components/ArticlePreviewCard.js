@@ -13,6 +13,8 @@ const ArticleLink = styled(Link)`
 
 const ArticleImage = styled.img`
   margin: 0 auto;
+  width: 100%;
+  height: auto;
 `;
 
 const ArticleTitle = styled.h5`
