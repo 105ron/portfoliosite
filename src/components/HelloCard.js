@@ -25,6 +25,8 @@ const Card = styled.div`
   @media ${Device.tablet} {
     grid-template-areas: "photo intro" "moreinformation moreinformation";
     min-width: auto;
+    width: 100%;
+    grid-column-gap: 1rem;
   }
 `;
 
@@ -57,6 +59,8 @@ const ProfilePhoto = styled.img`
 const IntroText = styled.div`
   grid-area: intro;
   justify-self: start;
+  @media ${Device.tablet} {
+    padding: 0 1rem;
 `;
 
 const HelloHeading = styled.h4`
@@ -80,6 +84,9 @@ const HelloSubHeading = styled.h4`
 
 const MoreInformation = styled.div`
   grid-area: moreinformation;
+  @media ${Device.tablet} {
+    padding: 0 1rem;
+  }
 `;
 
 const SeparatorLine = styled.div`
