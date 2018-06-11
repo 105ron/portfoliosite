@@ -5,7 +5,7 @@ import HelloCard from '../components/HelloCard';
 import ArticlesPreviewContainer from '../components/ArticlesPreviewContainer';
 import harbourImage from '../assets/harbour.jpg';
 
-function IndexPage () {
+function IndexPage (props) {
   return (
     <div>
       <BannerImage 
@@ -14,9 +14,37 @@ function IndexPage () {
         image={harbourImage}
       />
       <HelloCard />
-      <ArticlesPreviewContainer />
+      <ArticlesPreviewContainer articles={props.data.allContentfulBlog.edges} />
     </div>
   )
 }
 
 export default IndexPage; 
+
+export const pageQuery = graphql`
+   query pageQuery {
+    allContentfulBlog (
+    filter: {
+      node_locale: {eq: "en-US"}
+    },
+    sort:{ fields: [published], order: DESC },
+    limit: 4
+    ) {
+        edges {
+          node {
+            title
+            slug
+            content {
+              childMarkdownRemark {
+                excerpt
+              }
+            }
+            bannerimage {
+              responsiveResolution (width:400, height: 250) {
+                src
+              }
+            }
+          }
+        }
+    }
+   }`;
