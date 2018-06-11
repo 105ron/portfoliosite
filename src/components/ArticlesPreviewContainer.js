@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
+import Link from 'gatsby-link';
 
 const Container = styled.div`
 
@@ -23,7 +24,7 @@ const Card = styled.div`
   background-color: var(--linkblue);
   `
 
-function ArticlesPreviewContainer () {
+function ArticlesPreviewContainer (props) {
   return (
     <Container>
       <CardsContainer>
@@ -39,3 +40,23 @@ function ArticlesPreviewContainer () {
 }
 
 export default ArticlesPreviewContainer;
+
+export const pageQuery = graphql`
+   query pageQuery {
+    allContentfulBlog (
+    filter: {
+      node_locale: {eq: "en-US"}
+    },
+    sort:{ fields: [published], order: DESC }
+    ) {
+        edges {
+          node {
+            title
+            slug
+          
+            
+          }
+        }
+    }
+   }
+`

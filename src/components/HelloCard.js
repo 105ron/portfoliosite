@@ -24,6 +24,7 @@ const Card = styled.div`
   min-width: 40.8rem;
   @media ${Device.tablet} {
     grid-template-areas: "photo intro" "moreinformation moreinformation";
+    min-width: auto;
   }
 `;
 
