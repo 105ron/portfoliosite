@@ -94,7 +94,7 @@ const SeparatorLine = styled.div`
   height: 1px;
   width: 66%;
   margin: 0.45rem auto;
-  background-color: #cbcbcb;
+  background-color: var(--greyline);
   @media ${Device.tablet} {
     display: block;
   }`

@@ -15,6 +15,7 @@ const Title = styled.h1`
 
 const TitleImage = styled.div`
   height: 5em;
+  margin: 0 1rem 0.5rem 1rem;
   background: url(${logo});
   background-position: 50% 50%;
   background-size: contain;
@@ -31,7 +32,7 @@ const Navbar = styled.nav`
   }`;
 
 const List = styled(Link)`
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   padding: 0;
   font-family: arial;
   text-transform: uppercase;

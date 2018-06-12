@@ -11,13 +11,12 @@ const Container = styled.div`
 const CardsContainer = styled.div`
   max-width: 820px;
   margin: 0 auto;
-  padding: 1.5rem 1.5rem;
+  padding: 20px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.5rem;
   @media ${Device.tablet} {
     grid-template-columns: 1fr;
-    margin: 1.5rem;
   };
 `;
 

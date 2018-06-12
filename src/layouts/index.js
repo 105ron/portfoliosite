@@ -13,6 +13,13 @@ injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
   :root {
     --linkblue: #368bc1;
+    --greyline: #cbcbcb;
+  }
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
   body {
     font-family: sans-serif;
