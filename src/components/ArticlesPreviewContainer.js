@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const CardsContainer = styled.div`
-  max-width: 820px;
+  max-width: var(--maxwidth);
   margin: 0 auto;
   padding: 20px 20px;
   display: grid;

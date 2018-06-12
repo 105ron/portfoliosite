@@ -15,6 +15,7 @@ injectGlobal`
   :root {
     --linkblue: #368bc1;
     --greyline: #cbcbcb;
+    --maxwidth: 820px;
   }
   html {
     box-sizing: border-box;
@@ -42,7 +43,11 @@ injectGlobal`
 const Wrapper = styled.div`
   max-width: 1220px;
   margin: 0.3rem auto 0 auto;
-  background-color: #fff`;
+  background-color: #fff;
+  @media ${Device.tablet} {
+    margin: 0 auto;
+  }
+`;
 
 const TemplateWrapper = ({ children }) => (
   <Wrapper>

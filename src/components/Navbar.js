@@ -24,7 +24,7 @@ const TitleImage = styled.div`
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
-  max-width: 820px;
+  max-width: var(--maxwidth);
   margin: auto;
   @media ${Device.tablet} {
     flex-direction: column;
