@@ -1,20 +1,66 @@
 import React from 'react';
 import styled from "styled-components";
+import Device from '../assets/mediaqueries';
 import SocialIcons from '../assets/SocialIcons';
 
 const {Email, Facebook, GitHub, Linkedin, Skype, Twitter, Whatsapp} = SocialIcons;
 
+const iconsAndLinks = [
+  {icon: Email,
+  link: `mailto:example@email.com?subject=Email%20from%20RhysBrooker.com`},
+  {icon: GitHub,
+  link: `https://github.com/105ron`},
+  {icon: Linkedin,
+    link: `https://www.linkedin.com/in/rhysbrooker/`},
+  {icon: Twitter,
+  link: `https://twitter.com/rhysonrails`}
+]
+
+const Wrapper = styled.nav`
+  max-width: var(--maxwidth);
+  border-top: 1.2px solid var(--greyline);
+  margin: 1rem auto;
+  @media ${Device.tablet} {
+    margin: 1rem;
+  }
+`;
+
+const SocialIconsList = styled.ul`
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0.8rem 0;
+  width: 66%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Icon = styled.ul`
+  padding: 0;
+`;
+
+const Copyright = styled.p`
+  color: var(--greyline);
+  margin: 0;
+  font-family: arial;
+  font-size: 0.7rem;
+  text-align: center;
+  padding-bottom: 0.4rem;
+`;
+
 function Footer() {
 return (
-  <div>
-    <Email width="30px" height="30px" />
-    <GitHub width="30px" height="30px" />
-    <Twitter width="30px" height="30px" />
-    <Facebook width="30px" height="30px" />
-    <Linkedin width="30px" height="30px" />
-    <Whatsapp width="30px" height="30px" />
-    <Skype width="30px" height="30px" />
-  </div>
+  <Wrapper>
+    <SocialIconsList>
+      {iconsAndLinks.map( site => (
+        <Icon key={site.link} >
+          <a href={site.link}>
+            {site.icon({height: '30px', width: '30px'})}
+          </a>
+        </Icon>) 
+        ) }
+    </SocialIconsList>
+    <Copyright>Copyright © All Rights Reserved 2018.</Copyright>
+  </Wrapper>
   )
 }
 
