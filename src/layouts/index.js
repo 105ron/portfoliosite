@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Navbar from '../components/Navbar.js';
+import Footer from '../components/Footer.js';
 import styled from "styled-components";
 import { injectGlobal } from 'styled-components';
 import Device from '../layouts/mediaqueries';
-import Pages from '../assets/pagelinks'
+import Pages from '../assets/pagelinks';
 
-const pages = Pages.pages;
+const pages = Pages.pages; //site pages and links
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -53,9 +54,8 @@ const TemplateWrapper = ({ children }) => (
       ]}
     />
     <Navbar />
-    <div>
-      {children()}
-    </div>
+    {children()}
+    <Footer />
   </Wrapper>
 )
 

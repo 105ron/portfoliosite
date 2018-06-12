@@ -5,11 +5,6 @@ import HelloCard from '../components/HelloCard';
 import ArticlesPreviewContainer from '../components/ArticlesPreviewContainer';
 import harbourImage from '../assets/harbour.jpg';
 
-const Box = styled.div`
-  width: 200px;
-  margin: 50px;
-  padding: 50px;`
-
 function IndexPage (props) {
   return (
     <div>
@@ -20,7 +15,6 @@ function IndexPage (props) {
       />
       <HelloCard />
       <ArticlesPreviewContainer articles={props.data.allContentfulBlog.edges} />
-      <Box />
     </div>
   )
 }
