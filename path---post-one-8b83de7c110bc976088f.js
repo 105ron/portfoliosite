@@ -1,0 +1,2 @@
+webpackJsonp([0x8f85a78c25d5],{329:function(t,e){t.exports={data:{contentfulBlog:{title:"Number one article",slug:"post-one",content:{childMarkdownRemark:{html:"<p>I will write more in here later.</p>"}}}},pathContext:{slug:"post-one"}}}});
+//# sourceMappingURL=path---post-one-8b83de7c110bc976088f.js.map

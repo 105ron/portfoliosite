@@ -1,2 +1,0 @@
-webpackJsonp([4430129151547],{329:function(t,o){t.exports={data:{contentfulBlog:{title:"Number two article",slug:"post-two"}},pathContext:{slug:"post-two"}}}});
-//# sourceMappingURL=path---post-two-349b773634d77fc74ee8.js.map
