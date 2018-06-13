@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.158",
+    "gatsby": "^1.9.270",
     "gatsby-image": "^1.0.52",
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-react-helmet": "^2.0.3",
@@ -33,6 +33,7 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
+    "dotenv": "^6.0.0",
     "gh-pages": "^1.2.0",
     "prettier": "^1.10.2"
   }
