@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
@@ -11,10 +11,28 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN || '',
       },
     },
+    
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+            },
+          },
+        ],
+      },
+    },
+
+
+
     `gatsby-plugin-styled-components`,
-    `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`, 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`],
   pathPrefix: "/portfoliosite"
-};
+}
