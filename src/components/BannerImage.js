@@ -16,14 +16,14 @@ const Heading = styled.h2`
   right: 0;
   margin: auto;
   padding: 0 1rem;
-  top: 4rem;
+  top: 4.8rem;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   letter-spacing: 0.0675em;
   font-weight: 100;
   @media ${Device.tablet} {
-    top: 3.5rem;
+    top: 4rem;
   }
 `;
 
@@ -33,14 +33,14 @@ const Tagline = styled.h3`
   right: 0;
   margin: auto;
   padding: 0 1rem;
-  top: 7.5rem;
+  top: 9.5rem;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.6rem;
   letter-spacing: 0.0725em;
   font-weight: 100;
   @media ${Device.tablet} {
-    top: 10.5rem;
+    top: 11.5rem;
 }`;
 
 

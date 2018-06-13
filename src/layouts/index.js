@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
-import styled from "styled-components";
-import { injectGlobal } from 'styled-components';
+import styled, { injectGlobal } from "styled-components";
 import Device from '../layouts/mediaqueries';
 import Pages from '../assets/pagelinks';
 import PrismStyles from '../assets/prism-okaidia.css';
@@ -18,6 +17,7 @@ injectGlobal`
     --linkblue: #368bc1;
     --greyline: #cbcbcb;
     --maxwidth: 820px;
+    --headinggrey: color: rgba(74, 74, 74, 0.7);
   }
   html {
     box-sizing: border-box;
@@ -29,15 +29,21 @@ injectGlobal`
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
     background-color: #dedede;
     min-width: 360px;
   }
+
+  p {
+    color: rgba(74, 74, 74, 0.7);
+    font-size: 1rem;
+    line-height: 30px;
+  }
       
   @media ${Device.tablet} {
     body {
-      font-size: 20px;
+      font-size: 16px;
     }
   }`
 

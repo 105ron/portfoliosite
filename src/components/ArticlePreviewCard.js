@@ -26,8 +26,6 @@ const ArticleTitle = styled.h5`
 `;
 
 const Excerpt = styled.p`
-  color: #939393;
-  font-family: arial;
   font-size: 1rem;
   text-align: justify;
 `;
