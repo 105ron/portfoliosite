@@ -1,14 +1,14 @@
 import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 
-class BlogPost extends Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.data.contentfulBlog.title}</h1>
-      </div>
-    )
-  }
+function BlogPost(props) {
+  const {title,content} = props.data.contentfulBlog
+  return (
+    <div>
+      <h1>{title}</h1>
+      <div dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}} />
+    </div>
+  )
 }
 
 BlogPost.propTypes = {
@@ -22,7 +22,11 @@ export const pageQuery = graphql`
     contentfulBlog(slug: {eq: $slug}) {
       title
       slug
-      
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   }
 `
