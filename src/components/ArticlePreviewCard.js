@@ -37,7 +37,7 @@ function ArticlePreviewCard (props) {
         <ArticleImage src={props.article.bannerimage.responsiveResolution.src} />
         <ArticleTitle>{props.article.title}</ArticleTitle>
       </ArticleLink>
-      <Excerpt>{props.article.content.childMarkdownRemark.excerpt}</Excerpt>\
+      <Excerpt>{props.article.content.childMarkdownRemark.excerpt}</Excerpt>
     </Card>
   );
 }

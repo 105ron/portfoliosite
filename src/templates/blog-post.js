@@ -58,7 +58,7 @@ const Article = styled.div`
     font-family: arial, sans-serif;
     color: rgba(74, 74, 74, 0.9);
     font-weight: bold;
-    margin: 0 0 22px;
+    margin: 0.8rem 0 1rem;
   }
 
   & h1 {
