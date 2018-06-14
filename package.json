@@ -19,6 +19,7 @@
     "hoek": "^5.0.3",
     "npm": "^6.1.0",
     "prismjs": "^1.14.0",
+    "react-google-recaptcha": "^0.12.0",
     "react-helmet": "^5.2.0",
     "styled-components": "^3.1.6"
   },

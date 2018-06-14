@@ -1,12 +1,89 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from "react";
+import { navigateTo } from "gatsby-link";
+import Recaptcha from "react-google-recaptcha";
 
-const SecondPage = () => (
-  <div>
-    <h1>Hi from Contact</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </div>
-)
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
-export default SecondPage
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleRecaptcha = value => {
+    this.setState({ "g-recaptcha-response": value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...this.state
+      })
+    })
+      .then(() => navigateTo(form.getAttribute("action")))
+      .catch(error => alert(error));
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Contact me Form</h1>
+        <form
+          name="contact-recaptcha"
+          method="post"
+          action="/"
+          data-netlify="true"
+          data-netlify-recaptcha="true"
+          onSubmit={this.handleSubmit}
+        >
+          <noscript>
+            <p>This form won’t work with Javascript disabled</p>
+          </noscript>
+          <p>
+            <label>
+              Your name:<br />
+              <input type="text" name="name" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your email:<br />
+              <input type="email" name="email" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Message:<br />
+              <textarea name="message" onChange={this.handleChange} />
+            </label>
+          </p>
+          <Recaptcha
+            ref="recaptcha"
+            sitekey={RECAPTCHA_KEY}
+            onChange={this.handleRecaptcha}
+          />
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default Contact;

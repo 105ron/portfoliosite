@@ -11,15 +11,20 @@ const Title = styled.h1`
   text-indent:-9999px;
   overflow:hidden;
   margin: 0;
-  font-size: 0;`
+  font-size: 0;
+`;
 
 const TitleImage = styled.div`
-  height: 5em;
-  margin: 0 1rem 0.5rem 1rem;
+  height: 4.5rem;
+  margin: 0.6rem 1rem;
   background: url(${logo});
   background-position: 50% 50%;
   background-size: contain;
-  background-repeat: no-repeat;`
+  background-repeat: no-repeat;
+  @media ${Device.tablet} {
+  height: 3.5rem;
+  }
+;`
 
 const Navbar = styled.nav`
   display: flex;
@@ -29,7 +34,8 @@ const Navbar = styled.nav`
   @media ${Device.tablet} {
     flex-direction: column;
     text-align: center;
-  }`;
+  }
+`;
 
 const List = styled(Link)`
   margin: 0 0 0.5rem 0;
@@ -37,14 +43,15 @@ const List = styled(Link)`
   font-family: arial;
   text-transform: uppercase;
   text-decoration: none;
-  color: #9d9d9d`;
+  color: #9d9d9d
+`;
 
 const BottomBorder = styled.ul`
   display: flex;
   height: 3px;
   padding: 0;
   margin: 0;
-  `;
+`;
 
 const lineColors = ['#e74c4f', '#f0c93d', '#8ccfd9']
 
@@ -54,12 +61,13 @@ const Line = styled.li.attrs({
   background-color: ${props => props.color};
   list-style: none;
   flex-grow: 1;
-  height: 3px;`;
+  height: 3px;
+`;
 
 
 function DesktopNav () {
   return (
-    <div>
+    <div style={{marginTop: '0.6rem'}}>
       <header>
         <Title>MadeByRhysss</Title>
         <TitleImage />
