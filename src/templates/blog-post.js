@@ -8,29 +8,61 @@ const Wrapper = styled.article`
   padding: 20px 20px;
 `;
 const Title = styled.h1`
-  color: pink;
+  font-family: arial;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1.2rem 0 0.6rem 0;
+  color: var(--headinggrey);
 `;
 
 const SubTitle = styled.h2`
-
+  font-family: arial;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0 0 0.6rem 0;
+  color: rgba(74,74,74,0.75);
 `;
 
 const ArticleDate = styled.p`
-  color: #6e6e6e;
-  margin: 0 0 12px;
   font-size: 0.9rem;
   font-style: italic;
+  text-align: center;
+  overflow: hidden;
+  margin: 0 0 1rem 0;
+
+  &:before,
+  &:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  &:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+
+  &:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
 `;
 
 const Article = styled.div`
   & h1, & h2, & h3, & h4, & h5, & h6 {
     font-family: arial, sans-serif;
     color: rgba(74, 74, 74, 0.9);
+    font-weight: bold;
     margin: 0 0 22px;
   }
 
   & h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 
   & h2 {
@@ -110,7 +142,7 @@ const Article = styled.div`
 
 function BlogPost(props) {
   const { title,content, subHeading, published } = props.data.contentfulBlog;
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: "2-digit", minute: "2-digit" };
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const publishedDate = new Date(published);
   return (
     <Wrapper>
