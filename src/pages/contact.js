@@ -5,6 +5,9 @@ import Recaptcha from "react-google-recaptcha";
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 const encode = (data) => {
+  console.log(Object.keys(data)
+  .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  .join("&"))
   return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
@@ -31,9 +34,7 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
-        name: this.state.name,
-        email: this.state.email,
-        message: this.state.message
+        ...this.state
       })
     })
       .then(() => navigateTo(form.getAttribute("action")))
