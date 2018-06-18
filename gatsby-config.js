@@ -11,7 +11,6 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN || '',
       },
     },
-    
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -27,9 +26,6 @@ module.exports = {
         ],
       },
     },
-
-
-
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`, 
     `gatsby-transformer-sharp`,

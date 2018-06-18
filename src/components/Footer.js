@@ -7,7 +7,7 @@ const {Email, Facebook, GitHub, Linkedin, Skype, Twitter, Whatsapp} = SocialIcon
 
 const iconsAndLinks = [
   {icon: Email,
-  link: `mailto:example@email.com?subject=Email%20from%20RhysBrooker.com`},
+  link: `mailto:rhysbrooker01@gmail.com?subject=Email%20from%20RhysBrooker.com`},
   {icon: GitHub,
   link: `https://github.com/105ron`},
   {icon: Linkedin,

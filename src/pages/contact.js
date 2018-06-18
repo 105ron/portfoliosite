@@ -43,6 +43,7 @@ class Contact extends React.Component {
     return (
       <div>
         <h1>Contact me Form</h1>
+        <h2>{RECAPTCHA_KEY} && {process.env.GATSBY_SITE_RECAPTCHA_KEY}</h2>
         <form
           name="contact-recaptcha"
           method="post"
