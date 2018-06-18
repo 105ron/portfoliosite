@@ -2,7 +2,7 @@ import React from "react";
 import { navigateTo } from "gatsby-link";
 import Recaptcha from "react-google-recaptcha";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 function encode(data) {
   return Object.keys(data)
@@ -43,7 +43,6 @@ class Contact extends React.Component {
     return (
       <div>
         <h1>Contact me Form</h1>
-        <h2>{RECAPTCHA_KEY} && {process.env.GATSBY_SITE_RECAPTCHA_KEY}</h2>
         <form
           name="contact-recaptcha"
           method="post"
