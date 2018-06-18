@@ -24,7 +24,6 @@ class Contact extends React.Component {
   };
 
   handleSubmit = e => {
-    console.log(this.state);
     e.preventDefault();
     const form = e.target;
     fetch("/", {
@@ -32,7 +31,9 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
-        ...this.state
+        name: this.state.name,
+        email: this.state.email,
+        message: this.state.message
       })
     })
       .then(() => navigateTo(form.getAttribute("action")))
@@ -43,7 +44,6 @@ class Contact extends React.Component {
     return (
       <div>
         <h1>Contact</h1>
-        <p>{RECAPTCHA_KEY}</p>
         <form
           name="contact"
           method="post"
