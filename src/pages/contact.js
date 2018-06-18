@@ -19,7 +19,12 @@ class Contact extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleRecaptcha = value => {
+    this.setState({ "g-recaptcha-response": value });
+  };
+
   handleSubmit = e => {
+    console.log(this.state);
     e.preventDefault();
     const form = e.target;
     fetch("/", {
@@ -38,22 +43,18 @@ class Contact extends React.Component {
     return (
       <div>
         <h1>Contact</h1>
+        <p>{RECAPTCHA_KEY}</p>
         <form
           name="contact"
           method="post"
-          action="/thanks/"
+          action="/about/"
           data-netlify="true"
-          data-netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
           onSubmit={this.handleSubmit}
         >
-          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-          <input type="hidden" name="form-name" value="contact" />
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="bot-field" onChange={this.handleChange} />
-            </label>
-          </p>
+          <noscript>
+            <p>This form won’t work with Javascript disabled</p>
+          </noscript>
           <p>
             <label>
               Your name:<br />
@@ -72,6 +73,11 @@ class Contact extends React.Component {
               <textarea name="message" onChange={this.handleChange} />
             </label>
           </p>
+          <Recaptcha
+          ref="recaptcha"
+           sitekey={RECAPTCHA_KEY}
+           onChange={this.handleRecaptcha}
+         />
           <p>
             <button type="submit">Send</button>
           </p>
