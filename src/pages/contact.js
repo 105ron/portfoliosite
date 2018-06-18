@@ -9,80 +9,75 @@ const encode = (data) => {
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
 }
-
 class Contact extends React.Component {
-  state = {}
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-  handleRecaptcha = value => this.setState({ "g-recaptcha-response": value })
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   handleSubmit = e => {
-      e.preventDefault()
-      const form = e.target
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...this.state
+      })
+    })
+      .then(() => navigateTo(form.getAttribute("action")))
+      .catch(error => alert(error));
+  };
 
-      if(!e.target.name.value || !e.target.email.value || !e.target.message.value) {
-          return alert('Please fill in all the required fields :)')
-      } else {
-          fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({
-                "form-name": form.getAttribute("name"),
-                ...this.state
-              })
-            })
-              .then(() => navigateTo(form.getAttribute("action")))
-              .catch(error => alert('Something went wrong, please try again!'))
-          e.target.name.value = ''
-          e.target.email.value = ''
-          e.target.message.value = ''
-      }
-  }
-  
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
   render() {
-      const { name, email, message } = this.state
-      return (
-          <div>
-              <div>
-                  <h4>Feel free to email me via <a href="mailto:rhysbrooker01@gmail.com" target="_top">ismai23l@hotmail.com</a></h4>
-                  <p>Or fill in the contact form and submit it!</p>
-                  <form
-                      action="/about"
-                      name="contact"
-                      method="POST"
-                      data-netlify="true"
-                      data-netlify-recaptcha="true"
-                      onSubmit={this.handleSubmit}>
-                      <noscript>
-                          <p>This form won’t work with Javascript disabled</p>
-                      </noscript>
-                      <p>
-                          <label>
-                          Your full name: <input type="text" name="name" value={name} onChange={this.handleChange} />
-                          </label>
-                      </p>
-                      <p>
-                          <label>
-                          Your email: <input type="email" name="email" value={email} onChange={this.handleChange} />
-                          </label>
-                      </p>
-                      <p>
-                          <label>
-                          Message: <textarea name="message" value={message} onChange={this.handleChange} />
-                          </label>
-                      </p>
-                      <Recaptcha
-                          ref="recaptcha"
-                          sitekey={RECAPTCHA_KEY}
-                          onChange={this.handleRecaptcha}
-                      />
-                      <p>
-                          <button type="submit">Send</button>
-                      </p>
-                  </form>
-              </div>
-          </div>
-      )
+    return (
+      <div>
+        <h1>Contact</h1>
+        <form
+          name="contact"
+          method="post"
+          action="/thanks/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={this.handleSubmit}
+        >
+          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              Don’t fill this out:{" "}
+              <input name="bot-field" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your name:<br />
+              <input type="text" name="name" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your email:<br />
+              <input type="email" name="email" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Message:<br />
+              <textarea name="message" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    );
   }
 }
 
