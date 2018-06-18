@@ -10,7 +10,7 @@ const encode = (data) => {
       .join("&")
 }
 
-class ContactForm extends Component {
+class Contact extends React.Component {
   state = {}
 
   handleRecaptcha = value => this.setState({ "g-recaptcha-response": value })
