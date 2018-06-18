@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import styled, { injectGlobal } from "styled-components";
-import Device from '../layouts/mediaqueries';
+import Device from '../assets/mediaqueries';
 import Pages from '../assets/pagelinks';
 import PrismStyles from '../assets/prism-okaidia.css';
 
@@ -62,8 +62,7 @@ const TemplateWrapper = ({ children }) => (
     <Helmet
       title='MadeByRhys'
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'Rhys', content: 'Website by Rhys' },
       ]}
     />
     <Navbar />

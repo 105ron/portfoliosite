@@ -22,6 +22,7 @@ class Contact extends React.Component {
 
   handleRecaptcha = value => {
     this.setState({ "g-recaptcha-response": value });
+    console.log(`Recaptcha response is ${value}`);
   };
 
   handleSubmit = e => {
@@ -42,7 +43,7 @@ class Contact extends React.Component {
   render() {
     return (
       <div>
-        <h1>Contact me Form</h1>
+        <h1>reCAPTCHA 2</h1>
         <form
           name="contact-recaptcha"
           method="post"
