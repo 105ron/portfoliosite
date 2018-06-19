@@ -8,20 +8,9 @@ const Wrapper = styled.article`
   padding: 20px 20px;
 `;
 const Title = styled.h1`
-  font-family: arial;
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 1.2rem 0 0.6rem 0;
-  color: var(--headinggrey);
 `;
 
 const SubTitle = styled.h2`
-  font-family: arial;
-  font-size: 1.1rem;
-  text-align: center;
-  margin: 0 0 0.6rem 0;
-  color: rgba(74,74,74,0.75);
 `;
 
 const ArticleDate = styled.p`

@@ -40,12 +40,30 @@ injectGlobal`
     font-size: 1rem;
     line-height: 30px;
   }
+
+  h1 {
+    font-family: arial;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1.2rem 0 0.6rem 0;
+    color: var(--headinggrey);
+  }
+
+  h2 {
+    font-family: arial;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0 0 0.6rem 0;
+    color: rgba(74,74,74,0.75);
+  }
       
   @media ${Device.tablet} {
     body {
       font-size: 16px;
     }
-  }`
+  }
+`;
 
 //76.25rem wide for desktop
 const Wrapper = styled.div`

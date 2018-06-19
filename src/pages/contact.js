@@ -5,9 +5,6 @@ import Recaptcha from "react-google-recaptcha";
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 const encode = (data) => {
-  console.log(Object.keys(data)
-  .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-  .join("&"))
   return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
