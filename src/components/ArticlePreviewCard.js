@@ -5,6 +5,9 @@ import Link from 'gatsby-link';
 const Card = styled.div`
   z-index: 1;
   text-align: center;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  padding: 2px;
 `;
 
 const ArticleLink = styled(Link)`
@@ -33,10 +36,12 @@ const Excerpt = styled.p`
 function ArticlePreviewCard (props) {
   return ( 
     <Card>
-      <ArticleLink to={props.article.slug}>
-        <ArticleImage src={props.article.bannerimage.responsiveResolution.src} />
-        <ArticleTitle>{props.article.title}</ArticleTitle>
-      </ArticleLink>
+      
+        <ArticleLink to={props.article.slug}>
+          <ArticleImage src={props.article.bannerimage.responsiveResolution.src} />
+          <ArticleTitle>{props.article.title}</ArticleTitle>
+        </ArticleLink>
+      
       <Excerpt>{props.article.content.childMarkdownRemark.excerpt}</Excerpt>
     </Card>
   );

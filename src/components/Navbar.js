@@ -31,6 +31,7 @@ const Navbar = styled.nav`
   justify-content: space-between;
   max-width: var(--maxwidth);
   margin: auto;
+  padding: 0 20px;
   @media ${Device.tablet} {
     flex-direction: column;
     text-align: center;
