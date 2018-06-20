@@ -9,6 +9,9 @@ const Card = styled.div`
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
+  &:hover {
+    cursor: pointer;
+  }
   @media ${Device.tablet} {
     &:nth-child(9) {
       display: none;
@@ -80,9 +83,15 @@ class ProjectsPreviewCard extends React.Component {
     };
   }
 
+  timeOut () {
+    this.timer = window.setTimeout(this.toggleClass, 5000);
+  }
+
   toggleClass() {
     const currentState = this.state.active;
     this.setState({ active: !currentState });
+    window.clearTimeout(this.timer);
+    if (!currentState) { this.timeOut() };
   };
 
 
