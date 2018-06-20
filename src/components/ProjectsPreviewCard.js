@@ -10,9 +10,6 @@ const Card = styled.div`
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
-  &:hover {
-    cursor: pointer;
-  }
   @media ${Device.tablet} {
     &:nth-child(9) {
       display: none;
@@ -42,9 +39,6 @@ const Overlay = styled.div`
   align-items: center;
   transition: 0.2s;
   transform: translateY(100%);
-  ${Card}:hover & {
-    transform: translateY(0);
-  }
   &.active {
     transform: translateY(0);
   }
@@ -63,11 +57,13 @@ const ProjectName = styled.p`
   font-size: 1.2rem;
   font-weight: lighter;
   text-align: center;
+  cursor: pointer;
 `;
 
 const ProjectByline = ProjectName.extend`
   font-size: 1rem;
   color: rgba(74, 74, 74, 0.7);
+  cursor: default;
 `;
 
 const LinksButton = styled.a`

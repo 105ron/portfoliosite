@@ -7,6 +7,10 @@ import Pages from '../assets/pagelinks'
 
 const pages = Pages.pages;
 
+const NavWrapper = styled.div`
+  margin-top: '0.6rem';
+`;
+
 const Title = styled.h1`
   text-indent:-9999px;
   overflow:hidden;
@@ -68,7 +72,7 @@ const Line = styled.li.attrs({
 
 function DesktopNav () {
   return (
-    <div style={{marginTop: '0.6rem'}}>
+    <NavWrapper>
       <header>
         <Title>MadeByRhysss</Title>
         <TitleImage />
@@ -84,7 +88,7 @@ function DesktopNav () {
           <Line color={color} key={index} />
         ))}
       </BottomBorder>
-    </div>
+    </NavWrapper>
   );
 };
 

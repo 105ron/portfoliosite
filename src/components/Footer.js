@@ -19,9 +19,9 @@ const iconsAndLinks = [
 const Wrapper = styled.nav`
   max-width: var(--maxwidth);
   border-top: 1.2px solid var(--greyline);
-  margin: 1rem auto;
-  @media ${Device.tablet} {
-    margin: 1rem;
+  margin: 1rem auto 0 auto;
+  @media ${Device.pageWidth} {
+    padding-bottom: 0.5rem;
   }
 `;
 

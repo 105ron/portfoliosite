@@ -5,6 +5,7 @@ const size = {
   tabletS: '525px',
   tablet: '768px',
   laptop: '1024px',
+  pageWidth: '1220px',
   laptopL: '1440px',
   desktop: '2560px'
 }
@@ -15,6 +16,7 @@ const device = {
   mobileL: `(max-width: ${size.mobileL})`,
   tabletS: `(max-width: ${size.tabletS})`,
   tablet: `(max-width: ${size.tablet})`,
+  pageWidth: `(max-width: ${size.pageWidth})`,
   laptop: `(max-width: ${size.laptop})`,
   laptopL: `(max-width: ${size.laptopL})`,
   desktop: `(max-width: ${size.desktop})`,

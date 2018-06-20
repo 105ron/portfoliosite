@@ -18,6 +18,7 @@ injectGlobal`
     --greyline: #cbcbcb;
     --maxwidth: 820px;
     --headinggrey: color: rgba(74, 74, 74, 0.7);
+    --wrapperwidth: 1220px;
   }
   html {
     box-sizing: border-box;
@@ -67,10 +68,10 @@ injectGlobal`
 
 //76.25rem wide for desktop
 const Wrapper = styled.div`
-  max-width: 1220px;
-  margin: 0.3rem auto 0 auto;
+  max-width: var(--wrapperwidth);
+  margin: 0.8rem auto;
   background-color: #fff;
-  @media ${Device.tablet} {
+  @media ${Device.pageWidth} {
     margin: 0 auto;
   }
 `;

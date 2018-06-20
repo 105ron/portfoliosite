@@ -32,7 +32,7 @@ function Projects (props) {
   return (
     <Wrapper>
       <Title>Web Developer Portfolio</Title>
-      <SubHeading>From Web Components, ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3. Check out my latest web development portfolio projects, click the project for more information.</SubHeading>
+      <SubHeading>All aspects of Web Development: ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3.</SubHeading>
       <CardContainer>
         <ProjectsPreviewCard
           key='1'
@@ -129,7 +129,7 @@ export const ProjectsQuery = graphql`
       node_locale: {eq: "en-US"}
     },
     sort:{ fields: [published], order: DESC },
-    limit: 4
+    limit: 9
     ) {
         edges {
           node {
