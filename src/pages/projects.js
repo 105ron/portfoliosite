@@ -35,61 +35,69 @@ function Projects (props) {
       <SubHeading>From Web Components, ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3. Check out my latest web software development portfolio projects.</SubHeading>
       <CardContainer>
         <ProjectsPreviewCard 
+          key='1'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard 
+        key='2'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard 
+        key='3'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard  
+        key='4'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard  
+        key='10'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard  
+        key='5'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard  
+        key='6'
           title={props.data.allContentfulProjects.edges[0].node.title }
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard  
+        key='8'
           title='second last'
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
         <ProjectsPreviewCard  
+        key='9'
           title='last'
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
         />
       </CardContainer>
-      <Link to="/">Go back to the homepage</Link>
     </Wrapper>
   )
 }
