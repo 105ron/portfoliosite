@@ -48,6 +48,7 @@ const ProjectByline = ProjectName.extend`
   font-size: 1rem;
   color: rgba(74, 74, 74, 0.7);
   cursor: default;
+  text-align: justify;
 `;
 
 const Overlay = styled.div`
@@ -88,7 +89,7 @@ const TechList = styled.ul`
 `;
 
 const TechItem = styled.li`
-  padding: 3px 5px;
+  padding: 2px 7px 4px 7px;
   margin: 0.5rem;
   background-color: #3e3e3e;
   border-width: 1px 1px 2px 1px;
@@ -138,10 +139,10 @@ class ProjectsPreviewCard extends React.Component {
         <Overlay 
           onClick={this.toggleClass}
           className={this.state.active ? 'active': null } >
-          <LinksButton href={ repo }> View it on GitHub -></LinksButton>
-          <LinksButton href={ livesite }> See it on the Web -></LinksButton>
+          <LinksButton href={ repo } target="_blank"> View it on GitHub -></LinksButton>
+          <LinksButton href={ livesite } target="_blank"> See it on the Web -></LinksButton>
           <TechList>
-            { technologies.map( ( tech, index ) => 
+            { technologies.sort().map( ( tech, index ) => 
               <TechItem key={index}>
                 <TechSpan>{tech}</TechSpan> 
               </TechItem>

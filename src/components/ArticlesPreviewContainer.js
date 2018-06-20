@@ -34,8 +34,8 @@ function ArticlesPreviewContainer (props) {
     <Container>
       <Shadow />
       <CardsContainer>
-      {props.articles.map( (article, index) => (
-          <ArticlePreviewCard article={article.node} key={article.node.slug} />
+      {props.articles.map( (graphData, index) => (
+          <ArticlePreviewCard article={graphData.node} key={graphData.node.slug} />
         ))}
       </CardsContainer>
     </Container>

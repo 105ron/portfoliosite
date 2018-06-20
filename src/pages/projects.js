@@ -34,87 +34,17 @@ function Projects (props) {
       <Title>Web Developer Portfolio</Title>
       <SubHeading>All aspects of Web Development: ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3.</SubHeading>
       <CardContainer>
-        <ProjectsPreviewCard
-          key='1'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard 
-        key='2'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard 
-        key='3'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard  
-        key='4'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard  
-        key='10'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard  
-        key='5'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard  
-        key='6'
-          title={props.data.allContentfulProjects.edges[0].node.title }
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard  
-        key='8'
-          title='second last'
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
-        <ProjectsPreviewCard  
-        key='9'
-          title='last'
-          repo={props.data.allContentfulProjects.edges[0].node.repourl}
-          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
-          image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
-          description={props.data.allContentfulProjects.edges[0].node.description }
-          technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
-        />
+        {props.data.allContentfulProjects.edges.map( graphData =>
+          <ProjectsPreviewCard
+            key={ graphData.node.repourl }
+            title={ graphData.node.title }
+            repo={ graphData.node.repourl }
+            livesite={ graphData.node.previewurl }
+            image={ graphData.node.image.responsiveResolution.src }
+            description={ graphData.node.description }
+            technologies={ graphData.node.technologies.split(',') }
+          />
+        )}
       </CardContainer>
     </Wrapper>
   )
