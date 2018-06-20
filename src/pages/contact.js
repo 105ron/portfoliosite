@@ -48,6 +48,7 @@ class Contact extends React.Component {
           action="/about/"
           data-netlify="true"
           data-netlify-recaptcha="true"
+          netlify-recaptcha="true"
           onSubmit={this.handleSubmit}
         >
           <noscript>

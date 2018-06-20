@@ -32,11 +32,13 @@ function Projects (props) {
   return (
     <Wrapper>
       <Title>Web Developer Portfolio</Title>
-      <SubHeading>From Web Components, ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3. Check out my latest web software development portfolio projects.</SubHeading>
+      <SubHeading>From Web Components, ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3. Check out my latest web development portfolio projects, click the project for more information.</SubHeading>
       <CardContainer>
-        <ProjectsPreviewCard 
+        <ProjectsPreviewCard
           key='1'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -44,6 +46,8 @@ function Projects (props) {
         <ProjectsPreviewCard 
         key='2'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -51,6 +55,8 @@ function Projects (props) {
         <ProjectsPreviewCard 
         key='3'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -58,6 +64,8 @@ function Projects (props) {
         <ProjectsPreviewCard  
         key='4'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -65,6 +73,8 @@ function Projects (props) {
         <ProjectsPreviewCard  
         key='10'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -72,6 +82,8 @@ function Projects (props) {
         <ProjectsPreviewCard  
         key='5'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -79,6 +91,8 @@ function Projects (props) {
         <ProjectsPreviewCard  
         key='6'
           title={props.data.allContentfulProjects.edges[0].node.title }
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -86,6 +100,8 @@ function Projects (props) {
         <ProjectsPreviewCard  
         key='8'
           title='second last'
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }
@@ -93,6 +109,8 @@ function Projects (props) {
         <ProjectsPreviewCard  
         key='9'
           title='last'
+          repo={props.data.allContentfulProjects.edges[0].node.repourl}
+          livesite={props.data.allContentfulProjects.edges[0].node.previewurl}
           image={props.data.allContentfulProjects.edges[0].node.image.responsiveResolution.src }
           description={props.data.allContentfulProjects.edges[0].node.description }
           technologies={props.data.allContentfulProjects.edges[0].node.technologies.split(',') }

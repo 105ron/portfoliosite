@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
+import Link from 'gatsby-link';
 
 const Card = styled.div`
   border-radius: 3px;
@@ -41,8 +42,11 @@ const Overlay = styled.div`
   align-items: center;
   transition: 0.2s;
   transform: translateY(100%);
+  ${Card}:hover & {
+    transform: translateY(0);
+  }
   &.active {
-    transform: translateY(0) !important;
+    transform: translateY(0);
   }
 `;
 
@@ -53,9 +57,9 @@ const ProjectImage = styled.img`
   height: auto;
 `;
 
-const ProjectName = styled.h5`
+const ProjectName = styled.p`
   margin: 0 0 0.6rem 0;
-  color: rgba(74, 74, 74, 0.7);
+  color: var(--linkblue);
   font-size: 1.2rem;
   font-weight: lighter;
   text-align: center;
@@ -63,9 +67,10 @@ const ProjectName = styled.h5`
 
 const ProjectByline = ProjectName.extend`
   font-size: 1rem;
+  color: rgba(74, 74, 74, 0.7);
 `;
 
-const LinksButton = styled.button`
+const LinksButton = styled.a`
 `;
 
 const TechList = styled.ul`
@@ -96,7 +101,7 @@ class ProjectsPreviewCard extends React.Component {
 
 
   render () { 
-    const { title, image, description, technologies } = this.props
+    const { title, image, description, technologies, repo, livesite } = this.props
     return (
       <Card>
         <Container onClick={this.toggleClass} >
@@ -107,8 +112,8 @@ class ProjectsPreviewCard extends React.Component {
         <Overlay 
           onClick={this.toggleClass}
           className={this.state.active ? 'active': null } >
-          <LinksButton>View it on GitHub</LinksButton>
-          <LinksButton>See it on the Web</LinksButton>
+          <LinksButton href={ repo }>View it on GitHub</LinksButton>
+          <LinksButton href={ livesite }>See it on the Web</LinksButton>
           <TechList>
             { technologies.map( ( tech, index ) => 
             <TechItem key={index}> {tech} </TechItem>) }
