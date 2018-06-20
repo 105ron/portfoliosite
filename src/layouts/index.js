@@ -27,7 +27,7 @@ injectGlobal`
     box-sizing: inherit;
   }
   body {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     font-size: 18px;
@@ -37,6 +37,7 @@ injectGlobal`
   }
 
   p {
+    font-family: 'Open Sans', sans-serif;
     color: rgba(74, 74, 74, 0.7);
     font-size: 1rem;
     line-height: 30px;

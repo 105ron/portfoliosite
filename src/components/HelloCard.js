@@ -100,14 +100,15 @@ const SeparatorLine = styled.div`
   }`
 
 const AboutText = styled.p`
-  font-family: arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
+  color: (--headinggrey);
   margin: 0 0 0.4rem 0;
 `;
 
 const AboutLink = styled(Link)`
   color: var(--linkblue);
-  font-family: arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   display: block;
   text-align: right;

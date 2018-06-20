@@ -7,7 +7,7 @@ const Card = styled.div`
   text-align: center;
   border-radius: 3px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  padding: 2px;
+  padding: 7px;
 `;
 
 const ArticleLink = styled(Link)`

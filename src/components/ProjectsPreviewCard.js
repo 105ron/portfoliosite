@@ -29,21 +29,6 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const Overlay = styled.div`
-  background: rgba(34, 34, 34, 0.52);
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  position: relative;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  transition: 0.2s;
-  transform: translateY(100%);
-  &.active {
-    transform: translateY(0);
-  }
-`;
-
 const ProjectImage = styled.img`
   margin: 0 auto;
   padding-top: 0.6rem;
@@ -52,10 +37,9 @@ const ProjectImage = styled.img`
 `;
 
 const ProjectName = styled.p`
-  margin: 0 0 0.6rem 0;
+  margin: 0 7px 0.6rem 7px;
   color: var(--linkblue);
   font-size: 1.2rem;
-  font-weight: lighter;
   text-align: center;
   cursor: pointer;
 `;
@@ -66,13 +50,59 @@ const ProjectByline = ProjectName.extend`
   cursor: default;
 `;
 
+const Overlay = styled.div`
+  background: rgba(34, 34, 34, 0.72);
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: 0.2s;
+  transform: translateY(100%);
+  &.active {
+    transform: translateY(0);
+  }
+`;
+
 const LinksButton = styled.a`
+  padding: 0.5rem;
+  background: rgba(34, 34, 34, 0.45);
+  text-shadow: 2px 2px #000;
+  text-decoration: none;
+  color: #efefef;
+  border-width: 1px 1px 2px 1px;
+  border-style: solid;
+  border-color: #fff;
+  border-radius: 3px;
 `;
 
 const TechList = styled.ul`
+  list-style-type:none;
+  margin: 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const TechItem = styled.li`
+  padding: 3px 5px;
+  margin: 0.5rem;
+  background-color: #3e3e3e;
+  border-width: 1px 1px 2px 1px;
+  border-style: solid;
+  border-color: #222;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+`;
+
+const TechSpan = styled.span`
+  color: #cecece;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+
 `;
 
 class ProjectsPreviewCard extends React.Component {
@@ -108,11 +138,14 @@ class ProjectsPreviewCard extends React.Component {
         <Overlay 
           onClick={this.toggleClass}
           className={this.state.active ? 'active': null } >
-          <LinksButton href={ repo }>View it on GitHub</LinksButton>
-          <LinksButton href={ livesite }>See it on the Web</LinksButton>
+          <LinksButton href={ repo }> View it on GitHub -></LinksButton>
+          <LinksButton href={ livesite }> See it on the Web -></LinksButton>
           <TechList>
             { technologies.map( ( tech, index ) => 
-            <TechItem key={index}> {tech} </TechItem>) }
+              <TechItem key={index}>
+                <TechSpan>{tech}</TechSpan> 
+              </TechItem>
+            ) }
           </TechList>
         </Overlay>
       </Card>
