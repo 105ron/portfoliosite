@@ -12,11 +12,8 @@ const Wrapper = styled.div`
 
 const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1.5rem;
-  @media ${Device.tablet} {
-    grid-template-columns: 1fr 1fr;
-  }
   @media ${Device.tabletS} {
     grid-template-columns: 1fr;
   }
@@ -69,7 +66,7 @@ export const ProjectsQuery = graphql`
             description
             technologies
             image {
-              responsiveResolution (width:340, height: 260) {
+              responsiveResolution (width:400, height: 300) {
                 src
               }
             }

@@ -5,15 +5,13 @@ import Link from 'gatsby-link';
 
 const Card = styled.div`
   border-radius: 3px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
-  @media ${Device.tablet} {
-    &:nth-child(9) {
-      display: none;
-    }
+  &:nth-child(9) {
+    display: none;
   }
   @media ${Device.tabletS} {
     &:nth-child(9) {
@@ -25,6 +23,7 @@ const Card = styled.div`
 const Container = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
+  padding: 0.7rem;
   width: 100%;
   height: 100%;
 `;
@@ -38,17 +37,20 @@ const ProjectImage = styled.img`
 
 const ProjectName = styled.p`
   margin: 0 7px 0.6rem 7px;
+  padding: 0 0.5rem;
   color: var(--linkblue);
   font-size: 1.2rem;
   text-align: center;
+  text-decoration: underline;
   cursor: pointer;
 `;
 
 const ProjectByline = ProjectName.extend`
   font-size: 1rem;
-  color: rgba(74, 74, 74, 0.7);
+  color: rgba(74,74,74,0.7);;
   cursor: default;
-  text-align: justify;
+  text-decoration: none;
+  text-align: left;
 `;
 
 const Overlay = styled.div`
@@ -103,15 +105,14 @@ const TechSpan = styled.span`
   color: #cecece;
   text-transform: uppercase;
   font-size: 0.9rem;
-
 `;
 
 class ProjectsPreviewCard extends React.Component {
   constructor () {
     super ();
-    this.toggleClass= this.toggleClass.bind(this);
+    this.toggleClass = this.toggleClass.bind(this);
     this.state = {
-        active: false,
+      active: false,
     };
   }
 
@@ -123,9 +124,8 @@ class ProjectsPreviewCard extends React.Component {
     const currentState = this.state.active;
     this.setState({ active: !currentState });
     window.clearTimeout(this.timer);
-    if (!currentState) { this.timeOut() };
+    if (!currentState) { this.timeOut() }; //timer to pull down overlay if the overlay is active
   };
-
 
   render () { 
     const { title, image, description, technologies, repo, livesite } = this.props

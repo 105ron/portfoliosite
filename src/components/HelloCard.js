@@ -8,7 +8,7 @@ import Pages from '../assets/pagelinks'
 const pages = Pages.pageObject;
 
 const Container = styled.div`
-  margin-top: 1.8rem;
+  margin: 1.8rem 0;
   background-color: #e6e6e6;
 `;
 
