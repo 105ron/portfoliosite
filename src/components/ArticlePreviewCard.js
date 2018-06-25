@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Link from 'gatsby-link';
+import Img from "gatsby-image";
 
 const Card = styled.div`
   z-index: 1;
@@ -14,7 +15,7 @@ const ArticleLink = styled(Link)`
   text-decoration: none;
 `;
 
-const ArticleImage = styled.img`
+const ArticleImage = styled(Img)`
   margin: 0 auto;
   width: 100%;
   height: auto;
@@ -34,13 +35,13 @@ const Excerpt = styled.p`
   text-align: left;
 `;
 
-function ArticlePreviewCard (props) {
-  return ( 
+function ArticlePreviewCard(props) {
+  return (
     <Card>
-        <ArticleLink to={props.article.slug}>
-          <ArticleImage src={props.article.bannerimage.responsiveResolution.src} />
+      <ArticleLink to={props.article.slug}>
+        <ArticleImage sizes={props.article.bannerimage.sizes} />
           <ArticleTitle>{props.article.title}</ArticleTitle>
-        </ArticleLink>
+      </ArticleLink>
       <Excerpt>{props.article.content.childMarkdownRemark.excerpt}</Excerpt>
     </Card>
   );

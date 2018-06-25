@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
-import Link from 'gatsby-link';
+import Img from "gatsby-image";
 
 const Card = styled.div`
   border-radius: 3px;
@@ -10,13 +10,6 @@ const Card = styled.div`
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
-  &:nth-child(9) {
-    display: none;
-  }
-  @media ${Device.tabletS} {
-    &:nth-child(9) {
-      display: block;
-    }
   }
 `;
 
@@ -28,7 +21,7 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const ProjectImage = styled.img`
+const ProjectImage = styled(Img)`
   margin: 0 auto;
   padding-top: 0.6rem;
   width: 100%;
@@ -132,7 +125,7 @@ class ProjectsPreviewCard extends React.Component {
     return (
       <Card>
         <Container onClick={this.toggleClass} >
-          <ProjectImage src={ image } />
+          <ProjectImage sizes={ image } />
           <ProjectName> { title } </ProjectName>
           <ProjectByline> { description } </ProjectByline>
         </Container>

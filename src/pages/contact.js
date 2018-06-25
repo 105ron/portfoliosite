@@ -20,7 +20,6 @@ class Contact extends React.Component {
   };
 
   handleRecaptcha = value => {
-    console.log(value);
     this.setState({ "g-recaptcha-response": value });
   };
 
@@ -46,7 +45,7 @@ class Contact extends React.Component {
         <form
           name="contact"
           method="post"
-          action="/about/"
+          action="/"
           data-netlify="true"
           data-netlify-recaptcha="true"
           onSubmit={this.handleSubmit}

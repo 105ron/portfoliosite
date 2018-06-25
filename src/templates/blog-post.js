@@ -153,7 +153,6 @@ export const pageQuery = graphql`
   query blogPostQuery($slug: String!){
     contentfulBlog(slug: {eq: $slug}) {
       title
-      slug
       subHeading
       published
       content {

@@ -5,10 +5,7 @@ import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import styled, { injectGlobal } from "styled-components";
 import Device from '../assets/mediaqueries';
-import Pages from '../assets/pagelinks';
 import PrismStyles from '../assets/prism-okaidia.css';
-
-const pages = Pages.pages; //site pages and links
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');

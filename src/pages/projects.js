@@ -37,7 +37,7 @@ function Projects (props) {
             title={ graphData.node.title }
             repo={ graphData.node.repourl }
             livesite={ graphData.node.previewurl }
-            image={ graphData.node.image.responsiveResolution.src }
+            image={ graphData.node.image.sizes }
             description={ graphData.node.description }
             technologies={ graphData.node.technologies.split(',') }
           />
@@ -56,7 +56,7 @@ export const ProjectsQuery = graphql`
       node_locale: {eq: "en-US"}
     },
     sort:{ fields: [published], order: DESC },
-    limit: 9
+    limit: 8
     ) {
         edges {
           node {
@@ -66,8 +66,8 @@ export const ProjectsQuery = graphql`
             description
             technologies
             image {
-              responsiveResolution (width:400, height: 300) {
-                src
+              sizes(maxWidth: 400) {
+                ...GatsbyContentfulSizes
               }
             }
           }

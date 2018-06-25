@@ -40,8 +40,8 @@ export const pageQuery = graphql`
               }
             }
             bannerimage {
-              responsiveResolution (width:400, height: 250) {
-                src
+              sizes(maxWidth: 400) {
+                ...GatsbyContentfulSizes
               }
             }
           }
