@@ -1,12 +1,18 @@
 import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Img from "gatsby-image";
 
 const Wrapper = styled.article`
   max-width: var(--maxwidth);
   margin: 0 auto;
   padding: 20px 20px;
 `;
+
+const TitleImage = styled(Img)`
+  width:100%
+`;
+
 const Title = styled.h1`
 `;
 
@@ -130,11 +136,12 @@ const Article = styled.div`
 `;
 
 function BlogPost(props) {
-  const { title,content, subHeading, published } = props.data.contentfulBlog;
+  const { title,content, subHeading, published, bannerimage } = props.data.contentfulBlog;
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const publishedDate = new Date(published);
   return (
     <Wrapper>
+      <TitleImage sizes={ bannerimage.sizes } />
       <Title>{title}</Title>
       <SubTitle>{subHeading}</SubTitle>
       <ArticleDate>{publishedDate.toLocaleDateString('en-US', options)}</ArticleDate>
@@ -155,6 +162,11 @@ export const pageQuery = graphql`
       title
       subHeading
       published
+      bannerimage {
+        sizes(maxWidth: 400) {
+          ...GatsbyContentfulSizes
+        }
+      }
       content {
         childMarkdownRemark {
           html

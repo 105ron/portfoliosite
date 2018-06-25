@@ -8,11 +8,11 @@
 .gatsby-highlight-code-line {
   background-color: #feb;
   display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+  margin-right: -1rem;
+  margin-left: -1rem;
+  padding-right: 1rem;
+  padding-left: 0.75rem;
+  border-left: 0.25rem solid #f99;
 }
 
  /*Okaidia theme */
@@ -28,11 +28,9 @@
    word-break: normal;
    word-wrap: normal;
    line-height: 1.5;
- 
    -moz-tab-size: 4;
    -o-tab-size: 4;
    tab-size: 4;
- 
    -webkit-hyphens: none;
    -moz-hyphens: none;
    -ms-hyphens: none;
@@ -41,10 +39,10 @@
  
  /* Code blocks */
  pre[class*="language-"] {
-   padding: 1em;
-   margin: .5em 0;
+   padding: 1rem;
+   margin: .5rem 0 1.4rem 0;
    overflow: auto;
-   border-radius: 0.3em;
+   border-radius: 0.3rem;
  }
  
  :not(pre) > code[class*="language-"],
@@ -54,8 +52,8 @@
  
  /* Inline code */
  :not(pre) > code[class*="language-"] {
-   padding: .1em;
-   border-radius: .3em;
+   padding: .1rem;
+   border-radius: .3rem;
    white-space: normal;
  }
  
