@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Device from '../assets/mediaqueries';
 import Img from "gatsby-image";
 
 const Card = styled.div`
