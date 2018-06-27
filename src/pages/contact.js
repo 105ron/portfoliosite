@@ -1,6 +1,5 @@
 import React from "react";
 import { navigateTo } from "gatsby-link";
-import Recaptcha from "react-google-recaptcha";
 
 const encode = (data) => {
   return Object.keys(data)

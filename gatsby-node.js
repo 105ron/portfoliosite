@@ -10,7 +10,6 @@ exports.createPages = ({graphql, boundActionCreators}) => {
           allContentfulBlog (limit: 100) {
             edges {
               node {
-                id
                 slug
               }
             }

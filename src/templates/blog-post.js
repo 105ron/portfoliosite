@@ -163,7 +163,7 @@ export const pageQuery = graphql`
       subHeading
       published
       bannerimage {
-        sizes(maxWidth: 400) {
+        sizes(maxWidth: 780) {
           ...GatsbyContentfulSizes
         }
       }
