@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Device from '../assets/mediaqueries';
 import rhysImage from '../assets/rhys.jpg';
 import Link from 'gatsby-link';
-import Pages from '../assets/pagelinks'
+import Pages from '../assets/pagelinks';
 
 const pages = Pages.pageObject;
 

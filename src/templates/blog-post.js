@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from "gatsby-image";
+import formatDate from '../assets/date-formatter'
 
 const Wrapper = styled.article`
   max-width: var(--maxwidth);
@@ -137,14 +138,12 @@ const Article = styled.div`
 
 function BlogPost(props) {
   const { title,content, subHeading, published, bannerimage } = props.data.contentfulBlog;
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const publishedDate = new Date(published);
   return (
     <Wrapper>
       <TitleImage sizes={ bannerimage.sizes } />
-      <Title>{title}</Title>
-      <SubTitle>{subHeading}</SubTitle>
-      <ArticleDate>{publishedDate.toLocaleDateString('en-US', options)}</ArticleDate>
+      <Title>{ title }</Title>
+      <SubTitle>{ subHeading }</SubTitle>
+      <ArticleDate>{ formatDate(published) }</ArticleDate>
       <Article dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
     </Wrapper>
   )

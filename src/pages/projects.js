@@ -31,15 +31,15 @@ function Projects (props) {
       <Title>Web Developer Portfolio</Title>
       <SubHeading>All aspects of Web Development: ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3.</SubHeading>
       <CardContainer>
-        {props.data.allContentfulProjects.edges.map( graphData =>
+        {props.data.allContentfulProjects.edges.map( edge =>
           <ProjectsPreviewCard
-            key={ graphData.node.repourl }
-            title={ graphData.node.title }
-            repo={ graphData.node.repourl }
-            livesite={ graphData.node.previewurl }
-            image={ graphData.node.image.sizes }
-            description={ graphData.node.description }
-            technologies={ graphData.node.technologies.split(',') }
+            key={ edge.node.repourl }
+            title={ edge.node.title }
+            repo={ edge.node.repourl }
+            livesite={ edge.node.previewurl }
+            image={ edge.node.image.sizes }
+            description={ edge.node.description }
+            technologies={ edge.node.technologies.split(',') }
           />
         )}
       </CardContainer>
