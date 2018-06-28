@@ -134,8 +134,19 @@ class ProjectsPreviewCard extends React.Component {
         <Overlay 
           onClick={this.toggleClass}
           className={this.state.active ? 'active': null } >
-          <LinksButton href={ repo } target="_blank"> View it on GitHub -></LinksButton>
-          <LinksButton href={ livesite } target="_blank" rel="noopener"> See it on the Web -></LinksButton>
+          <LinksButton 
+            href={ repo } target="_blank" 
+            rel="noopener"
+            > 
+            View it on GitHub ->
+          </LinksButton>
+          <LinksButton 
+            href={ livesite } 
+            target="_blank" 
+            rel="noopener"
+            > 
+            See it on the Web ->
+          </LinksButton>
           <TechList>
             { technologies.sort().map( ( tech, index ) => 
               <TechItem key={ index }>
