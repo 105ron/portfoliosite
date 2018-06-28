@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
-import Link from 'gatsby-link';
+import BannerImage from '../components/BannerImage';
 import ProjectsPreviewCard from '../components/ProjectsPreviewCard';
 
 const Wrapper = styled.div`
@@ -27,23 +27,31 @@ const SubHeading = styled.h2`
 
 function Projects (props) {
   return (
-    <Wrapper>
-      <Title>Web Developer Portfolio</Title>
-      <SubHeading>All aspects of Web Development: ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3.</SubHeading>
-      <CardContainer>
-        {props.data.allContentfulProjects.edges.map( edge =>
-          <ProjectsPreviewCard
-            key={ edge.node.repourl }
-            title={ edge.node.title }
-            repo={ edge.node.repourl }
-            livesite={ edge.node.previewurl }
-            image={ edge.node.image }
-            description={ edge.node.description }
-            technologies={ edge.node.technologies.split(',') }
-          />
-        )}
-      </CardContainer>
-    </Wrapper>
+    <div>
+      <BannerImage 
+        heading='Portfolio'
+        tagline= "Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."
+        image={ props.data.bannerImage }
+        alt='Sydney harbour banner image'
+      />
+      {/*<Title>Web Developer Portfolio</Title>
+      <SubHeading>All aspects of Web Development: ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3.</SubHeading>*/}
+      <Wrapper>
+        <CardContainer>
+          {props.data.allContentfulProjects.edges.map( edge =>
+            <ProjectsPreviewCard
+              key={ edge.node.repourl }
+              title={ edge.node.title }
+              repo={ edge.node.repourl }
+              livesite={ edge.node.previewurl }
+              image={ edge.node.image }
+              description={ edge.node.description }
+              technologies={ edge.node.technologies.split(',') }
+            />
+          )}
+        </CardContainer>
+      </Wrapper>
+    </div>
   )
 }
 
@@ -51,6 +59,11 @@ export default Projects
 
 export const ProjectsQuery = graphql`
    query projectsQuery {
+    bannerImage: imageSharp(id: { regex: "/harbour/" }) {
+      sizes(maxHeight: 360 ) {
+        ...GatsbyImageSharpSizes
+      }
+    }
     allContentfulProjects (
     filter: {
       node_locale: {eq: "en-US"}

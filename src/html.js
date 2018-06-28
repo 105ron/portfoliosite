@@ -6,7 +6,7 @@ export default class HTML extends React.Component {
     return (
       <html lang="en">
         <head>
-          <title>MadeByRhys!</title>
+          <title>MadeByRhys</title>
           <meta
             name="Rhys"
             content="Website by Rhys"

@@ -47,7 +47,7 @@ const Tagline = styled.h3`
   letter-spacing: 0.0725em;
   font-weight: 100;
   @media ${Device.tablet} {
-    top: 11.5rem;
+    top: 10rem;
   }
 `;
 

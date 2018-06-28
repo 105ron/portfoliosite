@@ -23,9 +23,12 @@ const Title = styled.h1`
 `;
 
 const TitleImage = styled(Img)`
-  margin: 0.6rem auto;
+  margin: 0.6rem 0;
   @media ${Device.tablet} {
     height: 3.5rem;
+  }
+  @media ${Device.pageWidth} {
+    margin: 1.2rem 0 0.8rem 0;
   }
 `;
 

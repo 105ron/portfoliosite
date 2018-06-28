@@ -1,5 +1,6 @@
 import React from "react";
 import { navigateTo } from "gatsby-link";
+import BannerImage from '../components/BannerImage';
 
 
 function encode(data) {
@@ -36,6 +37,12 @@ class Contact extends React.Component {
   render() {
     return (
       <div>
+        <BannerImage 
+          heading='Contact'
+          tagline='Get in touch with me...'
+          image={ this.props.data.bannerImage }
+          alt="Sydney harbour banner image"
+        />
         <h1>Contact</h1>
         <form
           name="contact"
@@ -80,3 +87,13 @@ class Contact extends React.Component {
 }
 
 export default Contact;
+
+export const pageQuery = graphql`
+   query bannerQuery {
+    bannerImage: imageSharp(id: { regex: "/harbour/" }) {
+      sizes(maxHeight: 360 ) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+  }
+`;
