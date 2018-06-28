@@ -124,7 +124,10 @@ class ProjectsPreviewCard extends React.Component {
     return (
       <Card>
         <Container onClick={this.toggleClass} >
-          <ProjectImage sizes={ image.sizes } />
+          <ProjectImage 
+            sizes={ image.sizes } 
+            alt={ `Screenshot of ${title}` }
+          />
           <ProjectName> { title } </ProjectName>
           <ProjectByline> { description } </ProjectByline>
         </Container>

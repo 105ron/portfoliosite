@@ -50,6 +50,7 @@ export const pageQuery = graphql`
             }
           }
           bannerimage {
+            description
             sizes(maxWidth: 400) {
               ...GatsbyContentfulSizes
             }

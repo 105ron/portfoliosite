@@ -40,8 +40,11 @@ function ArticlePreviewCard(props) {
   return (
     <Card>
       <ArticleLink to={ slug }>
-        <ArticleImage sizes={ bannerimage.sizes } />
-          <ArticleTitle>{ title }</ArticleTitle>
+        <ArticleImage 
+          sizes={ bannerimage.sizes }
+          alt={ bannerimage.description }
+        />
+        <ArticleTitle>{ title }</ArticleTitle>
       </ArticleLink>
       <Excerpt>{ content.childMarkdownRemark.excerpt }</Excerpt>
     </Card>
