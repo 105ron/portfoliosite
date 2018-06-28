@@ -8,10 +8,9 @@ export default class HTML extends React.Component {
         <head>
           <title>MadeByRhys</title>
           <meta
-            name="Rhys"
-            content="Website by Rhys"
+            name="Description"
+            content="Website by Rhys, personal blog, GatsbyJS, github projects"
           />
-
           <meta charSet="utf-8" />
           <meta
             name="viewport"
