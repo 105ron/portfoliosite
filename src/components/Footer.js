@@ -34,7 +34,7 @@ const SocialIconsList = styled.ul`
   justify-content: space-around;
 `;
 
-const Icon = styled.ul`
+const Icon = styled.li`
   padding: 0;
 `;
 
