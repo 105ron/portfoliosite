@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import styled, { injectGlobal } from "styled-components";
@@ -78,12 +77,6 @@ class TemplateWrapper extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Helmet
-          title='MadeByRhys'
-          meta={[
-            { name: 'Rhys', content: 'Website by Rhys' },
-          ]}
-        />
         <Navbar headerImage={this.props.data.headerImage}/>
         {this.props.children()}
         <Footer />
