@@ -74,22 +74,36 @@ const Wrapper = styled.div`
   }
 `;
 
-const TemplateWrapper = ({ children }) => (
-  <Wrapper>
-    <Helmet
-      title='MadeByRhys'
-      meta={[
-        { name: 'Rhys', content: 'Website by Rhys' },
-      ]}
-    />
-    <Navbar />
-    {children()}
-    <Footer />
-  </Wrapper>
-)
+class TemplateWrapper extends React.Component {
+  render() {
+    return (
+      <Wrapper>
+        <Helmet
+          title='MadeByRhys'
+          meta={[
+            { name: 'Rhys', content: 'Website by Rhys' },
+          ]}
+        />
+        <Navbar headerImage={this.props.data.headerImage}/>
+        {this.props.children()}
+        <Footer />
+      </Wrapper>
+    )
+  }
+}
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
 }
 
-export default TemplateWrapper
+export default TemplateWrapper;
+
+export const pageQuery = graphql`
+  query HeaderImageQuery {
+    headerImage: imageSharp(id: { regex: "/logo/" }) {
+      resolutions(width: 280) {
+        ...GatsbyImageSharpResolutions
+      }
+    }
+  }
+`

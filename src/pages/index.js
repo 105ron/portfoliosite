@@ -23,7 +23,7 @@ export default IndexPage;
 export const pageQuery = graphql`
    query pageQuery {
     bannerImage: imageSharp(id: { regex: "/harbour/" }) {
-      sizes(maxWidth: 1240 ) {
+      sizes(maxHeight: 360 ) {
         ...GatsbyImageSharpSizes
       }
     }

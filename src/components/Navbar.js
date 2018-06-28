@@ -2,13 +2,17 @@ import React from 'react';
 import styled from "styled-components";
 import Link from 'gatsby-link';
 import Device from '../assets/mediaqueries';
-import logo from '../assets/logo.png'
 import Pages from '../assets/pagelinks'
-
-const pages = Pages.pages;
+import Img from "gatsby-image";
 
 const NavWrapper = styled.div`
   margin-top: '0.6rem';
+`;
+
+const Header = styled.header`
+  & > div {
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
@@ -18,19 +22,15 @@ const Title = styled.h1`
   font-size: 0;
 `;
 
-const TitleImage = styled.div`
-  height: 4.5rem;
-  margin: 0.6rem 1rem;
-  background: url(${logo});
-  background-position: 50% 50%;
-  background-size: contain;
-  background-repeat: no-repeat;
+const TitleImage = styled(Img)`
+  width: 280px;
+  margin: 0.6rem auto;
   @media ${Device.tablet} {
-  height: 3.5rem;
+    height: 3.5rem;
   }
-;`
+`;
 
-const Navbar = styled.nav`
+const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   max-width: var(--maxwidth);
@@ -61,8 +61,8 @@ const BottomBorder = styled.ul`
 const lineColors = ['#e74c4f', '#f0c93d', '#8ccfd9']
 
 const Line = styled.li.attrs({
-  color: props => props.color || 'black'
-})`
+      color: props => props.color || 'black'
+    })`
   background-color: ${props => props.color};
   list-style: none;
   flex-grow: 1;
@@ -70,19 +70,23 @@ const Line = styled.li.attrs({
 `;
 
 
-function DesktopNav () {
+function Navbar (props) {
+  const pages = Pages.pages;
   return (
     <NavWrapper>
-      <header>
+      <Header>
         <Title>MadeByRhysss</Title>
-        <TitleImage />
-      </header>
-      <Navbar>
+        <TitleImage
+          resolutions={ props.headerImage.resolutions }
+          alt="rhysbrooker.com logo"
+         />
+      </Header>
+      <NavbarContainer>
         {/* Nav bar links*/}
         {pages.map((page, index) => (
           <List key={index} to={page.route}>{page.name}</List>
         ) )}
-      </Navbar>
+      </NavbarContainer>
       <BottomBorder>
         {lineColors.map( (color, index) => (
           <Line color={color} key={index} />
@@ -92,4 +96,4 @@ function DesktopNav () {
   );
 };
 
-export default DesktopNav;
+export default Navbar;

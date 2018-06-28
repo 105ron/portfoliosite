@@ -48,15 +48,18 @@ const Tagline = styled.h3`
   font-weight: 100;
   @media ${Device.tablet} {
     top: 11.5rem;
-}`;
-
+  }
+`;
 
   function BannerImage (props) {
     return(
       <Wrapper>
-        <Image sizes={props.image.sizes} />
-        <Heading>{props.heading}</Heading>
-        <Tagline>{props.tagline}</Tagline>
+        <Image 
+          sizes={ props.image.sizes }
+          alt={ props.alt }
+         />
+        <Heading>{ props.heading }</Heading>
+        <Tagline>{ props.tagline }</Tagline>
       </Wrapper>
     )
   }
