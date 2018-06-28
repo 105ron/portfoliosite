@@ -124,7 +124,7 @@ class ProjectsPreviewCard extends React.Component {
     return (
       <Card>
         <Container onClick={this.toggleClass} >
-          <ProjectImage sizes={ image } />
+          <ProjectImage sizes={ image.sizes } />
           <ProjectName> { title } </ProjectName>
           <ProjectByline> { description } </ProjectByline>
         </Container>
@@ -135,8 +135,8 @@ class ProjectsPreviewCard extends React.Component {
           <LinksButton href={ livesite } target="_blank"> See it on the Web -></LinksButton>
           <TechList>
             { technologies.sort().map( ( tech, index ) => 
-              <TechItem key={index}>
-                <TechSpan>{tech}</TechSpan> 
+              <TechItem key={ index }>
+                <TechSpan>{ tech }</TechSpan> 
               </TechItem>
             ) }
           </TechList>

@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
-import rhysImage from '../assets/rhys.jpg';
 import Link from 'gatsby-link';
 import Pages from '../assets/pagelinks';
-
-const pages = Pages.pageObject;
+import Img from "gatsby-image";
 
 const Container = styled.div`
   margin: 1.8rem 0;
@@ -32,7 +30,6 @@ const Card = styled.div`
 
 const PhotoCircle = styled.div`
   grid-area: photo;
-  justify-self: end;
   width: 13.8rem;
   height: 13.8rem;
   border-radius: 50%;
@@ -45,14 +42,14 @@ const PhotoCircle = styled.div`
   };
 `;
 
-const ProfilePhoto = styled.img`
-  width: 15.8rem;
+const ProfilePhoto = styled(Img)`
+  width: 12.3rem;
   height: auto;
   position: relative;
-  top: -1.5rem;
+  object-fit: contain;
   @media ${Device.tablet} {
-    width: 10.6rem;
-    top: -1rem;
+    margin-left: -0.2rem;
+    width: 8rem;
   };
 `;
 
@@ -118,12 +115,16 @@ const AboutLink = styled(Link)`
   }
 `;
 
-function HelloCard () {
+function HelloCard (props) {
+  const pages = Pages.pageObject;
   return (
   <Container>
     <Card>
       <PhotoCircle>
-        <ProfilePhoto src={rhysImage} alt="Profile Photo" />
+        <ProfilePhoto 
+          sizes={ props.rhysImage.sizes } 
+          alt="Profile Photo" 
+        />
       </PhotoCircle>
       <IntroText>
         <HelloHeading>G'Day!</HelloHeading>
@@ -132,7 +133,7 @@ function HelloCard () {
       <MoreInformation>
         <SeparatorLine />
         <AboutText>I like to code and make the web a prettier place for everybody.</AboutText>
-        <AboutLink to={pages.about.route}>Read more about me.</AboutLink>
+        <AboutLink to={ pages.about.route }>Read more about me.</AboutLink>
       </MoreInformation>
     </Card>
   </Container>

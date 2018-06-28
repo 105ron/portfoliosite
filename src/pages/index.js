@@ -12,7 +12,7 @@ function IndexPage (props) {
         image={props.data.bannerImage}
         alt="Sydney harbour banner image"
       />
-      <HelloCard />
+      <HelloCard rhysImage={ props.data.rhysImage }/>
       <ArticlesPreviewContainer articles={props.data.allContentfulBlog.edges} />
     </div>
   )
@@ -24,6 +24,11 @@ export const pageQuery = graphql`
    query pageQuery {
     bannerImage: imageSharp(id: { regex: "/harbour/" }) {
       sizes(maxHeight: 360 ) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+    rhysImage: imageSharp(id: { regex: "/rhysimage/" }) {
+      sizes(maxWidth: 220, maxHeight: 220) {
         ...GatsbyImageSharpSizes
       }
     }

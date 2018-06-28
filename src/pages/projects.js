@@ -37,7 +37,7 @@ function Projects (props) {
             title={ edge.node.title }
             repo={ edge.node.repourl }
             livesite={ edge.node.previewurl }
-            image={ edge.node.image.sizes }
+            image={ edge.node.image }
             description={ edge.node.description }
             technologies={ edge.node.technologies.split(',') }
           />
