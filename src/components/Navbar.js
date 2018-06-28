@@ -23,7 +23,6 @@ const Title = styled.h1`
 `;
 
 const TitleImage = styled(Img)`
-  width: 280px;
   margin: 0.6rem auto;
   @media ${Device.tablet} {
     height: 3.5rem;
