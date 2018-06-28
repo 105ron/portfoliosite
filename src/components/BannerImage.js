@@ -1,17 +1,23 @@
 import React from 'react';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
+import Img from "gatsby-image";
 
 const Wrapper = styled.div`
   position: relative;
   height: 20em;
-  background: url(${props => props.image});
-  background-position: 50% 50%;
-  background-size: cover;
-  text-align: center`;
+  text-align: center
+`;
+
+const Image = styled(Img)`
+  height: 20em;
+  z-index: 1;
+  object-fit: cover;
+`
 
 const Heading = styled.h2`
   position: absolute;
+  z-index: 2;
   left: 0;
   right: 0;
   margin: auto;
@@ -29,6 +35,7 @@ const Heading = styled.h2`
 
 const Tagline = styled.h3`
   position: absolute;
+  z-index: 2;
   left: 0;
   right: 0;
   margin: auto;
@@ -46,7 +53,8 @@ const Tagline = styled.h3`
 
   function BannerImage (props) {
     return(
-      <Wrapper image={props.image}>
+      <Wrapper>
+        <Image sizes={props.image.sizes} />
         <Heading>{props.heading}</Heading>
         <Tagline>{props.tagline}</Tagline>
       </Wrapper>

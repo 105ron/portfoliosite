@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components';
 import Img from "gatsby-image";
 import formatDate from '../assets/date-formatter'
@@ -105,7 +104,7 @@ query postsQuery {
    node_locale: {eq: "en-US"}
  },
  sort:{ fields: [published], order: DESC },
- limit: 4
+ limit: 100
  ) {
      edges {
        node {
