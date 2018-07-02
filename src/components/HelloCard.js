@@ -101,6 +101,10 @@ const AboutText = styled.p`
   font-size: 1rem;
   color: (--headinggrey);
   margin: 0 0 0.4rem 0;
+  text-align: left;
+  @media ${Device.tablet} {
+    text-align: center;
+  }
 `;
 
 const AboutLink = styled(Link)`

@@ -1,13 +1,28 @@
 import React from "react";
 import { navigateTo } from "gatsby-link";
 import BannerImage from '../components/BannerImage';
-
+import styled from "styled-components";
 
 function encode(data) {
   return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
 }
+const Wrapper = styled.div`
+  max-width: var(--maxwidth);
+  background-color: yellow;
+  margin: 0 auto;
+`;
+
+const ContactForm = styled.form`
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: pink;
+`;
+
+const InputLabel = styled.label`
+
+`;
 
 class Contact extends React.Component {
   constructor(props) {
@@ -43,44 +58,39 @@ class Contact extends React.Component {
           image={ this.props.data.bannerImage }
           alt="Sydney harbour banner image"
         />
-        <h1>Contact</h1>
-        <form
-          name="contact"
-          method="post"
-          action="/"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={this.handleSubmit}
-        >
-        <input type="hidden" name="form-name" value="contact" />
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
+        <Wrapper>
+          <ContactForm
+            name="contact"
+            method="post"
+            action="/"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={this.handleSubmit}
+          >
+        
+          <input type="hidden" name="form-name" value="contact" />
+            <label hidden>
               <input name="bot-field" onChange={this.handleChange} />
             </label>
-          </p>
-          <p>
-            <label>
-              Your name:<br />
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <label>
-              Your email:<br />
+
+            <label htmlFor="name">Your name:</label>
+            <input type="text" name="name" onChange={this.handleChange} />
+            
+      
+            <InputLabel htmlFor="email">
+              Your email:
               <input type="email" name="email" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
+            </InputLabel>
+          
             <label>
-              Message:<br />
+              Message:
               <textarea name="message" onChange={this.handleChange} />
             </label>
-          </p>
-          <p>
+          
             <button type="submit">Send</button>
-          </p>
-        </form>
+          
+          </ContactForm>
+        </Wrapper>
       </div>
     );
   }
