@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
-import SocialIcons from '../assets/SocialIcons';
+import SocialIcons from '../assets/social-icons';
 
 const {Email, Facebook, GitHub, Linkedin, Skype, Twitter, Whatsapp} = SocialIcons;
 

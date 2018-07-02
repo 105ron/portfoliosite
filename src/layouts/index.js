@@ -21,6 +21,7 @@ injectGlobal`
     --maxwidth: 820px;
     --headinggrey: color: rgba(74, 74, 74, 0.7);
     --wrapperwidth: 1220px;
+    --navbargrey: #9d9d9d;
   }
   html {
     box-sizing: border-box;
@@ -81,16 +82,16 @@ class TemplateWrapper extends React.Component {
     return (
       <Wrapper>
         <Helmet 
-          title='MadeByRhys'
           htmlAttributes={ { lang : 'en' } }
+          title='MadeByRhys'
           meta={[
             { name: 'Rhys', content: 'Website by Rhys' },
+            { name: 'description', content: 'Blogs, projects - all made by Rhys'}
           ]}
           link={[
             { rel:' icon', type: 'image/png', href: `${icon48}`, sizes: '48x48' },
             { rel:' icon', type: 'image/png', href: `${icon72}`, sizes: '72x72' },
             { rel:' icon', type: 'image/png', href: `${icon96}`, sizes: '96x96' },
-            
           ]}
         />
         <Navbar headerImage={this.props.data.headerImage}/>

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
-import Link from 'gatsby-link';
 import ArticlePreviewCard from './ArticlePreviewCard';
 
 const Container = styled.div`

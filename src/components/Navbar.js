@@ -48,9 +48,10 @@ const List = styled(Link)`
   margin: 0 0 0.5rem 0;
   padding: 0;
   font-family: arial;
+  font-size: 1.2rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: #9d9d9d
+  color: var(--navbargrey);
 `;
 
 const BottomBorder = styled.ul`
