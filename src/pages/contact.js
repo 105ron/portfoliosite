@@ -83,6 +83,12 @@ const SendButton = styled.button`
   align-self: center;
 `;
 
+function validateField(targetFieldName, field=' ', regex) {
+  return regex.test(field.trim())
+  ? ''
+  : `Please enter A valid ${ targetFieldName } \n`;
+}
+
 class Contact extends React.Component {
   constructor(props) {
     super(props);
@@ -100,8 +106,26 @@ class Contact extends React.Component {
     this.setState({ "g-recaptcha-response": value });
   };
 
+  isValidInput (message='') {
+    let errors = '';
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    const nameRegex = /^([a-zA-Z\-'"]){3,30}$/;
+    errors += validateField("first name (only: A-z, ' and -)", this.state.firstName, nameRegex);
+    errors += validateField("last name (only: A-z, ' and -)", this.state.lastName, nameRegex);
+    errors += validateField("email", this.state.email, emailRegex);
+    errors += message.trim().length > 9 ?
+      '' :
+      'Please enter a message of 10 of more characters \n'
+    errors += this.state['g-recaptcha-response'] ? 
+      '' :
+      'Please enter the Recaptcha field \n';
+    if (errors) alert(errors);
+    return !errors;
+  }
+
   handleSubmit (e) {
     e.preventDefault();
+    if (!this.isValidInput(this.state.message)) {return} //don't submit if not filled in
     const form = e.target;
     fetch("/", {
       method: "POST",
@@ -140,20 +164,20 @@ class Contact extends React.Component {
               <input name="bot-field" onChange={this.handleChange} />
             </label>
 
-            {formFields.map( field => (
-              <InputLabel htmlFor={ field.name }>
+            {formFields.map( (field) => (
+              <InputLabel htmlFor={ field.name } key={ field.name }>
                 { field.label }
                 { field.mandatory ? <Mandatory>*</Mandatory> : null }
                 <FormInput 
                   type={ field.type } 
                   name={ field.name } 
                   onChange={this.handleChange}
-                  key={ field.name }
                 />
               </InputLabel>
             ))}
             <MessageLabel>
-              Message:
+              Message: 
+              <Mandatory>*</Mandatory>
               <MessageText name="message" onChange={this.handleChange} />
             </MessageLabel>
             <Recaptcha
@@ -197,7 +221,7 @@ const formFields = [
   },
   {
     label: 'Email:',
-    type: 'email',
+    type: 'text',
     name:'email',
     mandatory: true
   },
