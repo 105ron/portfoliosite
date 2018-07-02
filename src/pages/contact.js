@@ -28,13 +28,16 @@ const ContactForm = styled.form`
   row-gap: 2rem;
   @media ${Device.tablet} {
     grid-template-columns: 1fr;
-  };
+  }
 `;
 
 const labelStyles = `
   display: block;
   color: var(--navbargrey);
   font-family: arial, sans-serif;
+  @media ${Device.tablet} {
+    margin: 0 1rem;
+  }
 `;
 
 const InputLabel = styled.label`
@@ -65,6 +68,9 @@ const FormInput = styled.input`
 const MessageLabel = styled.label`
   ${labelStyles}
   grid-column: 1 / span 2;
+  @media ${Device.tablet} {
+    grid-column: 1 / span 1;
+  }
 `;
 
 const MessageText = styled.textarea`
@@ -81,6 +87,12 @@ const SendButton = styled.button`
   border-radius: 3px;
   height: 1.7rem;
   align-self: center;
+  @media ${Device.tablet} {
+    margin: 0;
+    width: 302px;
+    justify-self: center;
+  }
+  
 `;
 
 function validateField(targetFieldName, field=' ', regex) {
@@ -118,7 +130,7 @@ class Contact extends React.Component {
       'Please enter a message of 10 of more characters \n'
     errors += this.state['g-recaptcha-response'] ? 
       '' :
-      'Please enter the Recaptcha field \n';
+      'Please check the Recaptcha field /n';
     if (errors) alert(errors);
     return !errors;
   }
@@ -181,6 +193,7 @@ class Contact extends React.Component {
               <MessageText name="message" onChange={this.handleChange} />
             </MessageLabel>
             <Recaptcha
+                style={ {justifySelf: 'center' } }
                 ref="recaptcha"
                 sitekey={RECAPTCHA_KEY}
                 onChange={this.handleRecaptcha}
@@ -221,7 +234,7 @@ const formFields = [
   },
   {
     label: 'Email:',
-    type: 'text',
+    type: 'email',
     name:'email',
     mandatory: true
   },

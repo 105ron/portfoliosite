@@ -16,7 +16,7 @@ const CardsContainer = styled.div`
   grid-gap: 1.5rem;
   @media ${Device.tablet} {
     grid-template-columns: 1fr;
-  };
+  }
 `;
 
 const Shadow = styled.div`
