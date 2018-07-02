@@ -7,7 +7,6 @@ import Recaptcha from "react-google-recaptcha";
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
-
 function encode(data) {
   return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -31,17 +30,13 @@ const ContactForm = styled.form`
   }
 `;
 
-const labelStyles = `
+const InputLabel = styled.label`
   display: block;
   color: var(--navbargrey);
   font-family: arial, sans-serif;
   @media ${Device.tablet} {
     margin: 0 1rem;
   }
-`;
-
-const InputLabel = styled.label`
-  ${labelStyles}
 `;
 
 const Mandatory = styled.span`
@@ -65,8 +60,7 @@ const FormInput = styled.input`
   border: 1px solid var(--navbargrey);
 `;
 
-const MessageLabel = styled.label`
-  ${labelStyles}
+const MessageLabel = InputLabel.extend`
   grid-column: 1 / span 2;
   @media ${Device.tablet} {
     grid-column: 1 / span 1;
@@ -157,7 +151,7 @@ class Contact extends React.Component {
         <BannerImage 
           heading='Contact'
           tagline='Get in touch with me...'
-          image={ this.props.data.bannerImage }
+          image={ this.props.bannerImage }
           alt="Sydney harbour banner image"
         />
         <Wrapper>

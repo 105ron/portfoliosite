@@ -95,7 +95,7 @@ class TemplateWrapper extends React.Component {
           ]}
         />
         <Navbar headerImage={this.props.data.headerImage}/>
-        {this.props.children()}
+        {this.props.children({...this.props, bannerImage: this.props.data.bannerImage })}
         <Footer />
       </Wrapper>
     )
@@ -113,6 +113,11 @@ export const pageQuery = graphql`
     headerImage: imageSharp(id: { regex: "/logo/" }) {
       resolutions(width: 190) {
         ...GatsbyImageSharpResolutions
+      }
+    }
+    bannerImage: imageSharp(id: { regex: "/harbour/" }) {
+      sizes(maxHeight: 360 ) {
+        ...GatsbyImageSharpSizes
       }
     }
   }

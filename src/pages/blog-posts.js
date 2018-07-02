@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Img from "gatsby-image";
 import formatDate from '../assets/date-formatter'
 import Device from '../assets/mediaqueries';
+import BannerImage from '../components/BannerImage';
 
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
@@ -69,29 +70,37 @@ const Synopsis = styled.p`
 
 function BlogPosts (props) {
   return (
-    <Wrapper>
-      {props.data.allContentfulBlog.edges.map( edge  => {
-        const {title, tags, slug, published, bannerimage, synopsis} = edge.node;
-        return (
-          <IndivialPost>
-            <Image sizes={ bannerimage.sizes } />
-            <TextHolder>
-              <ArticleLink href={ `/${slug}` }>
-                <ArticleTitle>{ title }</ArticleTitle>
-              </ArticleLink>
-                <ArticleTags>
-                  { tags.split(',')[0] } 
-                  <NoEmphasis>
-                    &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp; 
-                    {formatDate(published)}
-                  </NoEmphasis>
-                </ArticleTags>
-              <Synopsis> { synopsis.internal.content }</Synopsis>
-            </TextHolder>
-          </IndivialPost>
-        )
-      } ) }
-    </Wrapper>
+    <div>
+      <BannerImage 
+          heading='Blog Posts'
+          tagline= "Most recent posts covering the latest news in Web Development..."
+          image={ props.bannerImage }
+          alt='Sydney harbour banner image'
+        />
+      <Wrapper>
+        {props.data.allContentfulBlog.edges.map( edge  => {
+          const {title, tags, slug, published, bannerimage, synopsis} = edge.node;
+          return (
+            <IndivialPost>
+              <Image sizes={ bannerimage.sizes } />
+              <TextHolder>
+                <ArticleLink href={ `/${slug}` }>
+                  <ArticleTitle>{ title }</ArticleTitle>
+                </ArticleLink>
+                  <ArticleTags>
+                    { tags.split(',')[0] } 
+                    <NoEmphasis>
+                      &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp; 
+                      {formatDate(published)}
+                    </NoEmphasis>
+                  </ArticleTags>
+                <Synopsis> { synopsis.internal.content }</Synopsis>
+              </TextHolder>
+            </IndivialPost>
+          )
+        } ) }
+      </Wrapper>
+    </div>
   )
 }
 

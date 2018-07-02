@@ -31,7 +31,7 @@ function Projects (props) {
       <BannerImage 
         heading='Portfolio'
         tagline= "Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."
-        image={ props.data.bannerImage }
+        image={ props.bannerImage }
         alt='Sydney harbour banner image'
       />
       {/*<Title>Web Developer Portfolio</Title>
@@ -59,11 +59,6 @@ export default Projects
 
 export const ProjectsQuery = graphql`
    query projectsQuery {
-    bannerImage: imageSharp(id: { regex: "/harbour/" }) {
-      sizes(maxHeight: 360 ) {
-        ...GatsbyImageSharpSizes
-      }
-    }
     allContentfulProjects (
     filter: {
       node_locale: {eq: "en-US"}
