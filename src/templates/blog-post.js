@@ -2,7 +2,8 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from "gatsby-image";
-import formatDate from '../assets/date-formatter'
+import formatDate from '../assets/date-formatter';
+import BannerImage from '../components/BannerImage';
 
 const Wrapper = styled.article`
   max-width: var(--maxwidth);
@@ -137,15 +138,23 @@ const Article = styled.div`
 `;
 
 function BlogPost(props) {
-  const { title,content, subHeading, published, bannerimage } = props.data.contentfulBlog;
+  const { title, subHeading, content, published, tags } = props.data.contentfulBlog;
   return (
-    <Wrapper>
-      <TitleImage sizes={ bannerimage.sizes } />
-      <Title>{ title }</Title>
-      <SubTitle>{ subHeading }</SubTitle>
-      <ArticleDate>{ formatDate(published) }</ArticleDate>
-      <Article dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
-    </Wrapper>
+    <div>
+      <BannerImage 
+        heading={ title }
+        tagline= { tags.split(',')[0] }
+        image={ props.bannerImage }
+        alt='Sydney harbour banner image'
+      />
+      <Wrapper>
+        {/*<TitleImage sizes={ bannerimage.sizes } />*/}
+        <Title>{ title }</Title>
+        <SubTitle>{ subHeading }</SubTitle>
+        <ArticleDate>{ formatDate(published) }</ArticleDate>
+        <Article dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
+      </Wrapper>
+    </div>
   )
 }
 
@@ -160,6 +169,7 @@ export const pageQuery = graphql`
     contentfulBlog(slug: {eq: $slug}) {
       title
       subHeading
+      tags
       published
       bannerimage {
         sizes(maxWidth: 780) {

@@ -79,7 +79,7 @@ function BlogPosts (props) {
         />
       <Wrapper>
         {props.data.allContentfulBlog.edges.map( edge  => {
-          const {title, tags, slug, published, bannerimage, synopsis} = edge.node;
+          const { title, tags, slug, published, bannerimage, synopsis } = edge.node;
           return (
             <IndivialPost>
               <Image sizes={ bannerimage.sizes } />
