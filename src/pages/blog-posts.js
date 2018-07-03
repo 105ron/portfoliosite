@@ -7,7 +7,7 @@ import BannerImage from '../components/BannerImage';
 
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
-  margin: 0 auto;
+  margin: 1.8rem auto;
   padding: 0 20px;
 `;
 

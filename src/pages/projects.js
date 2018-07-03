@@ -6,8 +6,7 @@ import ProjectsPreviewCard from '../components/ProjectsPreviewCard';
 
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
-  margin: 0 auto;
-  padding: 20px;
+  margin: 1.8rem auto;
 `;
 
 const CardContainer = styled.div`
