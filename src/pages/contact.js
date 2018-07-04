@@ -98,7 +98,9 @@ function validateField(targetFieldName, field=' ', regex) {
 class Contact extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      message: ''
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRecaptcha = this.handleRecaptcha.bind(this);
@@ -112,10 +114,11 @@ class Contact extends React.Component {
     this.setState({ "g-recaptcha-response": value });
   };
 
-  isValidInput (message='') {
+  isValidInput () {
     let errors = '';
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     const nameRegex = /^([a-zA-Z\-'"]){3,30}$/;
+    const message = this.state.message;
     errors += validateField("first name (only: A-z, ' and -)", this.state.firstName, nameRegex);
     errors += validateField("last name (only: A-z, ' and -)", this.state.lastName, nameRegex);
     errors += validateField("email", this.state.email, emailRegex);
@@ -124,7 +127,7 @@ class Contact extends React.Component {
       'Please enter a message of 10 of more characters \n'
     errors += this.state['g-recaptcha-response'] ? 
       '' :
-      'Please check the Recaptcha field /n';
+      'Please check the Recaptcha field \n';
     if (errors) alert(errors);
     return !errors;
   }
@@ -202,16 +205,6 @@ class Contact extends React.Component {
 }
 
 export default Contact;
-
-export const pageQuery = graphql`
-   query bannerQuery {
-    bannerImage: imageSharp(id: { regex: "/harbour/" }) {
-      sizes(maxHeight: 360 ) {
-        ...GatsbyImageSharpSizes
-      }
-    }
-  }
-`;
 
 const formFields = [
   {
