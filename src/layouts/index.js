@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import styled, { injectGlobal } from "styled-components";
 import Device from '../assets/mediaqueries';
-import PrismStyles from '../assets/prism-okaidia.css';
+import coyStyles from '../assets/prism-coy.css';
 
 
 import icon48 from '../assets/favicon48.png';
@@ -14,7 +14,7 @@ import icon96 from '../assets/favicon96.png';
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  @import(PrismStyles);
+  @import(coyStyles);
   :root {
     --linkblue: #368bc1;
     --greyline: #cbcbcb;
