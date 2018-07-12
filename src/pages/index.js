@@ -29,7 +29,8 @@ export const pageQuery = graphql`
     }
     allContentfulBlog (
     filter: {
-      node_locale: {eq: "en-US"}
+      node_locale: {eq: "en-US"},
+      published: {regex: "/^201/"}
     },
     sort:{ fields: [published], order: DESC },
     limit: 4

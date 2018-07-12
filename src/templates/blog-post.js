@@ -138,7 +138,7 @@ const Article = styled.div`
 `;
 
 function BlogPost(props) {
-  const { title, subHeading, content, published, tags } = props.data.contentfulBlog;
+  const { title, subHeading, content, published, tags, slug } = props.data.contentfulBlog;
   return (
     <div>
       <BannerImage 
@@ -148,10 +148,13 @@ function BlogPost(props) {
         alt='Sydney harbour banner image'
       />
       <Wrapper>
-        {/*<TitleImage sizes={ bannerimage.sizes } />*/}
-        <Title>{ title }</Title>
-        <SubTitle>{ subHeading }</SubTitle>
-        <ArticleDate>{ formatDate(published) }</ArticleDate>
+        {(slug !== 'about') &&
+          <div>
+            <Title>{ title } </Title>
+            <SubTitle>{ subHeading }</SubTitle>
+            <ArticleDate>{ formatDate(published) }</ArticleDate>
+          </div>
+        }
         <Article dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
       </Wrapper>
     </div>
@@ -170,6 +173,7 @@ export const pageQuery = graphql`
       title
       subHeading
       tags
+      slug
       published
       bannerimage {
         sizes(maxWidth: 780) {
