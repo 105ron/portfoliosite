@@ -3,6 +3,10 @@
   "description": "Gatsby Static site",
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/105ron/portfoliosite.git"
+  },
   "dependencies": {
     "gatsby": "^1.9.270",
     "gatsby-image": "^1.0.52",
@@ -37,6 +41,11 @@
   },
   "devDependencies": {
     "dotenv": "^6.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
     "gh-pages": "^1.2.0",
     "prettier": "^1.10.2"
   }
