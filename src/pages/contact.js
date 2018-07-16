@@ -5,34 +5,9 @@ import styled from "styled-components";
 import Recaptcha from "react-google-recaptcha";
 import BannerImage from '../components/BannerImage';
 import Device from '../assets/mediaqueries';
+import formFields from '../assets/contact-form-fields';
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
-const formFields = [
-  {
-    label: 'First Name:',
-    type: 'name',
-    name: 'firstName',
-    mandatory: true,
-  },
-  {
-    label: 'Last Name:',
-    type: 'name',
-    name: 'lastName',
-    mandatory: true,
-  },
-  {
-    label: 'Email:',
-    type: 'email',
-    name: 'email',
-    mandatory: true,
-  },
-  {
-    label: 'Phone Number:',
-    type: 'tel',
-    name: 'phoneNumber',
-    mandatory: false,
-  },
-];
 
 function encode(data) {
   return Object.keys(data)

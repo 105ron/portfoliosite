@@ -81,7 +81,7 @@ function BlogPosts (props) {
         {props.data.allContentfulBlog.edges.map( edge  => {
           const { title, tags, slug, published, bannerimage, synopsis } = edge.node;
           return (
-            <IndivialPost>
+            <IndivialPost key={slug}>
               <Image sizes={ bannerimage.sizes } />
               <TextHolder>
                 <ArticleLink href={ `/${slug}` }>
