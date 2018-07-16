@@ -75,7 +75,8 @@ const Line = styled.li.attrs({
 
 
 function Navbar(props) {
-  const { headerImage } = props;
+  const { headerImage, page } = props;
+  const bold = { fontWeight: 'bold' };
   return (
     <NavWrapper>
       <Header>
@@ -88,12 +89,13 @@ function Navbar(props) {
         />
       </Header>
       <NavbarContainer>
-        {pages.map(page => (
+        {pages.map(pg => (
           <List
-            key={page.route}
-            to={page.route}
+            key={pg.route}
+            to={pg.route}
+            style={pg.route === page ? bold : null}
           >
-            {page.name}
+            {pg.name}
           </List>
         ))}
       </NavbarContainer>
@@ -108,6 +110,7 @@ function Navbar(props) {
 
 Navbar.propTypes = {
   headerImage: PropTypes.object.isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default Navbar;

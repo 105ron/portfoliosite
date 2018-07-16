@@ -176,7 +176,7 @@ ProjectsPreviewCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.object.isRequired,
   description: PropTypes.string.isRequired,
-  technologies: PropTypes.string.isRequired,
+  technologies: PropTypes.array.isRequired,
   repo: PropTypes.string.isRequired,
   livesite: PropTypes.string.isRequired,
 };

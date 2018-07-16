@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 function TemplateWrapper(props) {
   const { icons } = manifest;
-  const { data } = props;
+  const { data, location } = props;
   return (
     <Wrapper>
       <Helmet
@@ -30,7 +30,10 @@ function TemplateWrapper(props) {
         ]}
         link={icons}
       />
-      <Navbar headerImage={data.headerImage} />
+      <Navbar
+        headerImage={data.headerImage}
+        page={location.pathname}
+      />
       {props.children({ ...props, bannerImage: data.bannerImage })}
       <Footer />
     </Wrapper>
@@ -41,6 +44,7 @@ function TemplateWrapper(props) {
 TemplateWrapper.propTypes = {
   children: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default TemplateWrapper;

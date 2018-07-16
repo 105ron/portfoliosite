@@ -47,7 +47,7 @@ function ArticlesPreviewContainer(props) {
 }
 
 ArticlesPreviewContainer.propTypes = {
-  article: PropTypes.object.isRequired,
+  article: PropTypes.array.isRequired,
 };
 
 export default ArticlesPreviewContainer;
