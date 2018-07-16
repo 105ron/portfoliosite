@@ -1,7 +1,6 @@
-import React, { Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Img from "gatsby-image";
 import formatDate from '../assets/date-formatter';
 import BannerImage from '../components/BannerImage';
 import Device from '../assets/mediaqueries';
@@ -10,10 +9,6 @@ const Wrapper = styled.article`
   max-width: var(--maxwidth);
   margin: 0 auto;
   padding: 20px 20px;
-`;
-
-const TitleImage = styled(Img)`
-  width:100%
 `;
 
 const ArticleDate = styled.p`
@@ -131,7 +126,11 @@ const Article = styled.div`
     font-style: italic;
   }
 
-  /* For articles with images */
+  /*
+  ***************************************************
+  For articles with images
+  ***************************************************
+  */
 
   & .article-image {
     max-width: 710px;
@@ -139,15 +138,16 @@ const Article = styled.div`
     padding: 0;
     text-align: center;
     border-radius: 3px;
-    -webkit-box-shadow: 0px 25px 50px rgb(100,100,100);
-            box-shadow: 0px 25px 50px rgb(100,100,100);
+    box-shadow: 0px 25px 50px rgb(100,100,100);
   }
+
   & .article-image .image {
     display: block;
     border-radius: 3px;
     margin: 0;
     padding: 0; 
   }
+
   .article-image .quote {
     color: rgba(74,74,74,0.7);
     padding: 0.4rem 1rem 0.8rem 1rem;
@@ -157,7 +157,11 @@ const Article = styled.div`
     font-style: italic;
   }
 
-  /* For the about page */
+  /*
+  ***************************************************
+  For the about page
+  ***************************************************
+  */
   
   & .card {
     float: right;
@@ -165,7 +169,6 @@ const Article = styled.div`
     margin: 0 0 0 1rem;
     text-align: center;
     border-radius: 3px;
-    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     padding: 1.2rem; 
     @media ${Device.tablet} {
@@ -173,6 +176,7 @@ const Article = styled.div`
       margin: 0 auto 1rem auto;
     }
   }
+
   & .card .about-heading {
     margin: 0.6rem 0px;
     color: #939393;
@@ -180,6 +184,7 @@ const Article = styled.div`
     font-size: 1.5rem;
     text-align: center; 
   }
+
   & .card .list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,6 +194,7 @@ const Article = styled.div`
     grid-gap: 1rem;
     justify-items: stretch; 
   }
+
   & .card li.button {
     display: block;
     background: #ECECEC;
@@ -199,57 +205,66 @@ const Article = styled.div`
     color: #9d9d9d;
     text-shadow: 0px 1px 0px #fff;
     border: 1px solid #a7a7a7;
-    -webkit-box-shadow: 0px 2px 1px white inset, 
-                        0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 
-                        0px 8px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 1px white inset, 
-                        0px -2px 8px white, 
-                        0px 2px 5px rgba(0, 0, 0, 0.1), 
+    box-shadow: 0px 2px 1px white inset,
+                        0px -2px 8px white,
+                        0px 2px 5px rgba(0, 0, 0, 0.1),
                         0px 8px 10px rgba(0, 0, 0, 0.1);
   }
   & .card li.button:hover {
-    -webkit-box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 1px white inset,
+                0px -2px 20px white,
+                0px 2px 5px rgba(0, 0, 0, 0.1),
+                0px 8px 10px rgba(0, 0, 0, 0.1);
   }
   & .card li.button:active {
-    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
-    background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#ECECEC));
-    background: -webkit-linear-gradient(top, #d1d1d1 0%, #ECECEC 100%);
-    background: -o-linear-gradient(top, #d1d1d1 0%, #ECECEC 100%);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset,
+                0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1),
+                0px 2px 10px rgba(0, 0, 0, 0.1);
     background: linear-gradient(top, #d1d1d1 0%, #ECECEC 100%); 
   }
 `;
 
 function BlogPost(props) {
-  const { title, subHeading, content, published, tags, slug } = props.data.contentfulBlog;
+  const { data, bannerImage } = props;
+  const {
+    title, subHeading, content, published, tags, slug,
+  } = data.contentfulBlog;
   return (
     <div>
-      <BannerImage 
-        heading={ title }
-        tagline= { tags.split(',')[0] }
-        image={ props.bannerImage }
-        alt='Sydney harbour banner image'
+      <BannerImage
+        heading={title}
+        tagline={tags.split(',')[0]}
+        image={bannerImage}
+        alt="Sydney harbour banner image"
       />
       <Wrapper>
-        {(slug !== 'about') &&
+        {(slug !== 'about')
+          && (
           <div>
-            <h1>{ title } </h1>
-            <h2>{ subHeading }</h2>
-            <ArticleDate>{ formatDate(published) }</ArticleDate>
+            <h1>
+              {title}
+            </h1>
+            <h2>
+              {subHeading}
+            </h2>
+            <ArticleDate>
+              {formatDate(published)}
+            </ArticleDate>
           </div>
+          )
         }
         <Article dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
       </Wrapper>
     </div>
-  )
+  );
 }
 
 BlogPost.propTypes = {
-  data: PropTypes.object.isRequired
-}
+  data: PropTypes.object.isRequired,
+  bannerImage: PropTypes.object.isRequired,
+};
 
-export default BlogPost
+export default BlogPost;
 
 export const pageQuery = graphql`
   query blogPostQuery($slug: String!){
@@ -272,3 +287,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+/* eslint import/no-extraneous-dependencies: "off", no-undef: "off" */

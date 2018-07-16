@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
 import BannerImage from '../components/BannerImage';
@@ -18,43 +19,41 @@ const CardContainer = styled.div`
   }
 `;
 
-const Title = styled.h1``;
-
-const SubHeading = styled.h2`
-  margin-bottom: 1.5rem;
-`;
-
-function Projects (props) {
+function Projects(props) {
+  const { bannerImage, data } = props;
   return (
     <div>
-      <BannerImage 
-        heading='Portfolio'
-        tagline= "Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."
-        image={ props.bannerImage }
-        alt='Sydney harbour banner image'
+      <BannerImage
+        heading="Portfolio"
+        tagline="Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."
+        image={bannerImage}
+        alt="Sydney harbour banner image"
       />
-      {/*<Title>Web Developer Portfolio</Title>
-      <SubHeading>All aspects of Web Development: ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3.</SubHeading>*/}
       <Wrapper>
         <CardContainer>
-          {props.data.allContentfulProjects.edges.map( edge =>
+          {data.allContentfulProjects.edges.map(edge => (
             <ProjectsPreviewCard
-              key={ edge.node.repourl }
-              title={ edge.node.title }
-              repo={ edge.node.repourl }
-              livesite={ edge.node.previewurl }
-              image={ edge.node.image }
-              description={ edge.node.description }
-              technologies={ edge.node.technologies.split(',') }
+              key={edge.node.repourl}
+              title={edge.node.title}
+              repo={edge.node.repourl}
+              livesite={edge.node.previewurl}
+              image={edge.node.image}
+              description={edge.node.description}
+              technologies={edge.node.technologies.split(',')}
             />
-          )}
+          ))}
         </CardContainer>
       </Wrapper>
     </div>
-  )
+  );
 }
 
-export default Projects
+Projects.propTypes = {
+  bannerImage: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+export default Projects;
 
 export const ProjectsQuery = graphql`
    query projectsQuery {
@@ -81,3 +80,5 @@ export const ProjectsQuery = graphql`
         }
       }
   }`;
+
+/* eslint import/no-extraneous-dependencies: "off", no-undef: "off" */

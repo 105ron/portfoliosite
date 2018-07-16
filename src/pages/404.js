@@ -27,7 +27,7 @@ function NotFoundPage(props) {
     <div>
       <BannerImage
         heading="Error"
-        tagline="Page not found"
+        tagline="Page not found (That's a 404 error)"
         image={bannerImage}
         alt="Sydney harbour banner image"
       />
@@ -44,7 +44,6 @@ function NotFoundPage(props) {
 
 NotFoundPage.propTypes = {
   bannerImage: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
 };
 
 export default NotFoundPage;
