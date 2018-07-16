@@ -1,5 +1,8 @@
 module.exports = {
   "extends": "airbnb",
+  "env": {
+    "browser": true,
+  },
   "rules": {
     "max-len": [1, 120, 2, {ignoreComments: true}],
     "quote-props": [1, "consistent-as-needed"],

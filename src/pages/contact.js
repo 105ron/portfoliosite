@@ -1,17 +1,43 @@
 import React from "react";
 import { navigateTo } from "gatsby-link";
-import BannerImage from '../components/BannerImage';
 import styled from "styled-components";
-import Device from '../assets/mediaqueries';
 import Recaptcha from "react-google-recaptcha";
+import BannerImage from '../components/BannerImage';
+import Device from '../assets/mediaqueries';
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
+const formFields = [
+  {
+    label: 'First Name:',
+    type: 'name',
+    name: 'firstName',
+    mandatory: true,
+  },
+  {
+    label: 'Last Name:',
+    type: 'name',
+    name: 'lastName',
+    mandatory: true,
+  },
+  {
+    label: 'Email:',
+    type: 'email',
+    name: 'email',
+    mandatory: true,
+  },
+  {
+    label: 'Phone Number:',
+    type: 'tel',
+    name: 'phoneNumber',
+    mandatory: false,
+  },
+];
 
 function encode(data) {
   return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
-};
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+      .join("&"));
+}
 
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
@@ -56,7 +82,7 @@ const inputStyles = `
 const FormInput = styled.input`
   ${inputStyles}
   height: 1.5rem;
-  padding: 0 10px;
+  padding: 0 2px;
   border: 1px solid var(--navbargrey);
 `;
 
@@ -70,6 +96,7 @@ const MessageLabel = InputLabel.extend`
 const MessageText = styled.textarea`
   ${inputStyles}
   height: 6.5rem;
+  padding: 0 2px;
   border: 1px solid black;
 `;
 
@@ -91,70 +118,77 @@ const SendButton = styled.button`
 
 function validateField(targetFieldName, field=' ', regex) {
   return regex.test(field.trim())
-  ? ''
-  : `Please enter A valid ${ targetFieldName } \n`;
+    ? ''
+    : `Please enter A valid ${targetFieldName} \n`;
 }
 
 class Contact extends React.Component {
   constructor(props) {
     super(props);
+    this.ref ='recaptcha';
     this.state = {
-      message: ''
+      message: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRecaptcha = this.handleRecaptcha.bind(this);
   }
 
-  handleChange (e) {
+  handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  };
+  }
 
-  handleRecaptcha (value) {
-    this.setState({ "g-recaptcha-response": value });
-  };
+  handleRecaptcha(value) {
+    this.setState({ gRecaptchaResponse: value });
+  }
 
-  isValidInput () {
+  isValidInput() {
     let errors = '';
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     const nameRegex = /^([a-zA-Z\-'"]){3,30}$/;
-    const message = this.state.message;
-    errors += validateField("first name (only: A-z, ' and -)", this.state.firstName, nameRegex);
-    errors += validateField("last name (only: A-z, ' and -)", this.state.lastName, nameRegex);
-    errors += validateField("email", this.state.email, emailRegex);
-    errors += message.trim().length > 9 ?
-      '' :
-      'Please enter a message of 10 of more characters \n'
-    errors += this.state['g-recaptcha-response'] ? 
-      '' :
-      'Please check the Recaptcha field \n';
+    const {
+      message, firstName, lastName, gRecaptchaResponse, email,
+    } = this.state;
+    errors += validateField("first name (only: A-z, ' and -)", firstName, nameRegex);
+    errors += validateField("last name (only: A-z, ' and -)", lastName, nameRegex);
+    errors += validateField("email", email, emailRegex);
+    errors += message.trim().length > 9
+      ? ''
+      : 'Please enter a message of 10 of more characters \n';
+    errors += gRecaptchaResponse
+      ? ''
+      : 'Please check the Recaptcha field \n';
     if (errors) alert(errors);
     return !errors;
   }
 
-  handleSubmit (e) {
+  handleSubmit(e) {
+    const { message } = this.state;
     e.preventDefault();
-    if (!this.isValidInput(this.state.message)) {return} //don't submit if not filled in
+    if (!this.isValidInput(message)) { return; } // Don't submit if not filled in
     const form = e.target;
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
-        ...this.state
-      })
+        ...this.state,
+        /* Netlify Google-recaptcha backend broken. If it is fixed it expects an attribute
+        in state called g-recaptcha-response */
+      }),
     })
       .then(() => navigateTo(form.getAttribute("action")))
       .catch(error => alert(error));
-  };
+  }
 
   render() {
+    const { bannerImage } = this.props;
     return (
       <div>
-        <BannerImage 
-          heading='Contact'
-          tagline='Get in touch with me...'
-          image={ this.props.bannerImage }
+        <BannerImage
+          heading="Contact"
+          tagline="Get in touch with me..."
+          image={bannerImage}
           alt="Sydney harbour banner image"
         />
         <Wrapper>
@@ -169,34 +203,42 @@ class Contact extends React.Component {
 
             {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
             <input type="hidden" name="form-name" value="contact" />
-            <label hidden>
+            <label hidden HtmlFor="bot-name">
               <input name="bot-field" onChange={this.handleChange} />
             </label>
 
-            {formFields.map( (field) => (
-              <InputLabel htmlFor={ field.name } key={ field.name }>
+            {formFields.map(field => (
+              <InputLabel htmlFor={field.name} key={field.name}>
                 { field.label }
-                { field.mandatory ? <Mandatory>*</Mandatory> : null }
-                <FormInput 
-                  type={ field.type } 
-                  name={ field.name } 
+                { field.mandatory ? (
+                  <Mandatory>
+                    *
+                  </Mandatory>
+                ) : null }
+                <FormInput
+                  type={field.type}
+                  name={field.name}
                   onChange={this.handleChange}
                 />
               </InputLabel>
             ))}
             <MessageLabel>
-              Message: 
-              <Mandatory>*</Mandatory>
+              Message:
+              <Mandatory>
+                *
+              </Mandatory>
               <MessageText name="message" onChange={this.handleChange} />
             </MessageLabel>
             <Recaptcha
-                style={ {justifySelf: 'center' } }
-                ref="recaptcha"
-                sitekey={RECAPTCHA_KEY}
-                onChange={this.handleRecaptcha}
-                data-size="compact"
+              style={{ justifySelf: 'center' }}
+              ref={this.ref}
+              sitekey={RECAPTCHA_KEY}
+              onChange={this.handleRecaptcha}
+              data-size="compact"
             />
-            <SendButton type="submit">Send</SendButton>
+            <SendButton type="submit">
+              Send
+            </SendButton>
           </ContactForm>
         </Wrapper>
       </div>
@@ -205,30 +247,4 @@ class Contact extends React.Component {
 }
 
 export default Contact;
-
-const formFields = [
-  {
-    label: 'First Name:',
-    type: 'name',
-    name:'firstName',
-    mandatory: true
-  },
-  {
-    label: 'Last Name:',
-    type: 'name',
-    name:'lastName',
-    mandatory: true
-  },
-  {
-    label: 'Email:',
-    type: 'email',
-    name:'email',
-    mandatory: true
-  },
-  {
-    label: 'Phone Number:',
-    type: 'tel',
-    name:'phoneNumber',
-    mandatory: false
-  }
-];
+/* eslint no-alert: "off", import/no-extraneous-dependencies: "off" */

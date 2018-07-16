@@ -150,6 +150,8 @@ const Article = styled.div`
   }
   .article-image .quote {
     color: rgba(74,74,74,0.7);
+    padding: 0.4rem 1rem 0.8rem 1rem;
+    margin: 0;
     font-size: 0.8rem;
     line-height: 24px;
     font-style: italic;
@@ -166,9 +168,9 @@ const Article = styled.div`
     -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     padding: 1.2rem; 
-    @media ${Device.pageWidth} {
+    @media ${Device.tablet} {
       float: none;
-      margin: 0 0 1rem 1rem;
+      margin: 0 auto 1rem auto;
     }
   }
   & .card .about-heading {
