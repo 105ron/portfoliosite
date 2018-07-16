@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Link from 'gatsby-link';
 import Img from "gatsby-image";
@@ -61,11 +62,11 @@ const BottomBorder = styled.ul`
   margin: 0;
 `;
 
-const lineColors = ['#e74c4f', '#f0c93d', '#8ccfd9']
+const lineColors = ['#e74c4f', '#f0c93d', '#8ccfd9'];
 
 const Line = styled.li.attrs({
-      color: props => props.color || 'black'
-    })`
+  color: props => props.color || 'black',
+})`
   background-color: ${props => props.color};
   list-style: none;
   flex-grow: 1;
@@ -74,28 +75,41 @@ const Line = styled.li.attrs({
 
 
 function Navbar(props) {
+  const { headerImage } = props;
   return (
     <NavWrapper>
       <Header>
-        <Title>MadeByRhysss</Title>
+        <Title>
+          MadeByRhys
+        </Title>
         <TitleImage
-          resolutions={ props.headerImage.resolutions }
+          resolutions={headerImage.resolutions}
           alt="rhysbrooker.com logo"
-         />
+        />
       </Header>
       <NavbarContainer>
-        {/* Nav bar links*/}
-        {pages.map((page, index) => (
-          <List key={index} to={page.route}>{page.name}</List>
-        ) )}
+        {pages.map(page => (
+          <List
+            key={page.route}
+            to={page.route}
+          >
+            {page.name}
+          </List>
+        ))}
       </NavbarContainer>
       <BottomBorder>
-        {lineColors.map( (color, index) => (
+        {lineColors.map((color, index) => (
           <Line color={color} key={index} />
         ))}
       </BottomBorder>
     </NavWrapper>
   );
+}
+
+Navbar.propTypes = {
+  headerImage: PropTypes.object.isRequired,
 };
 
 export default Navbar;
+
+/* eslint import/no-extraneous-dependencies: "off",  react/destructuring-assignment: "off", react/no-array-index-key: "off" */

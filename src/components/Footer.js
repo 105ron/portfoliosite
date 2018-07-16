@@ -35,20 +35,22 @@ const Copyright = styled.p`
 `;
 
 function Footer() {
-return (
-  <Wrapper>
-    <SocialIconsList>
-      {iconsAndLinks.map( site => (
-        <Icon key={site.link} >
-          <a href={site.link}>
-            {site.icon({height: '30px', width: '30px'})}
-          </a>
-        </Icon>) 
-        ) }
-    </SocialIconsList>
-    <Copyright>Copyright © All Rights Reserved 2018.</Copyright>
-  </Wrapper>
-  )
+  return (
+    <Wrapper>
+      <SocialIconsList>
+        {iconsAndLinks.map(site => (
+          <Icon key={site.link}>
+            <a href={site.link}>
+              {site.icon({ height: '30px', width: '30px' })}
+            </a>
+          </Icon>
+        ))}
+      </SocialIconsList>
+      <Copyright>
+        Copyright © All Rights Reserved 2018.
+      </Copyright>
+    </Wrapper>
+  );
 }
 
 export default Footer;

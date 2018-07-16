@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Img from "gatsby-image";
 
@@ -100,64 +101,86 @@ const TechSpan = styled.span`
 `;
 
 class ProjectsPreviewCard extends React.Component {
-  constructor () {
-    super ();
+  constructor() {
+    super();
     this.toggleClass = this.toggleClass.bind(this);
     this.state = {
       active: false,
     };
   }
 
-  timeOut () {
+  timeOut() {
     this.timer = window.setTimeout(this.toggleClass, 5000);
   }
 
   toggleClass() {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
+    const { active }= this.state;
+    this.setState({ active: !active });
     window.clearTimeout(this.timer);
-    if (!currentState) { this.timeOut() }; //timer to pull down overlay if the overlay is active
-  };
+    if (!active) { this.timeOut(); } // Timer to pull down overlay if the overlay is active
+  }
 
-  render () { 
-    const { title, image, description, technologies, repo, livesite } = this.props
+  render() {
+    const {
+      title, image, description, technologies, repo, livesite,
+    } = this.props;
+    const { active } = this.state;
     return (
       <Card>
-        <Container onClick={this.toggleClass} >
-          <ProjectImage 
-            sizes={ image.sizes } 
-            alt={ `Screenshot of ${title}` }
+        <Container onClick={this.toggleClass}>
+          <ProjectImage
+            sizes={image.sizes}
+            alt={`Screenshot of ${title}`}
           />
-          <ProjectName> { title } </ProjectName>
-          <ProjectByline> { description } </ProjectByline>
+          <ProjectName>
+            {title}
+          </ProjectName>
+          <ProjectByline>
+            { description }
+          </ProjectByline>
         </Container>
-        <Overlay 
+        <Overlay
           onClick={this.toggleClass}
-          className={this.state.active ? 'active': null } >
-          <LinksButton 
-            href={ repo } target="_blank" 
+          className={active ? 'active': null}
+        >
+          <LinksButton
+            href={repo}
+            target="_blank"
             rel="noopener"
-            > 
-            View it on GitHub ->
+          >
+            View it on GitHub &#45;&gt;
           </LinksButton>
-          <LinksButton 
-            href={ livesite } 
-            target="_blank" 
+          <LinksButton
+            href={livesite}
+            target="_blank"
             rel="noopener"
-            > 
-            See it on the Web ->
+          >
+            See it on the Web &#45;&gt;
           </LinksButton>
           <TechList>
-            { technologies.sort().map( ( tech, index ) => 
-              <TechItem key={ index }>
-                <TechSpan>{ tech }</TechSpan> 
+            {technologies.sort().map(tech => (
+              <TechItem key={tech}>
+                <TechSpan>
+                  {tech}
+                </TechSpan>
               </TechItem>
-            ) }
+            ))}
           </TechList>
         </Overlay>
       </Card>
-    )
+    );
   }
 }
 
+ProjectsPreviewCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
+  description: PropTypes.string.isRequired,
+  technologies: PropTypes.string.isRequired,
+  repo: PropTypes.string.isRequired,
+  livesite: PropTypes.string.isRequired,
+};
+
 export default ProjectsPreviewCard;
+
+/* eslint import/no-extraneous-dependencies: "off" */

@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
-import Device from '../assets/mediaqueries';
 import Link from 'gatsby-link';
-import { pageObject } from '../assets/appData';
 import Img from "gatsby-image";
+import { pageObject } from '../assets/appData';
+import Device from '../assets/mediaqueries';
 
 const Container = styled.div`
   margin: 1.8rem 0;
@@ -94,7 +95,8 @@ const SeparatorLine = styled.div`
   background-color: var(--greyline);
   @media ${Device.tablet} {
     display: block;
-  }`
+  }
+`;
 
 const AboutText = styled.p`
   font-family: 'Open Sans', sans-serif;
@@ -119,29 +121,44 @@ const AboutLink = styled(Link)`
   }
 `;
 
-function HelloCard (props) {
+function HelloCard(props) {
   const pages = pageObject;
+  const { rhysImage } = props;
   return (
-  <Container>
-    <Card>
-      <PhotoCircle>
-        <ProfilePhoto 
-          sizes={ props.rhysImage.sizes } 
-          alt="Profile Photo" 
-        />
-      </PhotoCircle>
-      <IntroText>
-        <HelloHeading>G'Day!</HelloHeading>
-        <HelloSubHeading>I'm Rhys...</HelloSubHeading>
-      </IntroText>
-      <MoreInformation>
-        <SeparatorLine />
-        <AboutText>I like to code and make the web a prettier place for everybody.</AboutText>
-        <AboutLink to={ pages.about.route }>Read more about me.</AboutLink>
-      </MoreInformation>
-    </Card>
-  </Container>
+    <Container>
+      <Card>
+        <PhotoCircle>
+          <ProfilePhoto
+            sizes={rhysImage.sizes}
+            alt="Profile Photo"
+          />
+        </PhotoCircle>
+        <IntroText>
+          <HelloHeading>
+            G&#39;Day!
+          </HelloHeading>
+          <HelloSubHeading>
+            I&#39;m Rhys...
+          </HelloSubHeading>
+        </IntroText>
+        <MoreInformation>
+          <SeparatorLine />
+          <AboutText>
+            I like to code and make the web a prettier place for everybody.
+          </AboutText>
+          <AboutLink to={pages.about.route}>
+            Read more about me.
+          </AboutLink>
+        </MoreInformation>
+      </Card>
+    </Container>
   );
 }
 
+HelloCard.propTypes = {
+  rhysImage: PropTypes.object.isRequired,
+};
+
 export default HelloCard;
+
+/* eslint import/no-extraneous-dependencies: "off" */

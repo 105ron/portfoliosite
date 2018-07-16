@@ -48,10 +48,6 @@ function Projects(props) {
   );
 }
 
-Projects.propTypes = {
-  bannerImage: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
-};
 
 export default Projects;
 
