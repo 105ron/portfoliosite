@@ -1,5 +1,6 @@
 import React from "react";
 import { navigateTo } from "gatsby-link";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Recaptcha from "react-google-recaptcha";
 import BannerImage from '../components/BannerImage';
@@ -35,8 +36,8 @@ const formFields = [
 
 function encode(data) {
   return Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-      .join("&"));
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
 }
 
 const Wrapper = styled.div`
@@ -144,7 +145,7 @@ class Contact extends React.Component {
 
   isValidInput() {
     let errors = '';
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     const nameRegex = /^([a-zA-Z\-'"]){3,30}$/;
     const {
       message, firstName, lastName, gRecaptchaResponse, email,
@@ -203,7 +204,7 @@ class Contact extends React.Component {
 
             {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
             <input type="hidden" name="form-name" value="contact" />
-            <label hidden HtmlFor="bot-name">
+            <label hidden htmlFor="bot-name">
               <input name="bot-field" onChange={this.handleChange} />
             </label>
 
@@ -246,5 +247,9 @@ class Contact extends React.Component {
   }
 }
 
+Contact.propTypes = {
+  bannerImage: PropTypes.object.isRequired,
+};
+
 export default Contact;
-/* eslint no-alert: "off", import/no-extraneous-dependencies: "off" */
+/* eslint no-alert: "off", import/no-extraneous-dependencies: "off", max-len: "off" */
