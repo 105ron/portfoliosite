@@ -1,20 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
-import SocialIcons from '../assets/social-icons';
-
-const {Email, Facebook, GitHub, Linkedin, Skype, Twitter, Whatsapp} = SocialIcons;
-
-const iconsAndLinks = [
-  {icon: Email,
-  link: `mailto:rhysbrooker01@gmail.com?subject=Email%20from%20RhysBrooker.com`},
-  {icon: GitHub,
-  link: `https://github.com/105ron`},
-  {icon: Linkedin,
-    link: `https://www.linkedin.com/in/rhysbrooker/`},
-  {icon: Twitter,
-  link: `https://twitter.com/rhysonrails`}
-]
+import { iconsAndLinks } from '../assets/appData';
 
 const Wrapper = styled.nav`
   max-width: var(--maxwidth);
@@ -65,3 +52,5 @@ return (
 }
 
 export default Footer;
+
+/* eslint import/no-extraneous-dependencies: "off" */

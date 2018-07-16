@@ -5,7 +5,7 @@ import styled, { injectGlobal } from "styled-components";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import globalCSS from '../styles/globalStyles';
-import manifest from '../assets/manifest';
+import { manifest } from '../assets/appData';
 
 injectGlobal`${globalCSS}`;
 

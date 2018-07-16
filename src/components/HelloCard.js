@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
 import Link from 'gatsby-link';
-import Pages from '../assets/pagelinks';
+import { pageObject } from '../assets/appData';
 import Img from "gatsby-image";
 
 const Container = styled.div`
@@ -120,7 +120,7 @@ const AboutLink = styled(Link)`
 `;
 
 function HelloCard (props) {
-  const pages = Pages.pageObject;
+  const pages = pageObject;
   return (
   <Container>
     <Card>

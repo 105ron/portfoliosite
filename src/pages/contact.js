@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Recaptcha from "react-google-recaptcha";
 import BannerImage from '../components/BannerImage';
 import Device from '../assets/mediaqueries';
-import formFields from '../assets/contact-form-fields';
+import { formFields } from '../assets/appData';
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 

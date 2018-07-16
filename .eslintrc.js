@@ -4,6 +4,7 @@ module.exports = {
     "browser": true,
   },
   "rules": {
+    "import/named": 0,
     "react/forbid-prop-types": 0,
     "max-len": [1, 120, 2, {ignoreComments: true}],
     "quote-props": [1, "consistent-as-needed"],

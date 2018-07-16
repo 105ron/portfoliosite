@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Link from 'gatsby-link';
 import Img from "gatsby-image";
@@ -36,19 +37,32 @@ const Excerpt = styled.p`
 `;
 
 function ArticlePreviewCard(props) {
-  const { slug, bannerimage, title, content } = { ...props.article }; 
+  const { article } = props;
+  const {
+    slug, bannerimage, title, content,
+  } = article;
   return (
     <Card>
-      <ArticleLink to={ slug }>
-        <ArticleImage 
-          sizes={ bannerimage.sizes }
-          alt={ bannerimage.description }
+      <ArticleLink to={slug}>
+        <ArticleImage
+          sizes={bannerimage.sizes}
+          alt={bannerimage.description}
         />
-        <ArticleTitle>{ title }</ArticleTitle>
+        <ArticleTitle>
+          {title}
+        </ArticleTitle>
       </ArticleLink>
-      <Excerpt>{ content.childMarkdownRemark.excerpt }</Excerpt>
+      <Excerpt>
+        { content.childMarkdownRemark.excerpt }
+      </Excerpt>
     </Card>
   );
 }
 
+ArticlePreviewCard.propTypes = {
+  article: PropTypes.object.isRequired,
+};
+
 export default ArticlePreviewCard;
+
+/* eslint import/no-extraneous-dependencies: "off" */

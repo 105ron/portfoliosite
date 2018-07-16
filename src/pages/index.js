@@ -15,7 +15,7 @@ function IndexPage(props) {
         alt="Sydney harbour banner image"
       />
       <HelloCard rhysImage={data.rhysImage} />
-      <ArticlesPreviewContainer articles={data.allContentfulBlog.edges} />
+      <ArticlesPreviewContainer article={data.allContentfulBlog.edges} />
     </div>
   );
 }

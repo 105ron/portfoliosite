@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Device from '../assets/mediaqueries';
 import ArticlePreviewCard from './ArticlePreviewCard';
@@ -28,20 +29,27 @@ const Shadow = styled.div`
   z-index: 0;
 `;
 
-function ArticlesPreviewContainer (props) {
+function ArticlesPreviewContainer(props) {
+  const { article } = props;
   return (
     <Container>
       <Shadow />
       <CardsContainer>
-      {props.articles.map( edge => (
-        <ArticlePreviewCard 
-          article={ edge.node }
-          key={ edge.node.slug } 
-        />
-      ) )}
+        {article.map(edge => (
+          <ArticlePreviewCard
+            article={edge.node}
+            key={edge.node.slug}
+          />
+        ))}
       </CardsContainer>
     </Container>
-  )
+  );
 }
 
+ArticlesPreviewContainer.propTypes = {
+  article: PropTypes.object.isRequired,
+};
+
 export default ArticlesPreviewContainer;
+
+/* eslint import/no-extraneous-dependencies: "off" */

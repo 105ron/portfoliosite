@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 import Link from 'gatsby-link';
-import Device from '../assets/mediaqueries';
-import Pages from '../assets/pagelinks'
 import Img from "gatsby-image";
+import Device from '../assets/mediaqueries';
+import { pages } from '../assets/appData';
 
 const NavWrapper = styled.div`
   margin-top: '0.6rem';
@@ -73,8 +73,7 @@ const Line = styled.li.attrs({
 `;
 
 
-function Navbar (props) {
-  const pages = Pages.pages;
+function Navbar(props) {
   return (
     <NavWrapper>
       <Header>

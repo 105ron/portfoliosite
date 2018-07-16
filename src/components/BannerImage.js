@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
-import Device from '../assets/mediaqueries';
 import Img from "gatsby-image";
+import Device from '../assets/mediaqueries';
 
 const Wrapper = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ const Image = styled(Img)`
   height: 20em;
   z-index: 1;
   object-fit: cover;
-`
+`;
 
 const Heading = styled.h2`
   position: absolute;
@@ -51,17 +52,33 @@ const Tagline = styled.h3`
   }
 `;
 
-  function BannerImage (props) {
-    return(
-      <Wrapper>
-        <Image 
-          sizes={ props.image.sizes }
-          alt={ props.alt }
-         />
-        <Heading>{ props.heading }</Heading>
-        <Tagline>{ props.tagline }</Tagline>
-      </Wrapper>
-    )
-  }
-  
-  export default BannerImage;
+function BannerImage(props) {
+  const {
+    image, alt, heading, tagline,
+  } = props;
+  return (
+    <Wrapper>
+      <Image
+        sizes={image.sizes}
+        alt={alt}
+      />
+      <Heading>
+        {heading}
+      </Heading>
+      <Tagline>
+        {tagline}
+      </Tagline>
+    </Wrapper>
+  );
+}
+
+BannerImage.propTypes = {
+  image: PropTypes.object.isRequired,
+  alt: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  tagline: PropTypes.string.isRequired,
+};
+
+export default BannerImage;
+
+/* eslint import/no-extraneous-dependencies: "off" */
