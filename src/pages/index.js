@@ -1,24 +1,31 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import BannerImage from '../components/BannerImage';
 import HelloCard from '../components/HelloCard';
 import ArticlesPreviewContainer from '../components/ArticlesPreviewContainer';
 
-function IndexPage (props) {
+function IndexPage(props) {
+  const { bannerImage, data } = props;
   return (
     <div>
-      <BannerImage 
-        heading='Front End Developer.'
-        tagline='Improving the world wide web pixel by pixel...'
-        image={ props.bannerImage }
+      <BannerImage
+        heading="Front End Developer."
+        tagline="Improving the world wide web pixel by pixel..."
+        image={bannerImage}
         alt="Sydney harbour banner image"
       />
-      <HelloCard rhysImage={ props.data.rhysImage }/>
-      <ArticlesPreviewContainer articles={props.data.allContentfulBlog.edges} />
+      <HelloCard rhysImage={data.rhysImage} />
+      <ArticlesPreviewContainer articles={data.allContentfulBlog.edges} />
     </div>
-  )
+  );
 }
 
-export default IndexPage; 
+IndexPage.propTypes = {
+  bannerImage: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+export default IndexPage;
 
 export const pageQuery = graphql`
    query pageQuery {
@@ -56,3 +63,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+/* eslint import/no-extraneous-dependencies: "off", no-undef: "off" */

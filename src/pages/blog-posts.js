@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from "gatsby-image";
-import formatDate from '../assets/date-formatter'
+import formatDate from '../assets/date-formatter';
 import Device from '../assets/mediaqueries';
 import BannerImage from '../components/BannerImage';
 
@@ -68,41 +69,53 @@ const Synopsis = styled.p`
   margin-bottom: 0;
 `;
 
-function BlogPosts (props) {
+function BlogPosts(props) {
+  const { bannerImage, data } = props;
   return (
     <div>
-      <BannerImage 
-          heading='Blog Posts'
-          tagline= "Most recent posts covering the latest news in Web Development..."
-          image={ props.bannerImage }
-          alt='Sydney harbour banner image'
-        />
+      <BannerImage
+        heading="Blog Posts"
+        tagline="Most recent posts covering the latest news in Web Development..."
+        image={bannerImage}
+        alt="Sydney harbour banner image"
+      />
       <Wrapper>
-        {props.data.allContentfulBlog.edges.map( edge  => {
-          const { title, tags, slug, published, bannerimage, synopsis } = edge.node;
+        {data.allContentfulBlog.edges.map((edge) => {
+          const {
+            title, tags, slug, published, bannerimage, synopsis,
+          } = edge.node;
           return (
             <IndivialPost key={slug}>
-              <Image sizes={ bannerimage.sizes } />
+              <Image sizes={bannerimage.sizes} />
               <TextHolder>
-                <ArticleLink href={ `/${slug}` }>
-                  <ArticleTitle>{ title }</ArticleTitle>
+                <ArticleLink href={`/${slug}`}>
+                  <ArticleTitle>
+                    {title}
+                  </ArticleTitle>
                 </ArticleLink>
-                  <ArticleTags>
-                    { tags.split(',')[0] } 
-                    <NoEmphasis>
-                      &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp; 
-                      {formatDate(published)}
-                    </NoEmphasis>
-                  </ArticleTags>
-                <Synopsis> { synopsis.internal.content }</Synopsis>
+                <ArticleTags>
+                  { tags.split(',')[0] }
+                  <NoEmphasis>
+                    &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+                    {formatDate(published)}
+                  </NoEmphasis>
+                </ArticleTags>
+                <Synopsis>
+                  { synopsis.internal.content }
+                </Synopsis>
               </TextHolder>
             </IndivialPost>
-          )
-        } ) }
+          );
+        }) }
       </Wrapper>
     </div>
-  )
+  );
 }
+
+BlogPosts.propTypes = {
+  bannerImage: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
+};
 
 export default BlogPosts;
 
@@ -136,3 +149,5 @@ query postsQuery {
      }
  }
 }`;
+
+/* eslint import/no-extraneous-dependencies: "off", no-undef: "off" */
