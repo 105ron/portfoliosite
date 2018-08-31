@@ -9,7 +9,7 @@ function IndexPage(props) {
   return (
     <div>
       <BannerImage
-        heading="Front End Developer."
+        heading="Full Stack Developer."
         tagline="Improving the world wide web pixel by pixel..."
         image={bannerImage}
         alt="Sydney harbour banner image"

@@ -123,13 +123,13 @@ const AboutLink = styled(Link)`
 
 function HelloCard(props) {
   const pages = pageObject;
-  const { rhysImage } = props;
+  const { rhysImage: { sizes } } = props;
   return (
     <Container>
       <Card>
         <PhotoCircle>
           <ProfilePhoto
-            sizes={rhysImage.sizes}
+            sizes={sizes}
             alt="Profile Photo"
           />
         </PhotoCircle>
