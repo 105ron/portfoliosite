@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import formatDate from '../assets/date-formatter';
-import BannerImage from '../components/BannerImage';
-import Device from '../assets/mediaqueries';
+import Device from '../assets/styles/mediaQueries';
+import BannerImage from '../components/BannerImage/BannerImage';
+import formatDate from '../assets/helpers/dateFormatter';
 
 const Wrapper = styled.article`
   max-width: var(--maxwidth);

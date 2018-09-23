@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Email(props) {
+export function Email(props) {
   const { width, height } = props;
   return (
     <svg
@@ -25,7 +25,7 @@ Email.propTypes = {
   height: PropTypes.string.isRequired,
 };
 
-function Facebook(props) {
+export function Facebook(props) {
   const { width, height } = props;
   return (
     <svg
@@ -49,7 +49,7 @@ Facebook.propTypes = {
   height: PropTypes.string.isRequired,
 };
 
-function GitHub(props) {
+export function GitHub(props) {
   const { width, height } = props;
   return (
     <svg
@@ -73,7 +73,7 @@ GitHub.propTypes = {
   height: PropTypes.string.isRequired,
 };
 
-function Linkedin(props) {
+export function LinkedIn(props) {
   const { width, height } = props;
   return (
     <svg
@@ -92,12 +92,12 @@ function Linkedin(props) {
   );
 }
 
-Linkedin.propTypes = {
+LinkedIn.propTypes = {
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
 };
 
-function Skype(props) {
+export function Skype(props) {
   const { width, height } = props;
   return (
     <svg
@@ -121,7 +121,7 @@ Skype.propTypes = {
   height: PropTypes.string.isRequired,
 };
 
-function Twitter(props) {
+export function Twitter(props) {
   const { width, height } = props;
   return (
     <svg
@@ -145,7 +145,7 @@ Twitter.propTypes = {
   height: PropTypes.string.isRequired,
 };
 
-function Whatsapp(props) {
+export function Whatsapp(props) {
   const { width, height } = props;
   return (
     <svg
@@ -167,10 +167,6 @@ function Whatsapp(props) {
 Whatsapp.propTypes = {
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
-};
-
-module.exports = {
-  Email, Facebook, GitHub, Linkedin, Skype, Twitter, Whatsapp,
 };
 
 /* eslint import/no-extraneous-dependencies: "off", max-len: "off", jsx-a11y/aria-proptypes: "off"  */

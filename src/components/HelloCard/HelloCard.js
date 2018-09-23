@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from "styled-components";
-import Link from 'gatsby-link';
-import Img from "gatsby-image";
-import { pageObject } from '../assets/appData';
-import Device from '../assets/mediaqueries';
+import { StaticQuery, graphql, Link } from 'gatsby';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
+import { pageObject } from '../../assets/helpers/appHelpers';
+import Device from '../../assets/styles/mediaQueries';
 
 const Container = styled.div`
   margin: 1.8rem 0;
@@ -121,44 +120,56 @@ const AboutLink = styled(Link)`
   }
 `;
 
-function HelloCard(props) {
-  const pages = pageObject;
-  const { rhysImage } = props;
+function helloCard(props) {
   return (
-    <Container>
-      <Card>
-        <PhotoCircle>
-          <ProfilePhoto
-            sizes={rhysImage.sizes}
-            alt="Profile Photo"
-          />
-        </PhotoCircle>
-        <IntroText>
-          <HelloHeading>
-            G&#39;Day!
-          </HelloHeading>
-          <HelloSubHeading>
-            I&#39;m Rhys...
-          </HelloSubHeading>
-        </IntroText>
-        <MoreInformation>
-          <SeparatorLine />
-          <AboutText>
-            I like to code and make the web a prettier place for everybody.
-          </AboutText>
-          <AboutLink to={pages.about.route}>
-            Read more about me.
-          </AboutLink>
-        </MoreInformation>
-      </Card>
-    </Container>
+    <StaticQuery
+      query={graphql`
+        query IndexRhysImageQuery {
+          rhysImage: file(relativePath: { eq: "images/rhys-image.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 220, maxHeight: 220) {
+                ...GatsbyImageSharpFluid_noBase64
+              }
+            }
+          }
+        }
+      `}
+      render={(data) => {
+        const { rhysImage: { childImageSharp: { fluid: rhysImage } } } = data;
+        const { about: { route: aboutPage } } = pageObject;
+        return (
+          <Container>
+            <Card>
+              <PhotoCircle>
+                <ProfilePhoto
+                  fluid={rhysImage}
+                  alt="Profile Photo"
+                />
+              </PhotoCircle>
+              <IntroText>
+                <HelloHeading>
+                  G&#39;Day!
+                </HelloHeading>
+                <HelloSubHeading>
+                  I&#39;m Rhys...
+                </HelloSubHeading>
+              </IntroText>
+              <MoreInformation>
+                <SeparatorLine />
+                <AboutText>
+                  I like to code and make the web a prettier place for everybody.
+                </AboutText>
+                <AboutLink to={aboutPage}>
+                  Read more about me.
+                </AboutLink>
+              </MoreInformation>
+            </Card>
+          </Container>
+        );
+      }
+    }
+    />
   );
 }
 
-HelloCard.propTypes = {
-  rhysImage: PropTypes.object.isRequired,
-};
-
-export default HelloCard;
-
-/* eslint import/no-extraneous-dependencies: "off" */
+export default helloCard;

@@ -1,7 +1,7 @@
-import Device from '../assets/mediaqueries';
-import coyStyles from '../assets/prism-coy.css';
+import Device from './mediaQueries'
+import coyStyles from './prism-coy.css';
 
-const globalCSS = `
+const globalStyles = `
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
   @import(coyStyles);
   :root {
@@ -59,6 +59,6 @@ const globalCSS = `
   }
 `;
 
-export default globalCSS;
+export default globalStyles;
 
 /* eslint no-unused-vars: "off" */

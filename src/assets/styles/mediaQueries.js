@@ -23,4 +23,4 @@ const device = {
   desktopL: `(max-width: ${size.desktop})`,
 };
 
-module.exports = device;
+export default device;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import Device from '../assets/mediaqueries';
-import { iconsAndLinks } from '../assets/appData';
+import Device from '../../../assets/styles/mediaQueries';
+import { iconsAndLinks } from '../../../assets/helpers/appHelpers';
 
 const Wrapper = styled.nav`
   max-width: var(--maxwidth);

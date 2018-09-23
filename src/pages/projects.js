@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from "styled-components";
-import Device from '../assets/mediaqueries';
-import BannerImage from '../components/BannerImage';
-import ProjectsPreviewCard from '../components/ProjectsPreviewCard';
+import styled from 'styled-components';
+import Device from '../assets/styles/mediaQueries';
+import BannerImage from '../components/BannerImage/BannerImage';
+import ProjectsPreviewCard from '../components/ProjectsPreviewCard/ProjectsPreviewCard';
 
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
@@ -20,13 +19,12 @@ const CardContainer = styled.div`
 `;
 
 function Projects(props) {
-  const { bannerImage, data } = props;
+  const { data } = props;
   return (
     <div>
       <BannerImage
         heading="Portfolio"
         tagline="Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."
-        image={bannerImage}
         alt="Sydney harbour banner image"
       />
       <Wrapper>

@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from "styled-components";
-import sadFace from '../assets/sad.svg';
-import BannerImage from '../components/BannerImage';
-import Device from '../assets/mediaqueries';
+import styled from 'styled-components';
+import Device from '../assets/styles/mediaQueries';
+import BannerImage from '../components/BannerImage/BannerImage';
+import sadFace from '../assets/images/sad.svg';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -22,13 +21,11 @@ const SadFace = styled.img`
 `;
 
 function NotFoundPage(props) {
-  const { bannerImage } = props;
   return (
     <div>
       <BannerImage
         heading="Error"
         tagline="Page not found (That's a 404 error)"
-        image={bannerImage}
         alt="Sydney harbour banner image"
       />
       <Wrapper>
@@ -42,10 +39,4 @@ function NotFoundPage(props) {
   );
 }
 
-NotFoundPage.propTypes = {
-  bannerImage: PropTypes.object.isRequired,
-};
-
 export default NotFoundPage;
-
-/* eslint import/no-extraneous-dependencies: "off" */

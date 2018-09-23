@@ -1,31 +1,21 @@
-require('dotenv').config();
-
 module.exports = {
   siteMetadata: {
-    title: 'Rhys',
+    title: 'MadeByRhys',
   },
-  plugins: [{
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.SPACE_ID || '',
-        accessToken: process.env.ACCESS_TOKEN || '',
-      },
-    },
+  plugins: [
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {},
-            },
-          },
-        ],
+        name: 'MadeByRhys',
+        short_name: 'MadeByRhys',
+        start_url: '/',
+        background_color: "#fff",
+        description: "A portfolio site, blog and projects of Rhys.",
+        icon: 'src/assets/images/favicon96.png', // This path is relative to the root of the site.
       },
     },
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,8 +24,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-react-helmet`, 
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`],
-  pathPrefix: "/portfoliosite"
+    `gatsby-plugin-sharp`
+  ],
 }

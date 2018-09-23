@@ -1,11 +1,10 @@
-import React from "react";
-import { navigateTo } from "gatsby-link";
-import PropTypes from 'prop-types';
-import styled from "styled-components";
-import Recaptcha from "react-google-recaptcha";
-import BannerImage from '../components/BannerImage';
-import Device from '../assets/mediaqueries';
-import { formFields } from '../assets/appData';
+import React from 'react';
+import { navigateTo } from 'gatsby-link';
+import styled from 'styled-components';
+// import Recaptcha from 'react-google-recaptcha';
+import Device from '../assets/styles/mediaQueries';
+import BannerImage from '../components/BannerImage/BannerImage';
+import { formFields } from '../assets/helpers/appHelpers';
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
@@ -158,13 +157,11 @@ class Contact extends React.Component {
   }
 
   render() {
-    const { bannerImage } = this.props;
     return (
       <div>
         <BannerImage
           heading="Contact"
           tagline="Get in touch with me..."
-          image={bannerImage}
           alt="Sydney harbour banner image"
         />
         <Wrapper>
@@ -205,13 +202,13 @@ class Contact extends React.Component {
               </Mandatory>
               <MessageText name="message" onChange={this.handleChange} />
             </MessageLabel>
-            <Recaptcha
+            {/* <Recaptcha
               style={{ justifySelf: 'center' }}
               ref={this.ref}
               sitekey={RECAPTCHA_KEY}
               onChange={this.handleRecaptcha}
               data-size="compact"
-            />
+            /> */}
             <SendButton type="submit">
               Send
             </SendButton>
@@ -221,10 +218,6 @@ class Contact extends React.Component {
     );
   }
 }
-
-Contact.propTypes = {
-  bannerImage: PropTypes.object.isRequired,
-};
 
 export default Contact;
 /* eslint no-alert: "off", import/no-extraneous-dependencies: "off", max-len: "off" */
