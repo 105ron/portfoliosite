@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
-import Device from '../assets/mediaqueries';
-import ArticlePreviewCard from './ArticlePreviewCard';
+import Device from '../../assets/styles/mediaQueries';
+import ArticlePreviewCard from './ArticlePreviewCard/ArticlePreviewCard';
 
 const Container = styled.div`
   position: relative;

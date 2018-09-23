@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Device from '../assets/styles/mediaQueries';
-import BannerImage from '../components/BannerImage/BannerImage';
-import formatDate from '../assets/helpers/dateFormatter';
+import { graphql } from 'gatsby';
+import Layout from '../../components/Layout/Layout';
+import Device from '../../assets/styles/mediaQueries';
+import BannerImage from '../../components/BannerImage/BannerImage';
+import formatDate from '../../assets/helpers/dateFormatter';
 
 const Wrapper = styled.article`
   max-width: var(--maxwidth);
@@ -17,7 +19,6 @@ const ArticleDate = styled.p`
   text-align: center;
   overflow: hidden;
   margin: 0 0 1rem 0;
-
   &:before,
   &:after {
     background-color: #000;
@@ -28,12 +29,10 @@ const ArticleDate = styled.p`
     vertical-align: middle;
     width: 50%;
   }
-
   &:before {
     right: 0.5em;
     margin-left: -50%;
   }
-
   &:after {
     left: 0.5em;
     margin-right: -50%;
@@ -47,19 +46,15 @@ const Article = styled.div`
     font-weight: bold;
     margin: 0.8rem 0 1rem;
   }
-
   & h1 {
     font-size: 1.8rem;
   }
-
   & h2 {
     font-size: 1.4rem;
   }
-
   & p{
     margin: 0 0 20px;
   }
-
   & ul {
     color: rgba(74, 74, 74, 0.7);
     list-style-type: square;
@@ -76,12 +71,10 @@ const Article = styled.div`
     color: rgba(74, 74, 74, 0.7);
     font-size: 0.9rem;
   }
-
   & li > p {
     margin: 0;
     font-size: 0.9rem;
   }
-
   & a {
     color: var(--linkblue);
     text-decoration: none;
@@ -90,7 +83,6 @@ const Article = styled.div`
   & img{
     max-width: 100%;
   }
-
   & blockquote {
     position: relative;
     background: #f9f9f9;
@@ -98,7 +90,6 @@ const Article = styled.div`
     margin: 1.5em 10px;
     padding: 0.5em 10px;
   }
-
   & blockquote:before {
     color: #ccc;
     content: open-quote;
@@ -107,7 +98,6 @@ const Article = styled.div`
     margin-right: 0.25em;
     vertical-align: -0.4em;
   }
-
   & blockquote:after {
     position: absolute;
     right: 0.5rem;
@@ -119,19 +109,16 @@ const Article = styled.div`
     margin-left: 0.25em;
     vertical-align: -0.4em;
   }
-
   & blockquote p {
     display: inline;
     margin-right: 3rem;
     font-style: italic;
   }
-
   /*
   ***************************************************
   For articles with images
   ***************************************************
   */
-
   & .article-image {
     max-width: 710px;
     margin: 0 auto 2rem auto;
@@ -140,14 +127,12 @@ const Article = styled.div`
     border-radius: 3px;
     box-shadow: 0px 25px 50px rgb(100,100,100);
   }
-
   & .article-image .image {
     display: block;
     border-radius: 3px;
     margin: 0;
     padding: 0; 
   }
-
   .article-image .quote {
     color: rgba(74,74,74,0.7);
     padding: 0.4rem 1rem 0.8rem 1rem;
@@ -156,7 +141,6 @@ const Article = styled.div`
     line-height: 24px;
     font-style: italic;
   }
-
   /*
   ***************************************************
   For the about page
@@ -176,7 +160,6 @@ const Article = styled.div`
       margin: 0 auto 1rem auto;
     }
   }
-
   & .card .about-heading {
     margin: 0.6rem 0px;
     color: #939393;
@@ -184,7 +167,6 @@ const Article = styled.div`
     font-size: 1.5rem;
     text-align: center; 
   }
-
   & .card .list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -194,7 +176,6 @@ const Article = styled.div`
     grid-gap: 1rem;
     justify-items: stretch; 
   }
-
   & .card li.button {
     display: block;
     background: #ECECEC;
@@ -225,16 +206,15 @@ const Article = styled.div`
 `;
 
 function BlogPost(props) {
-  const { data, bannerImage } = props;
+  const { data } = props;
   const {
     title, subHeading, content, published, tags, slug,
   } = data.contentfulBlog;
   return (
-    <div>
+    <Layout>
       <BannerImage
         heading={title}
         tagline={tags.split(',')[0]}
-        image={bannerImage}
         alt="Sydney harbour banner image"
       />
       <Wrapper>
@@ -255,13 +235,12 @@ function BlogPost(props) {
         }
         <Article dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }} />
       </Wrapper>
-    </div>
+    </Layout>
   );
 }
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
-  bannerImage: PropTypes.object.isRequired,
 };
 
 export default BlogPost;
@@ -287,5 +266,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-/* eslint import/no-extraneous-dependencies: "off", no-undef: "off" */

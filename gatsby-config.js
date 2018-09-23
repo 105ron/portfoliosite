@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'MadeByRhys',
@@ -15,16 +17,24 @@ module.exports = {
         icon: 'src/assets/images/favicon96.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `img`,
-        path: `${__dirname}/src/assets/`
-      }
+        path: `${__dirname}/src/assets/`,
+      },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.ACCESS_TOKEN,
+      },
+    },
+    'gatsby-transformer-remark',
+    'gatsby-plugin-offline',
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
   ],
-}
+};

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Img from "gatsby-image";
-import formatDate from '../assets/date-formatter';
-import Device from '../assets/mediaqueries';
-import BannerImage from '../components/BannerImage';
+import Layout from '../components/Layout/Layout';
+import BannerImage from '../components/BannerImage/BannerImage';
+import BlogPostPreviewCard from '../components/BlogPostPreviewCard/BlogPostPreviewCard';
 
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
@@ -12,112 +11,42 @@ const Wrapper = styled.div`
   padding: 0 20px;
 `;
 
-const IndivialPost = styled.section`
-  padding: 0 0.8rem;
-  &+& {
-    margin: 1.5rem 0;
-    border-top: 1px solid var(--greyline);
-  }
-  @media ${Device.tablet} {
-    padding: 0 0.4rem;
-  }
-`;
-
-const Image = styled(Img)`
-  z-index: 1;
-  border-radius: 3px;
-  margin-top: 1.5rem;
-`;
-
-const TextHolder = styled.div`
-  position:relative;
-  z-index: 4;
-  margin: 0 6rem;
-  margin-top: -5rem;
-  padding: 3rem;
-  background-color: #f5f5f5;
-  border-radius: 3px;
-  @media ${Device.tablet} {
-    padding: 1rem;
-    margin: 0 1rem;
-    margin-top: -2.5rem;
-  }
-`;
-
-const ArticleLink = styled.a`
-  color: var(--linkblue);
-  text-align: center;
-  text-decoration: none;
-`;
-
-const ArticleTitle = styled.h3`
-    font-size: 1.2rem;
-    margin: 0 0 1rem 0;
-`;
-
-const ArticleTags = styled.h6`
-  text-align: center;
-  color: rgba(74,74,74,0.7);
-  margin: 0 0 1rem 0;
-`;
-
-const NoEmphasis = styled.span`
-  font-weight: lighter;
-`;
-
-const Synopsis = styled.p`
-  margin-bottom: 0;
-`;
-
-function BlogPosts(props) {
-  const { bannerImage, data } = props;
+function blogPosts(props) {
+  const { data: { allContentfulBlog: { edges: articles } } } = props;
   return (
-    <div>
+    <Layout>
       <BannerImage
         heading="Blog Posts"
         tagline="Most recent posts covering the latest news in Web Development..."
-        image={bannerImage}
         alt="Sydney harbour banner image"
       />
       <Wrapper>
-        {data.allContentfulBlog.edges.map((edge) => {
+        {articles.map((article) => {
           const {
-            title, tags, slug, published, bannerimage, synopsis,
-          } = edge.node;
+            title, tags, slug, published, bannerimage: articleImage, synopsis,
+          } = article.node;
           return (
-            <IndivialPost key={slug}>
-              <Image sizes={bannerimage.sizes} />
-              <TextHolder>
-                <ArticleLink href={`/${slug}`}>
-                  <ArticleTitle>
-                    {title}
-                  </ArticleTitle>
-                </ArticleLink>
-                <ArticleTags>
-                  { tags.split(',')[0] }
-                  <NoEmphasis>
-                    &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
-                    {formatDate(published)}
-                  </NoEmphasis>
-                </ArticleTags>
-                <Synopsis>
-                  { synopsis.internal.content }
-                </Synopsis>
-              </TextHolder>
-            </IndivialPost>
+            <BlogPostPreviewCard
+              key={slug}
+              articleImage={articleImage}
+              published={published}
+              slug={slug}
+              synopsis={synopsis}
+              tags={tags}
+              title={title}
+            />
           );
-        }) }
+        })}
       </Wrapper>
-    </div>
+    </Layout>
   );
 }
 
-BlogPosts.propTypes = {
-  bannerImage: PropTypes.object.isRequired,
+blogPosts.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default BlogPosts;
+export default blogPosts;
 
 export const pageQuery = graphql`
 query postsQuery {
@@ -129,25 +58,28 @@ query postsQuery {
  sort:{ fields: [published], order: DESC },
  limit: 100
  ) {
-     edges {
-       node {
-         title
-         slug
-         published
-         tags
-         synopsis {
-           internal {
-             content
-           }
-         }
-         bannerimage {
-           sizes(maxWidth: 720) {
-             ...GatsbyContentfulSizes
-           }
-         }
-       }
-     }
- }
+    edges {
+      node {
+        title
+        slug
+        published
+        tags
+        synopsis {
+          internal {
+            content
+          }
+        }
+        bannerimage {
+          fluid(maxWidth: 720) {
+            aspectRatio
+            sizes
+            src
+            srcSet
+          }
+        }
+      }
+    }
+  }
 }`;
 
 /* eslint import/no-extraneous-dependencies: "off", no-undef: "off" */

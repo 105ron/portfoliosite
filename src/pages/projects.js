@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Device from '../assets/styles/mediaQueries';
+import Layout from '../components/Layout/Layout';
 import BannerImage from '../components/BannerImage/BannerImage';
 import ProjectsPreviewCard from '../components/ProjectsPreviewCard/ProjectsPreviewCard';
 
@@ -21,7 +22,7 @@ const CardContainer = styled.div`
 function Projects(props) {
   const { data } = props;
   return (
-    <div>
+    <Layout>
       <BannerImage
         heading="Portfolio"
         tagline="Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."
@@ -42,7 +43,7 @@ function Projects(props) {
           ))}
         </CardContainer>
       </Wrapper>
-    </div>
+    </Layout>
   );
 }
 
@@ -66,8 +67,11 @@ export const ProjectsQuery = graphql`
             description
             technologies
             image {
-              sizes(maxWidth: 400) {
-                ...GatsbyContentfulSizes
+              fluid(maxWidth: 400) {
+                aspectRatio
+                sizes
+                src
+                srcSet
               }
             }
           }

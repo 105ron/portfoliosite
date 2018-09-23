@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Img from "gatsby-image";
@@ -38,7 +38,7 @@ const ProjectName = styled.p`
   cursor: pointer;
 `;
 
-const ProjectByline = ProjectName.extend`
+const ProjectByline = styled(ProjectName)`
   font-size: 1rem;
   color: rgba(74,74,74,0.7);;
   cursor: default;
@@ -100,22 +100,22 @@ const TechSpan = styled.span`
   font-size: 0.9rem;
 `;
 
-class ProjectsPreviewCard extends React.Component {
-  constructor() {
-    super();
-    this.toggleClass = this.toggleClass.bind(this);
-    this.state = {
-      active: false,
-    };
+class ProjectsPreviewCard extends Component {
+  state = {
+    active: false,
+  };
+  
+  componentWillUnmount () {
+    window.clearTimeout(this.timer);
   }
 
   timeOut() {
     this.timer = window.setTimeout(this.toggleClass, 5000);
   }
 
-  toggleClass() {
+  toggleClass = () => {
     const { active }= this.state;
-    this.setState({ active: !active });
+    this.setState((prevState) => ({ active: !prevState.active }));
     window.clearTimeout(this.timer);
     if (!active) { this.timeOut(); } // Timer to pull down overlay if the overlay is active
   }
@@ -129,7 +129,7 @@ class ProjectsPreviewCard extends React.Component {
       <Card>
         <Container onClick={this.toggleClass}>
           <ProjectImage
-            sizes={image.sizes}
+            fluid={image.fluid}
             alt={`Screenshot of ${title}`}
           />
           <ProjectName>

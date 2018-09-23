@@ -1,8 +1,9 @@
 import React from 'react';
 import { navigateTo } from 'gatsby-link';
 import styled from 'styled-components';
-// import Recaptcha from 'react-google-recaptcha';
+import Recaptcha from 'react-google-recaptcha';
 import Device from '../assets/styles/mediaQueries';
+import Layout from '../components/Layout/Layout';
 import BannerImage from '../components/BannerImage/BannerImage';
 import { formFields } from '../assets/helpers/appHelpers';
 
@@ -61,7 +62,7 @@ const FormInput = styled.input`
   border: 1px solid var(--navbargrey);
 `;
 
-const MessageLabel = InputLabel.extend`
+const MessageLabel = styled(InputLabel)`
   grid-column: 1 / span 2;
   @media ${Device.tablet} {
     grid-column: 1 / span 1;
@@ -158,7 +159,7 @@ class Contact extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <BannerImage
           heading="Contact"
           tagline="Get in touch with me..."
@@ -202,19 +203,19 @@ class Contact extends React.Component {
               </Mandatory>
               <MessageText name="message" onChange={this.handleChange} />
             </MessageLabel>
-            {/* <Recaptcha
+            <Recaptcha
               style={{ justifySelf: 'center' }}
               ref={this.ref}
               sitekey={RECAPTCHA_KEY}
               onChange={this.handleRecaptcha}
               data-size="compact"
-            /> */}
+            />
             <SendButton type="submit">
               Send
             </SendButton>
           </ContactForm>
         </Wrapper>
-      </div>
+      </Layout>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Layout from '../components/Layout/Layout';
 import Device from '../assets/styles/mediaQueries';
 import BannerImage from '../components/BannerImage/BannerImage';
 import sadFace from '../assets/images/sad.svg';
@@ -22,7 +23,7 @@ const SadFace = styled.img`
 
 function NotFoundPage(props) {
   return (
-    <div>
+    <Layout>
       <BannerImage
         heading="Error"
         tagline="Page not found (That's a 404 error)"
@@ -35,7 +36,7 @@ function NotFoundPage(props) {
           Please click the email icon below and tell me how you got here. Thanks, Rhys.
         </p>
       </Wrapper>
-    </div>
+    </Layout>
   );
 }
 
