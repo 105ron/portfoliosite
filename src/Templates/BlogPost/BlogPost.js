@@ -254,8 +254,11 @@ export const pageQuery = graphql`
       slug
       published
       bannerimage {
-        sizes(maxWidth: 780) {
-          ...GatsbyContentfulSizes
+        fluid(maxWidth: 780) {
+          aspectRatio
+          sizes
+          src
+          srcSet
         }
       }
       content {

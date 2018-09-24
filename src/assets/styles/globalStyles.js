@@ -1,9 +1,9 @@
-import Device from './mediaQueries'
+import Device from './mediaQueries';
 import coyStyles from './prism-coy.css';
 
 const globalStyles = `
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  @import(coyStyles);
+  @import(${coyStyles});
   :root {
     --linkblue: #368bc1;
     --greyline: #cbcbcb;
@@ -60,5 +60,3 @@ const globalStyles = `
 `;
 
 export default globalStyles;
-
-/* eslint no-unused-vars: "off" */

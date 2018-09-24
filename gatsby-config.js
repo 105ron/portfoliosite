@@ -31,7 +31,21 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN,
       },
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+            },
+          },
+        ],
+      },
+    },
     'gatsby-plugin-offline',
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
