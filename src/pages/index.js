@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import BannerImage from '../components/BannerImage/BannerImage';
 import HelloCard from '../components/HelloCard/HelloCard';
@@ -10,7 +11,7 @@ function indexPage(props) {
   return (
     <Layout>
       <BannerImage
-        heading="Full Stack Developer."
+        heading="Front End Web Developer."
         tagline="Improving the world wide web pixel by pixel..."
         alt="Sydney harbour banner image"
       />

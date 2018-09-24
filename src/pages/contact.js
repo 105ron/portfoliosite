@@ -1,9 +1,10 @@
 import React from 'react';
-import { navigateTo } from 'gatsby-link';
+import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import Recaptcha from 'react-google-recaptcha';
 import Device from '../assets/styles/mediaQueries';
 import Layout from '../components/Layout/Layout';
+import Modal from '../components/UI/Modal/Modal';
 import BannerImage from '../components/BannerImage/BannerImage';
 import { formFields } from '../assets/helpers/appHelpers';
 
@@ -18,6 +19,20 @@ function encode(data) {
 const Wrapper = styled.div`
   max-width: var(--maxwidth);
   margin: 0 auto;
+`;
+const ValidationTitle = styled.h4`
+  margin: 0 0 1rem 0;
+  text-align: center;
+  color: var(--headinggrey);
+`;
+
+const ValidationList = styled.ul`
+  margin:0
+`;
+
+const ValidationBullet = styled.li`
+  color: var(--navbargrey);
+  padding: 0.5rem;
 `;
 
 const ContactForm = styled.form`
@@ -93,9 +108,11 @@ const SendButton = styled.button`
 `;
 
 function validateField(targetFieldName, field=' ', regex) {
+  // Get the field name from the string for the React key
+  const [htmlField] = targetFieldName.split(' ');
   return regex.test(field.trim())
-    ? ''
-    : `Please enter A valid ${targetFieldName} \n`;
+    ? null
+    : { field: htmlField, message: `Please enter A valid ${targetFieldName}` };
 }
 
 class Contact extends React.Component {
@@ -104,44 +121,25 @@ class Contact extends React.Component {
     this.ref ='recaptcha';
     this.state = {
       message: '',
+      hasValidationErrors: false,
+      errorMessages: {
+        title: '',
+        errors: [],
+      },
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRecaptcha = this.handleRecaptcha.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleRecaptcha(value) {
+  handleRecaptcha = (value) => {
     this.setState({ gRecaptchaResponse: value });
   }
 
-  isValidInput() {
-    let errors = '';
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    const nameRegex = /^([a-zA-Z\-'"]){3,30}$/;
-    const {
-      message, firstName, lastName, gRecaptchaResponse, email,
-    } = this.state;
-    errors += validateField("first name (only: A-z, ' and -)", firstName, nameRegex);
-    errors += validateField("last name (only: A-z, ' and -)", lastName, nameRegex);
-    errors += validateField("email", email, emailRegex);
-    errors += message.trim().length > 9
-      ? ''
-      : 'Please enter a message of 10 of more characters \n';
-    errors += gRecaptchaResponse
-      ? ''
-      : 'Please check the Recaptcha field \n';
-    if (errors) alert(errors);
-    return !errors;
-  }
-
-  handleSubmit(e) {
-    const { message } = this.state;
+  handleSubmit = (e) => {
     e.preventDefault();
-    if (!this.isValidInput(message)) { return; } // Don't submit if not filled in
+    if (!this.isValidInput()) { return; } // Don't submit if not filled in
     const form = e.target;
     fetch("/", {
       method: "POST",
@@ -153,11 +151,71 @@ class Contact extends React.Component {
         in state called g-recaptcha-response */
       }),
     })
-      .then(() => navigateTo(form.getAttribute("action")))
-      .catch(error => alert(error));
+      .then(() => navigate(form.getAttribute("action")))
+      .catch((error) => {
+        this.setState({
+          errorMessages: {
+            hasValidationErrors: true,
+            title: 'Submittng Form Failed.',
+            errors: [
+              { field: 'general', message: 'Somthing has gone wrong with submiting the form. Your message was not sent, please try emailing me instead.' },
+            ],
+          },
+        });
+      });
   }
 
+  toggleModalVisible = () => {
+    this.setState(prevState => ({ hasValidationErrors: !prevState.hasValidationErrors }));
+  }
+
+  isValidInput() {
+    const errors = [];
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const nameRegex = /^([a-zA-Z\-'"]){3,30}$/;
+    const {
+      message, firstName, lastName, gRecaptchaResponse, email,
+    } = this.state;
+    const hasInvalidFirstName = () => validateField('first name (only letters A-z, "\'" and "-")', firstName, nameRegex);
+    const hasInvalidLastName = () => validateField('last name (only letters A-z, "\'" and "-")', lastName, nameRegex);
+    const hasInvalidEmail = () => validateField('email', email, emailRegex);
+    if (hasInvalidFirstName()) errors.push(hasInvalidFirstName());
+    if (hasInvalidLastName()) errors.push(hasInvalidLastName());
+    if (hasInvalidEmail()) errors.push(hasInvalidEmail());
+    if (message.trim().length < 9) errors.push({ field: 'message', message: 'Please enter a message of 10 of more characters' });
+    if (!gRecaptchaResponse) errors.push({ field: 'recaptcha', message: 'Please check the Recaptcha field' });
+    const hasValidationErrors = (errors.length > 0);
+    this.setState({
+      hasValidationErrors,
+      errorMessages: {
+        errors,
+        title: 'Please Correct the following errors:',
+      },
+
+    });
+    return !hasValidationErrors;
+  }
+
+
   render() {
+    const { hasValidationErrors, errorMessages: { errors: stateErrors, title } } = this.state;
+    let errors = null;
+    if (hasValidationErrors) {
+      errors = (
+        <React.Fragment>
+          <ValidationTitle>
+            {title}
+          </ValidationTitle>
+          <ValidationList>
+            {stateErrors.map(error => (
+              <ValidationBullet key={error.field}>
+                {error.message}
+              </ValidationBullet>
+            ))}
+          </ValidationList>
+        </React.Fragment>
+      );
+    }
     return (
       <Layout>
         <BannerImage
@@ -215,10 +273,16 @@ class Contact extends React.Component {
             </SendButton>
           </ContactForm>
         </Wrapper>
+        <Modal
+          show={hasValidationErrors}
+          modalClosed={this.toggleModalVisible}
+        >
+          {errors}
+        </Modal>
       </Layout>
     );
   }
 }
 
 export default Contact;
-/* eslint no-alert: "off", import/no-extraneous-dependencies: "off", max-len: "off" */
+/* eslint max-len: "off" */

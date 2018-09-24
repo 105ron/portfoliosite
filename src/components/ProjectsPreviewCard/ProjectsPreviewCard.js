@@ -101,9 +101,11 @@ const TechSpan = styled.span`
 `;
 
 class ProjectsPreviewCard extends Component {
-  state = {
-    active: false,
-  };
+  constructor() {
+    this.state = {
+      active: false,
+    };
+  }
   
   componentWillUnmount () {
     window.clearTimeout(this.timer);
@@ -182,5 +184,3 @@ ProjectsPreviewCard.propTypes = {
 };
 
 export default ProjectsPreviewCard;
-
-/* eslint import/no-extraneous-dependencies: "off" */

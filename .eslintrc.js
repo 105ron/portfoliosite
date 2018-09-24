@@ -3,6 +3,12 @@ module.exports = {
   "env": {
     "browser": true,
   },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": true
+  },
   "rules": {
     "import/named": 0,
     "react/forbid-prop-types": 0,

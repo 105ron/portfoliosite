@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
 import Device from '../assets/styles/mediaQueries';
 import Layout from '../components/Layout/Layout';
 import BannerImage from '../components/BannerImage/BannerImage';

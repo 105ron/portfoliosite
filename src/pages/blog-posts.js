@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout/Layout';
 import BannerImage from '../components/BannerImage/BannerImage';
