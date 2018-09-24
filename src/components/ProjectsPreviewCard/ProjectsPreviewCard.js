@@ -101,25 +101,26 @@ const TechSpan = styled.span`
 `;
 
 class ProjectsPreviewCard extends Component {
-  constructor() {
+  constructor(props) {
+    super(props);
     this.state = {
       active: false,
     };
   }
-  
-  componentWillUnmount () {
-    window.clearTimeout(this.timer);
-  }
 
-  timeOut() {
-    this.timer = window.setTimeout(this.toggleClass, 5000);
+  componentWillUnmount() {
+    window.clearTimeout(this.timer);
   }
 
   toggleClass = () => {
     const { active }= this.state;
-    this.setState((prevState) => ({ active: !prevState.active }));
+    this.setState(prevState => ({ active: !prevState.active }));
     window.clearTimeout(this.timer);
     if (!active) { this.timeOut(); } // Timer to pull down overlay if the overlay is active
+  }
+
+  timeOut() {
+    this.timer = window.setTimeout(this.toggleClass, 5000);
   }
 
   render() {
