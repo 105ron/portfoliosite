@@ -7,7 +7,13 @@ import HelloCard from '../components/HelloCard/HelloCard';
 import ArticlesPreviewContainer from '../components/ArticlesPreviewContainer/ArticlePreviewContainer';
 
 function indexPage(props) {
-  const { data } = props;
+  const {
+    data: {
+      allContentfulBlog: {
+        edges: articles,
+      },
+    },
+  } = props;
   return (
     <Layout>
       <BannerImage
@@ -16,13 +22,17 @@ function indexPage(props) {
         alt="Sydney harbour banner image"
       />
       <HelloCard />
-      <ArticlesPreviewContainer article={data.allContentfulBlog.edges} />
+      <ArticlesPreviewContainer articles={articles} />
     </Layout>
   );
 }
 
 indexPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    allContentfulBlog: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default indexPage;
@@ -50,8 +60,11 @@ export const pageQuery = graphql`
           }
           bannerimage {
             description
-            sizes(maxWidth: 400) {
-              ...GatsbyContentfulSizes
+            fluid(maxWidth: 400) {
+              aspectRatio
+              sizes
+              src
+              srcSet
             }
           }
         }

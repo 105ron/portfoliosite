@@ -30,24 +30,27 @@ const Shadow = styled.div`
 `;
 
 function ArticlesPreviewContainer(props) {
-  const { article } = props;
+  const { articles } = props;
   return (
     <Container>
       <Shadow />
       <CardsContainer>
-        {article.map(edge => (
-          <ArticlePreviewCard
-            article={edge.node}
-            key={edge.node.slug}
-          />
-        ))}
+        {articles.map((article) => {
+          const { node } = article;
+          return (
+            <ArticlePreviewCard
+              article={node}
+              key={node.slug}
+            />
+          );
+        })}
       </CardsContainer>
     </Container>
   );
 }
 
 ArticlesPreviewContainer.propTypes = {
-  article: PropTypes.array.isRequired,
+  articles: PropTypes.array.isRequired,
 };
 
 export default ArticlesPreviewContainer;

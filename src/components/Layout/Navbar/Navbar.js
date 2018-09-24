@@ -1,6 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types'; TODO reinstate proptypes for StaticQuery
-import { StaticQuery, graphql, Link } from 'gatsby';
+import {
+  StaticQuery, graphql, Link,
+} from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Device from '../../../assets/styles/mediaQueries';
@@ -51,6 +53,9 @@ const List = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   color: var(--navbargrey);
+  &:hover {
+    color: rgba(157, 157, 157, 0.8);
+  }
 `;
 
 const BottomBorder = styled.ul`
@@ -99,14 +104,18 @@ function navbar() {
               />
             </Header>
             <NavbarContainer>
-              {pages.map(page => (
-                <List
-                  key={page.route}
-                  to={page.route}
-                >
-                  {page.name}
-                </List>
-              ))}
+              {pages.map((page) => {
+                const { route, name } = page;
+                return (
+                  <List
+                    key={route}
+                    to={route}
+                    activeStyle={{ color: '#7e7e7e' }}
+                  >
+                    {name}
+                  </List>
+                );
+              })}
             </NavbarContainer>
             <BottomBorder>
               {lineColors.map(color => (

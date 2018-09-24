@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import Device from '../assets/styles/mediaQueries';
@@ -20,8 +21,14 @@ const CardContainer = styled.div`
   }
 `;
 
-function Projects(props) {
-  const { data } = props;
+function projects(props) {
+  const {
+    data: {
+      allContentfulProjects: {
+        edges: contentfulProjects,
+      },
+    },
+  } = props;
   return (
     <Layout>
       <BannerImage
@@ -31,25 +38,39 @@ function Projects(props) {
       />
       <Wrapper>
         <CardContainer>
-          {data.allContentfulProjects.edges.map(edge => (
-            <ProjectsPreviewCard
-              key={edge.node.repourl}
-              title={edge.node.title}
-              repo={edge.node.repourl}
-              livesite={edge.node.previewurl}
-              image={edge.node.image}
-              description={edge.node.description}
-              technologies={edge.node.technologies.split(',')}
-            />
-          ))}
+          {contentfulProjects.map((project) => {
+            const {
+              node: {
+                repourl, title, previewurl, image, description, technologies,
+              },
+            } = project;
+            return (
+              <ProjectsPreviewCard
+                key={repourl}
+                title={title}
+                repo={repourl}
+                livesite={previewurl}
+                image={image}
+                description={description}
+                technologies={technologies.split(',')}
+              />
+            );
+          })}
         </CardContainer>
       </Wrapper>
     </Layout>
   );
 }
 
+projects.propTypes = {
+  data: PropTypes.shape({
+    allContentfulProjects: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
-export default Projects;
+export default projects;
 
 export const ProjectsQuery = graphql`
    query projectsQuery {

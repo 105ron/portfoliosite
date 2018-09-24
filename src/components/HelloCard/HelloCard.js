@@ -120,7 +120,7 @@ const AboutLink = styled(Link)`
   }
 `;
 
-function helloCard(props) {
+function helloCard() {
   return (
     <StaticQuery
       query={graphql`

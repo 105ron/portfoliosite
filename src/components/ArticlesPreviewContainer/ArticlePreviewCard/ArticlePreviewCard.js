@@ -36,16 +36,17 @@ const Excerpt = styled.p`
   text-align: left;
 `;
 
-function ArticlePreviewCard(props) {
-  const { article } = props;
+function articlePreviewCard(props) {
   const {
-    slug, bannerimage, title, content,
-  } = article;
+    article: {
+      slug, bannerimage, title, content,
+    },
+  } = props;
   return (
     <Card>
       <ArticleLink to={slug}>
         <ArticleImage
-          sizes={bannerimage.sizes}
+          fluid={bannerimage.fluid}
           alt={bannerimage.description}
         />
         <ArticleTitle>
@@ -59,10 +60,15 @@ function ArticlePreviewCard(props) {
   );
 }
 
-ArticlePreviewCard.propTypes = {
-  article: PropTypes.object.isRequired,
+articlePreviewCard.propTypes = {
+  article: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    bannerimage: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
-export default ArticlePreviewCard;
+export default articlePreviewCard;
 
 /* eslint import/no-extraneous-dependencies: "off" */

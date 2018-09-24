@@ -206,10 +206,13 @@ const Article = styled.div`
 `;
 
 function BlogPost(props) {
-  const { data } = props;
   const {
-    title, subHeading, content, published, tags, slug,
-  } = data.contentfulBlog;
+    data: {
+      contentfulBlog: {
+        title, subHeading, content, published, tags, slug,
+      },
+    },
+  } = props;
   return (
     <Layout>
       <BannerImage
@@ -240,7 +243,16 @@ function BlogPost(props) {
 }
 
 BlogPost.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    contentfulBlog: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      subHeading: PropTypes.string.isRequired,
+      content: PropTypes.object.isRequired,
+      published: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default BlogPost;

@@ -34,7 +34,7 @@ const Copyright = styled.p`
   padding-bottom: 0.4rem;
 `;
 
-function Footer() {
+function footer() {
   return (
     <Wrapper>
       <SocialIconsList>
@@ -53,6 +53,6 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default footer;
 
 /* eslint import/no-extraneous-dependencies: "off" */

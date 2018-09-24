@@ -44,7 +44,11 @@ function blogPosts(props) {
 }
 
 blogPosts.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    allContentfulBlog: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default blogPosts;
