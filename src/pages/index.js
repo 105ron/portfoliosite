@@ -38,8 +38,7 @@ indexPage.propTypes = {
 export default indexPage;
 
 export const pageQuery = graphql`
-   query pageQuery {
-    
+  query pageQuery {
     allContentfulBlog (
     filter: {
       node_locale: {eq: "en-US"},

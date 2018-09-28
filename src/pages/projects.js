@@ -30,7 +30,7 @@ function projects(props) {
     },
   } = props;
   return (
-    <Layout>
+    <Layout description="Web development projects made by Rhys. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3...">
       <BannerImage
         heading="Portfolio"
         tagline="Things I've made. ReactJS, Ruby on Rails, JavaScript, HTML5 and CSS3..."

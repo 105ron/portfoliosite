@@ -214,7 +214,7 @@ function BlogPost(props) {
     },
   } = props;
   return (
-    <Layout>
+    <Layout description={subHeading}>
       <BannerImage
         heading={title}
         tagline={tags.split(',')[0]}

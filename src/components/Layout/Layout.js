@@ -18,7 +18,8 @@ const Wrapper = styled.div`
   background-color: #fff;
 `;
 
-function layout({ children }) {
+function layout(props) {
+  const { children, description } = props;
   return (
     <StaticQuery
       query={graphql`
@@ -30,30 +31,38 @@ function layout({ children }) {
           }
         }
       `}
-      render={data => (
-        <React.Fragment>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              { name: 'description', content: 'A portfolio site, blog and projects of Rhys.' },
-              { name: 'keywords', content: 'blog, javascript' },
-            ]}
-          >
-            <html lang="en" />
-          </Helmet>
-          <Wrapper>
-            <Navbar />
-            {children}
-            <Footer />
-          </Wrapper>
-        </React.Fragment>
-      )}
+      render={(data) => {
+        const { site: { siteMetadata: { title } } } = data;
+        return (
+          <React.Fragment>
+            <Helmet
+              title={title}
+              meta={[
+                { name: 'description', content: description },
+                { name: 'keywords', content: 'blog, javascript' },
+              ]}
+            >
+              <html lang="en" />
+            </Helmet>
+            <Wrapper>
+              <Navbar />
+              {children}
+              <Footer />
+            </Wrapper>
+          </React.Fragment>
+        );
+      }}
     />
   );
 }
 
+layout.defaultProps = {
+  description: 'A portfolio site, blog and projects of Rhys.',
+};
+
 layout.propTypes = {
   children: PropTypes.node.isRequired,
+  description: PropTypes.string,
 };
 
 export default layout;

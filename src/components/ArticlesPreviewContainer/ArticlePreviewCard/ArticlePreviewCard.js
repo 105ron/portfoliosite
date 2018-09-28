@@ -39,7 +39,8 @@ const Excerpt = styled.p`
 function articlePreviewCard(props) {
   const {
     article: {
-      slug, bannerimage, title, content,
+      slug, bannerimage, title, content: 
+        { childMarkdownRemark: { excerpt } },
     },
   } = props;
   return (
@@ -54,7 +55,7 @@ function articlePreviewCard(props) {
         </ArticleTitle>
       </ArticleLink>
       <Excerpt>
-        { content.childMarkdownRemark.excerpt }
+        {excerpt}
       </Excerpt>
     </Card>
   );
