@@ -40,6 +40,7 @@ function layout(props) {
               meta={[
                 { name: 'description', content: description },
                 { name: 'keywords', content: 'blog, javascript' },
+                { name: 'google-site-verification', content: 'bXTx2cFVp0QugBZ_l4JVaGc48PnZlzsLsSpXY0pU5E8' },
               ]}
             >
               <html lang="en" />
