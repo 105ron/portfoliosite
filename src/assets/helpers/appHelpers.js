@@ -32,7 +32,7 @@ export const formFields = [
 export const iconsAndLinks = [
   {
     icon: Email,
-    link: `mailto:rhysbrooker01@gmail.com?subject=Email%20from%20RhysBrooker.com`,
+    link: `mailto:contact@rhysbrooker.com?subject=Email%20from%20RhysBrooker.com`,
   },
   {
     icon: GitHub,
